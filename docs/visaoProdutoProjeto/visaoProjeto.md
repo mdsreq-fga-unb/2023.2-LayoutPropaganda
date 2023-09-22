@@ -4,7 +4,7 @@
 
 ## Organização de Projeto
 
-Papel &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Atribuições |Responsável | Participantes
+Papel | Atribuições |Responsável | Participantes
 |-------|------------------- | 
 Desenvolvedor front-end | Codificar e refatorar o front-end do produto | `Manoel` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
 Desenvolvedor back-end | Codificar e refatorar o back-end do produto | `Cauã` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
