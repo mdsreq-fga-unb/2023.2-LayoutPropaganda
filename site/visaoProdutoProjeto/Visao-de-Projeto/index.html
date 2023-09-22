@@ -4,23 +4,23 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Layout Propaganda Doc</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Visão de Projeto - Layout Propaganda Doc</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Layout Propaganda Doc</a>
+                <a class="navbar-brand" href="../..">Layout Propaganda Doc</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -30,19 +30,19 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
-                                <a href="." class="nav-link">Quick Start</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Quick Start</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">visaoProdutoProjeto <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="visaoProdutoProjeto/Visao-de-Produto/" class="dropdown-item">Visao de Produto</a>
+    <a href="../Visao-de-Produto/" class="dropdown-item">Visao de Produto</a>
 </li>
                                     
 <li>
-    <a href="visaoProdutoProjeto/Visao-de-Projeto/" class="dropdown-item">Visão de Projeto</a>
+    <a href="./" class="dropdown-item active">Visão de Projeto</a>
 </li>
                                 </ul>
                             </li>
@@ -55,12 +55,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="../Visao-de-Produto/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="visaoProdutoProjeto/Visao-de-Produto/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -82,17 +82,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#quick-start" class="nav-link">Quick Start</a>
+            <li class="nav-item" data-level="1"><a href="#visao-de-projeto" class="nav-link">Visão de Projeto</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#introducao-ao-produto" class="nav-link">Introdução ao Produto</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#guia" class="nav-link">Guia</a>
+            <li class="nav-item" data-level="2"><a href="#organizacao-de-projeto" class="nav-link">Organização de Projeto</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#tecnologias" class="nav-link">Tecnologias</a>
+            <li class="nav-item" data-level="2"><a href="#planejamento-das-fases-e-iteracoes-do-projeto" class="nav-link">Planejamento das Fases e Iterações do projeto</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -103,23 +99,95 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="quick-start">Quick Start</h1>
-<p></br></p>
-<h2 id="introducao-ao-produto">Introdução ao Produto</h2>
-<p>Layout Propaganda é um sistema web de código fechado, construído com a finalidade de aumentar a visibilidade das mídias ofertadas pela empresa Layout Propaganda ltda. Bem como, para uso interno por parte dos funcionários, gerenciar toda a distribuição e as pendências dos painéis que estão sob responsabilidade da empresa.</p>
-<h2 id="guia">Guia</h2>
-<p>Por meio desta documentação, espera-se que aqueles que estejam autorizados à utilizar do sistema compreendam os requisitos funcionais e não funcionais trabalhados, bem como a arquitetura implementada para solucionar os problemas da empresa</p>
-<h2 id="tecnologias">Tecnologias</h2>
-<h3 id="front"><em>Front</em></h3>
-<ul>
-<li>Bibliotecas
-<code>React</code></li>
-</ul>
-<h3 id="back"><em>Back</em></h3>
-<ul>
-<li>Linguagem
-<code>Java</code></li>
-</ul></div>
+<h1 id="visao-de-projeto">Visão de Projeto</h1>
+<p></br>
+</br></p>
+<h2 id="organizacao-de-projeto">Organização de Projeto</h2>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Atribuições</th>
+<th>Responsável</th>
+<th>Participantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desenvolvedor front-end</td>
+<td>Codificar e refatorar o front-end do produto</td>
+<td><code>Manoel</code></td>
+<td>Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani</td>
+</tr>
+<tr>
+<td>Desenvolvedor back-end</td>
+<td>Codificar e refatorar o back-end do produto</td>
+<td><code>Cauã</code></td>
+<td>Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani</td>
+</tr>
+<tr>
+<td>Quality Assurance</td>
+<td>Codificar testes, estressar o código, assegurar a realização de boas práticas</td>
+<td><code>Samuel</code></td>
+<td>Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani</td>
+</tr>
+<tr>
+<td>Dono do Produto</td>
+<td>Atualizar o escopo do produto, organizar o escopo das entregas, validar as entregas</td>
+<td><code>Edson</code></td>
+<td>Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani</td>
+</tr>
+<tr>
+<td>Cliente</td>
+<td>dar feedback acerca das representações</td>
+<td><code>Edson</code>, <code>Américo</code></td>
+<td>Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani</td>
+</tr>
+</tbody>
+</table>
+<p></br>
+</br></p>
+<h2 id="planejamento-das-fases-e-iteracoes-do-projeto">Planejamento das Fases e Iterações do projeto</h2>
+<h4 id="processo-unificado-e-engenharia-de-requisitos">Processo Unificado e Engenharia de Requisitos</h4>
+<p>No desenvolvimento do sistema Layout Propaganda, a abordagem utilizada é ÁGIL por um ciclo de vida iterativo incremental utilizado em uma instância própria do processo unificado.</p>
+<p><b>A tabela abaixo representa o ciclo de vida do desenvolvimento associando a adaptação feita do processo unificado com a engenharia de requisitos
+</b></p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Produto(entrega)</th>
+<th>Data de início</th>
+<th>Data de fim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concepção</td>
+<td><code>Elicitação e descoberta</code>, identificação do problema e definição básica do produto, levantamento de forma resumida dos requisitos funcionais e não funcionais <code>Representação informal</code> <code>Declaração</code> e comunicação do que será passado para a próxima fase.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Elaboração</td>
+<td><code>Análise e consenso</code>, refinamento dos requisitos, definição do MVP <code>Representação semi-formal</code> <code>Verificação e validação</code> dos requisitos com base no feedback da representação passada implementação dos dois requisitos de maior risco e valor arquitetural <code>Declaração</code> dos requisitos e da implementação feita <code>Representação formal</code> da implementação <code>Verificação e validação</code> dos requisitos com base no feedback da representação passada.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Construção</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Implantação</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
             </div>
         </div>
 
@@ -127,14 +195,14 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -199,8 +267,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2023-09-22 21:59:01.522387+00:00
--->
