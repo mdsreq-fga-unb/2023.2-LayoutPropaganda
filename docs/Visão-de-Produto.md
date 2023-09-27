@@ -6,7 +6,7 @@ Possíveis clientes da empresa não tem a possibilidade de ver as Mídias de for
 Software para organização de mídias de uma empresa de propaganda, a fim de trazer visibilidade para os produtos da Layout Propaganda de forma limpa, bem como um controle para os funcionários da duração de contratos e disponibilidade ou não de produtos para aluguel.
 
 | Para | Quem | O Layout Propaganda | Que | Ao contrário | Nosso produto |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| :--- | :--- | :--- | :--- | :--- | :--- |
 | Anunciantes | Procura maior visibilidade de seu produto | É uma aplicação Web | Permite facilitar a visualização e aluguel de painéis do cliente, para que tenha mais engajamento, além de melhorar a gerência dos outdoors sobre contratos e datas limites. | do WS Painéis | Mostrará a disponibilidade de painéis de forma clara e interativa por um mapa, tendo ferramentas como filtros de região, disponibilidade e tipos de mídia. Além de ter um área para gerenciamento interno para controle de fluxo de caixa e possíveis despesas |
 
 ## Objetivos do produto
