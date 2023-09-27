@@ -6,11 +6,11 @@
 
 Papel | Atribuições |Responsável | Participantes
 |-------|------------------- | 
-Desenvolvedor front-end | Codificar e refatorar o front-end do produto | `Manoel` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
-Desenvolvedor back-end | Codificar e refatorar o back-end do produto | `Cauã` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
-Quality Assurance | Codificar testes, estressar o código, assegurar a realização de boas práticas | `Samuel` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
-Dono do Produto | Atualizar o escopo do produto, organizar o escopo das entregas, validar as entregas | `Edson` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
-Cliente | dar feedback acerca das representações | `Edson`, ` Américo` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovani
+Desenvolvedor front-end | Codificar e refatorar o front-end do produto | `Manoel` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane
+Desenvolvedor back-end | Codificar e refatorar o back-end do produto | `Cauã` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane
+Quality Assurance | Codificar testes, estressar o código, assegurar a realização de boas práticas | `Samuel` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane
+Dono do Produto | Atualizar o escopo do produto, organizar o escopo das entregas, validar as entregas | `Edson` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane
+Cliente | dar feedback acerca das representações | `Edson`, ` Américo` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane
 
 </br>
 </br>
