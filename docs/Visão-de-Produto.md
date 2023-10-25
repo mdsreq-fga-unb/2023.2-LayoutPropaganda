@@ -18,7 +18,7 @@ O objetivo principal do produto é auxiliar a empresa Layout Propaganda a atingi
 
 #### Secundários:
 
-    O objetivo secundário do produto é aumentar o fechamento de contratos da empresa. Ao implantar o objetivo primário, cria-se um ambiente mais favorável para a continuidade dos negócios com o potencial cliente, visto que todas as informações dos produtos disponíveis já estarão disponíveis a ele desde o início.
+O objetivo secundário do produto é aumentar o fechamento de contratos da empresa. Ao implantar o objetivo primário, cria-se um ambiente mais favorável para a continuidade dos negócios com o potencial cliente, visto que todas as informações dos produtos disponíveis já estarão disponíveis a ele desde o início.
 
 ## Tecnologias a serem utilizadas
 
