@@ -13,6 +13,8 @@
 | Dono do Produto          | Atualizar o escopo do produto, organizar o escopo das entregas, validar as entregas | `Edson`             | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane |
 | Cliente                  | dar feedback acerca das representações                                              | `Edson`, ` Américo` | Manoel, Vinicius, Samuel, Leonardo, Caua, Geovane |
 | Engenheiro de Requisitos | Construção e atualização de backlog                                                 | `Vinicius`          | Manoel, Samuel, Leonardo, Caua, Geovane           |
+| Scrum Master |     Coordenar o processo de desenvolvimento, solucionar conflitos da equipe e garantir a qualidade do projeto.| `Geovane`          | Manoel, Vinicius, Samuel, Leonardo, Caua           |
+
 
 </br>
 </br>
