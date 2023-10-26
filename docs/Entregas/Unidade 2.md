@@ -4,14 +4,16 @@ Durante o curso da unidade, nosso grupo adquiriu diversas lições valiosas. Obs
 
 ### Lista de entregas:
 
-- [Backlog do Produto](/_Backlog/#backlog)
+- [Backlog do Produto](../_Backlog.md#backlog)
 
-- [Backlog dos MVP´s](/_Backlog/#proposta-de-mvp1)
+- [Backlog dos MVP´s](../_Backlog.md#proposta-de-mvp1)
 
-- [Visão de Produto e Projeto (atualizado)](/Visao-de-Projeto)
+- [Visão de Produto e Projeto (atualizado)](../Visao-de-Projeto.md)
 
-- [Site do Projeto (GitPages) (atualizado)](/)
+- [Site do Projeto (GitPages) (atualizado)](../index.md)
 
-- [Vídeo de apresenta das entregas](/Entregas/Unidade%202/)
+- [Vídeo de apresenta das entregas](../Entregas/Unidade%202.md#Video)
 
 ### Video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WehH0c_CQBQ?si=z3azeoaWh0szZTaT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
