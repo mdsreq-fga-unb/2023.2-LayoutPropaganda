@@ -14,11 +14,11 @@ Software para organização de mídias de uma empresa de propaganda, a fim de tr
 
 #### Principal:
 
-O objetivo principal do produto é auxiliar a empresa Layout Propaganda a atingir um maior número de potenciais clientes, melhorando a exibição e o gerenciamento de seus produtos disponíveis no mercado.
+O objetivo principal do produto é auxiliar a empresa Layout Propaganda a atingir um maior número de potenciais clientes, melhorando a exibição e o gerenciamento de seus produtos disponíveis no mercado, o que resulta em um aumento de fechamento de contratos da empresa
 
 #### Secundários:
 
-O objetivo secundário do produto é aumentar o fechamento de contratos da empresa. Ao implantar o objetivo primário, cria-se um ambiente mais favorável para a continuidade dos negócios com o potencial cliente, visto que todas as informações dos produtos disponíveis já estarão disponíveis a ele desde o início.
+O objetivo secundário do produto está centrado na melhoria da gestão empresarial da empresa. Isso se traduz em simplificar e aprimorar o gerenciamento das atividades dos funcionários, produtos e outras áreas relevantes. Ao alcançar esse objetivo, a empresa poderá otimizar sua eficiência operacional, tornando mais fácil monitorar e coordenar tarefas e recursos.
 
 ## Tecnologias a serem utilizadas
 
