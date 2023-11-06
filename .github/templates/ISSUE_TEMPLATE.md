@@ -1,1 +1,0 @@
-# Faz Ae Samuel
