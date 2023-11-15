@@ -12,12 +12,82 @@ datasource db {
 }
 
 model Contacts {
-  id           String   @id @default(uuid())
-  name         String
-  email        String
-  phone        String
-  message      String
-  wasContacted Boolean  @default(false)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id_contacts   String   @id @default(uuid())
+  name          String
+  email         String
+  phone         String
+  message       String
+  was_contacted Boolean  @default(false)
+  is_deleted    Boolean  @default(false)
+  updated_at    DateTime @updatedAt
+  created_at    DateTime @default(now())
+
+  @@map("contacts")
+}
+
+model Employee {
+  id_employee String   @id @default(uuid())
+  first_name  String
+  last_name   String
+  email       String
+  cpf         String
+  password    String
+  is_deleted  Boolean  @default(false)
+  updated_at  DateTime @updatedAt
+  created_at  DateTime @default(now())
+  Tasks       Task[]
+
+  @@map("employee")
+}
+
+enum Status {
+  TODO
+  DOING
+  DONE
+}
+
+model Task {
+  id_task     String   @id @default(uuid())
+  id_employee String
+  employee    Employee @relation(fields: [id_employee], references: [id_employee])
+
+  title       String
+  description String
+  deadline    DateTime
+  status      Status
+  is_deleted  Boolean  @default(false)
+  updated_at  DateTime @updatedAt
+  created_at  DateTime @default(now())
+
+  @@map("task")
+}
+
+model Media {
+  id_media     String        @id @default(uuid())
+  type         String
+  region       String
+  description  String
+  latitude     Float
+  longitude    Float
+  is_deleted   Boolean       @default(false)
+  is_available Boolean       @default(true)
+  updated_at   DateTime      @updatedAt
+  created_at   DateTime      @default(now())
+  MediaImages  MediaImages[]
+
+  @@map("media")
+}
+
+model MediaImages {
+  id_media_images String @id @default(uuid())
+
+  id_media String
+  media    Media  @relation(fields: [id_media], references: [id_media])
+
+  url        String
+  is_deleted Boolean  @default(false)
+  updated_at DateTime @updatedAt
+  created_at DateTime @default(now())
+
+  @@map("media_images")
 }
