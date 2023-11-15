@@ -13,7 +13,7 @@ services:
       - .:/home/app
     working_dir: /home/app
     command: ["sh", "-c", 
-      "yarn prisma migrate dev && yarn dev"
+      "yarn prisma migrate deploy && yarn dev"
     ]
 
   layout-propaganda-database:

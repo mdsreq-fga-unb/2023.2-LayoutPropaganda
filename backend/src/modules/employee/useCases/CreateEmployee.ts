@@ -1,3 +1,5 @@
+import { hash } from "bcrypt";
+import { ConflictError } from "../../../shared/errors/ConflictError";
 import { IEmployeeRepository } from "../repositories/IEmployeeRepository";
 
 interface IRequest {
@@ -23,6 +25,12 @@ export class CreateEmployee {
   constructor(private employeeRepository: IEmployeeRepository) {}
 
   public async execute(data: IRequest): Promise<IResponse> {
+    const alreadyExists = await this.employeeRepository.findByEmail(data.email);
+    if (alreadyExists) {
+      throw new ConflictError("Email already exists");
+    }
+
+    data.password = await hash(data.password, 12);
     const employee = await this.employeeRepository.create(data);
 
     return employee;

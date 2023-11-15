@@ -12,4 +12,14 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
     const employee = await this.prisma.employee.create({ data });
     return employee;
   }
+
+  async findByEmail(email: string): Promise<Employee | null> {
+    const employee = await this.prisma.employee.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    return employee;
+  }
 }

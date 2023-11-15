@@ -5,8 +5,8 @@ import { ZodError } from "zod";
 import { env } from "./config/env";
 import { contactsRoutes } from "./modules/contacts/infra/http/controllers/routes";
 import { employeeRoutes } from "./modules/employee/infra/http/controllers/routes";
-import { AppError } from "./shared/errors/interface/AppError";
 import { mediaRoutes } from "./modules/media/infra/http/controllers/routes";
+import { AppError } from "./shared/errors/interface/AppError";
 
 export const app = fastify();
 
@@ -18,13 +18,13 @@ app.register(fastifyJwt, {
     signed: false,
   },
   sign: {
-    expiresIn: "10m",
+    expiresIn: "30m",
   },
 });
 
-app.register(employeeRoutes);
+app.register(employeeRoutes, { prefix: "/employees" });
 app.register(contactsRoutes, { prefix: "/contacts" });
-app.register(mediaRoutes, { prefix: "/media" });
+app.register(mediaRoutes, { prefix: "/medias" });
 
 app.setErrorHandler((error, _, response) => {
   if (error instanceof ZodError) {

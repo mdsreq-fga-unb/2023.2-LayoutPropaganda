@@ -29,7 +29,7 @@ model Employee {
   id_employee String   @id @default(uuid())
   first_name  String
   last_name   String
-  email       String
+  email       String   @unique
   cpf         String
   password    String
   is_deleted  Boolean  @default(false)

@@ -5,19 +5,24 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "migrate:dev": "docker exec layout-propaganda-backend npx prisma migrate dev"
+    "migrate:dev": "docker exec layout-propaganda npx prisma migrate dev",
+    "seed": "docker exec layout-propaganda npx prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^9.1.0",
     "@fastify/jwt": "^7.2.3",
     "@prisma/client": "^5.6.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.3.1",
     "dotenv-expand": "^10.0.0",
     "fastify": "^4.24.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/node": "^20.8.10",
+    "@types/node": "^20.9.0",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.53.0",

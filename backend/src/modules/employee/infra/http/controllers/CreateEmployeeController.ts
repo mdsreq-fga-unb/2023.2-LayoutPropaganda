@@ -11,12 +11,12 @@ export async function CreateEmployeeController(
     last_name: z.string().max(255),
     email: z.string().email().max(255),
     cpf: z.string().max(255),
-    password: z.string().max(255),
+    password: z.string().max(255).min(6),
   });
   const data = createEmployeeBodySchema.parse(request.body);
 
   const createEmployeeUseCase = MakeCreateEmployee();
-  const employee = await createEmployeeUseCase.execute(data);
+  await createEmployeeUseCase.execute(data);
 
-  return response.status(201).send(employee);
+  return response.status(201).send();
 }
