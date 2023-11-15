@@ -21,8 +21,8 @@ app.register(fastifyJwt, {
   },
 });
 
-app.register(contactsRoutes);
 app.register(employeeRoutes);
+app.register(contactsRoutes, { prefix: "/contacts" });
 
 app.setErrorHandler((error, _, response) => {
   if (error instanceof ZodError) {

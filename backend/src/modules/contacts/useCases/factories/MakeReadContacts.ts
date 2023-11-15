@@ -1,7 +1,7 @@
 import { PrismaContactsRepository } from "../../infra/repositories/PrismaContactsRepository";
-import { CreateContacts } from "../CreateContacts";
+import { ReadContacts } from "../ReadContacts";
 
-export function MakeCreateContacts() {
+export function MakeReadContacts() {
   const contactsRepository = new PrismaContactsRepository();
-  return new CreateContacts(contactsRepository);
+  return new ReadContacts(contactsRepository);
 }
