@@ -28,12 +28,15 @@ export const ImageContainer = styled.div`
     width: 40%;
     height: 100%;
     margin-top: 10%;
+    margin-left: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fff;
     border-radius: 15px;
 `
+
+
 
 
 
