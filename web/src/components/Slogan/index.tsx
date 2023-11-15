@@ -1,3 +1,4 @@
+"use client"
 import { ImageContainer, SloganContainer, SloganText, SloganTextSpan } from "./styles"
 
 export const Slogan = () => {
