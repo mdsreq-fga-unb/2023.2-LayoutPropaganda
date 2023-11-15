@@ -82,9 +82,9 @@ body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     to bottom,
-    rgb(169, 169, 169),
-    /* cinza escuro */ white,
-    /* branco */ rgb(169, 169, 169) /* cinza escuro */
+    rgb(15,15,15),
+     rgb(45,45,45),
+     rgb(15,15,15) 
   );
 }
 
