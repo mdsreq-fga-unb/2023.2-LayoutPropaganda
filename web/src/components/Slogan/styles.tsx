@@ -32,8 +32,13 @@ export const ImageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
     border-radius: 15px;
+    > img {
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 1px 0px 49.3px -3px #717171;
+
+    }
 `
 
 

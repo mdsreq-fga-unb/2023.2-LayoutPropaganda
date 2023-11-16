@@ -1,4 +1,6 @@
 "use client"
+import Image from 'next/image'
+import SloganImage from '../../../public/assets/SloganImage.jpg'
 import { ImageContainer, SloganContainer, SloganText, SloganTextSpan } from "./styles"
 
 export const Slogan = () => {
@@ -11,7 +13,9 @@ export const Slogan = () => {
                 O QUE VOCÊ CONSTRUIU
                 </SloganText>
             </SloganText>
-            <ImageContainer></ImageContainer>
+            <ImageContainer>
+                <Image src={SloganImage} alt="Slogan" height={600} />
+            </ImageContainer>
         </SloganContainer>
     )
 }
