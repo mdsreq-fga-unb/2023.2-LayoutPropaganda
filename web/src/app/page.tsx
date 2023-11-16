@@ -1,5 +1,6 @@
 "use client"
 
+import { Media } from "@/components/Media"
 import { OurProducts } from "@/components/OurProducts";
 import { Slogan } from "@/components/Slogan";
 import styled from "styled-components";
@@ -16,6 +17,7 @@ export default function Home() {
     <PageContainer>
       <Slogan />
       <OurProducts />
+      <Media />
     </PageContainer>
   )
 }
