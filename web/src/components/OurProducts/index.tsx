@@ -1,27 +1,27 @@
 "use client"
 
-import { 
-    OurProductsContainer, 
-    OurProductsContent, 
-    OurProductsTitle, 
-    OurProductsContentMedia, 
-    OurProductsContentParagraph, 
-    OurProductsContentDivisoryBar, 
-    List ,
+import {
+    List,
+    OurProductsContainer,
+    OurProductsContent,
+    OurProductsContentDivisoryBar,
+    OurProductsContentMedia,
+    OurProductsContentParagraph,
+    OurProductsTitle,
     OuterMedia
 } from "./styles"
 
-import outdoor from '../../../public/assets/Outdoor 1.png'
-import frontlight from '../../../public/assets/Frontlight 1.png'
-import triedro from '../../../public/assets/Triedro 1.png'
 import Image from 'next/image'
+import frontlight from '../../../public/assets/Frontlight 1.png'
+import outdoor from '../../../public/assets/Outdoor 1.png'
+import triedro from '../../../public/assets/Triedro 1.png'
 
 export const OurProducts = () => {
     return(
         <OurProductsContainer>
             <OurProductsTitle>Nossos Produtos</OurProductsTitle>
             <OurProductsContent>
-                <OuterMedia>
+                <OuterMedia direction="t">
                     <Image src={outdoor} alt="Outdoor1" />
                     <OurProductsContentMedia>
                         Outdoor
@@ -45,7 +45,7 @@ export const OurProducts = () => {
 
                 <OurProductsContentDivisoryBar></OurProductsContentDivisoryBar>
 
-                <OuterMedia>
+                <OuterMedia direction="r">
                     <OurProductsContentMedia>
                         Frontlight
                         <OurProductsContentParagraph>
@@ -67,7 +67,7 @@ export const OurProducts = () => {
 
                 <OurProductsContentDivisoryBar></OurProductsContentDivisoryBar>
 
-                <OuterMedia>
+                <OuterMedia direction="b">
                     <Image src={triedro} alt="Triedro1" />
                     <OurProductsContentMedia>
                         Triedro

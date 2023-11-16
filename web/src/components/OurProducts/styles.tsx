@@ -63,7 +63,26 @@ export const List = styled.ul`
   margin-left: 40px;
 `;
 
-export const OuterMedia = styled.div`
+const translate = {
+  "r" : {
+    x: "50%",
+    y: "0",
+  },
+  "t": {
+    x: "-50%",
+    y: "-30%",
+  },
+  "b" : {
+    x: "-50%",
+    y: "30%",
+  },
+} as const;
+export const OuterMedia = styled.div <{direction: "r" | "t" | "b" }>`
+
   display: flex;
   flex-direction: row;
+
+  > img {
+    transform: translate(${({direction}) => translate[direction].x + "," + translate[direction].y});
+  }
 `;
