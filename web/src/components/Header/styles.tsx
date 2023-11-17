@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
@@ -5,6 +6,8 @@ export const HeaderContainer = styled.div`
     height: 100px;
     display: flex;
     justify-content: space-between;
+    padding: 32px;
+
 `
 export const HeaderNav = styled.nav`
   display: flex;
@@ -15,17 +18,18 @@ export const HeaderNav = styled.nav`
 
 export const NavLinkContainer = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 100px;
   margin-left: auto;
   a {
     text-decoration: none;
     color: inherit;
+    font-size: 1.8rem;
     &:hover {
       text-decoration: underline;
     }
   }
 `;
 
-export const Logo = styled.div `
-padding: 15px;
+export const Logo = styled(Link) `
+/* padding: 30px; */
 `
