@@ -46,11 +46,22 @@ export const MediaContentCarrousel = styled.div`
 `;
 
 export const MediaContentCarrouselItem = styled.div`
-    width: 30%;
-    height: 300px;
-    background-color: #FFFFFF;
+    widht: 238px;
+    font-family: Georgia, serif;
 `;
 
 export const MediaContentCarrouselItemTitle = styled.h3`
     color: #FFFFFF;
 `
+
+export const MediaContentButton = styled.div`
+    display: flex;
+    justify-content: center;
+    background-color: #2B2B2B;
+    width: 278px;
+    margin-top: 20px;
+    margin-bottom: 70px;
+    padding: 30px;
+    border-radius: 25px;
+    cursor: pointer;
+`;

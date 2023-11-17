@@ -8,7 +8,8 @@ import {
     MediaContentCarrouselItem,
     MediaContentCarrouselItemTitle,
     MediaContentMap,
-    MediaTitle
+    MediaTitle, 
+    MediaContentButton
 } from "./styles";
 
 import Slider from "./slider";
@@ -76,21 +77,10 @@ export const Media = () => {
                         </SwiperSlide>
                    </Slider>
                 </MediaContentCarrousel>
+            <MediaContentButton>
+                <h1>Ver Todas</h1>
+            </MediaContentButton>
             </MediaContent>
         </MediaContainer>
     )
 }
-
-/*
-    <motion.div className="caroussel" whileTap={{ cursor: "grabbing" }}>
-        <motion.div className="inner" drag="x">
-
-            {images.map(image => (
-                <motion.div className="item" key={image.id}>
-                    <Image src={image.img} alt="Images" height="378" width="238"/>
-                </motion.div>
-            ))}
-
-        </motion.div>
-    </motion.div>
-*/
