@@ -3,6 +3,7 @@
 import { Media } from "@/components/MediaHome";
 import { OurProducts } from "@/components/OurProducts";
 import { Slogan } from "@/components/Slogan";
+import { Contacts } from "@/components/contacts";
 import styled from "styled-components";
 
 const PageContainer = styled.div`
@@ -18,6 +19,7 @@ export default function Home() {
       <Slogan />
       <OurProducts />
       <Media />
+      <Contacts />
     </PageContainer>
   )
 }

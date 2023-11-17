@@ -1,15 +1,20 @@
 "use client";
 
-import logo from '../../../public/assets/Logo.svg'
-import Image from 'next/image'
+import Image from 'next/image';
+import logo from '../../../public/assets/Logo.svg';
 
-import { HeaderContainer, HeaderNav, NavLinkContainer, Logo } from './styles';
 import Link from 'next/link';
+import { HeaderContainer, HeaderNav, Logo, NavLinkContainer } from './styles';
 type HeaderProps = {
     page: 'login' | 'home' | 'funcionario';
 };
 
 export const Header: React.FC<HeaderProps> = ({ page }) => {
+
+    const scrollTo = (sectionName: string) => {
+      const element = document.getElementById(sectionName);
+      if(element) element.scrollIntoView({ behavior: 'smooth' });
+    };
     const renderLinks = () => {
         switch (page) {
             case 'login':
@@ -21,9 +26,9 @@ export const Header: React.FC<HeaderProps> = ({ page }) => {
             case 'home':
               return (
                 <NavLinkContainer>
-                  <Link href="/produtos">Nossos Produtos</Link>
-                  <Link href="/midias">Mídias</Link>
-                  <Link href="/contato">Entrar em Contato</Link>
+                  <Link href="#" onClick={()=> scrollTo("Nossos Produtos")}>Nossos Produtos</Link>
+                  <Link href="#" onClick={()=> scrollTo("Mídias")}>Mídias</Link>
+                  <Link href="#" onClick={()=> scrollTo("Entrar em Contato")}>Entrar em Contato</Link>
                 </NavLinkContainer>
               );
             case 'funcionario':

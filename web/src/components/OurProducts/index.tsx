@@ -18,7 +18,7 @@ import triedro from '../../../public/assets/Triedro 1.png'
 
 export const OurProducts = () => {
     return(
-        <OurProductsContainer>
+        <OurProductsContainer id="Nossos Produtos">
             <OurProductsTitle>Nossos Produtos</OurProductsTitle>
             <OurProductsContent>
                 <OuterMedia direction="t">

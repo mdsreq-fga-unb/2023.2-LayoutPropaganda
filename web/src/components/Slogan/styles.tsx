@@ -18,11 +18,15 @@ export const SloganText = styled.p`
 `
 
 export const SloganTextSpan = styled.span`
-    color: red;
+    background: linear-gradient(90deg, rgba(134,43,43,1) 0%, rgba(255,0,0,1) 52%, rgba(125,11,11,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: 3rem;
     font-weight: 900;
     padding-top: 2rem;
-`
+`;
+
 
 export const ImageContainer = styled.div`
     width: 40%;

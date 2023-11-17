@@ -2,24 +2,24 @@
 
 import { SwiperSlide } from "swiper/react";
 import {
-    MediaContainer, 
-    MediaTitle, 
-    MediaContent, 
-    MediaContentMap, 
-    MediaContentCarrousel, 
-    MediaContentCarrouselItem, 
-    MediaContentCarrouselItemTitle 
-} from "./styles"
+    MediaContainer,
+    MediaContent,
+    MediaContentCarrousel,
+    MediaContentCarrouselItem,
+    MediaContentCarrouselItemTitle,
+    MediaContentMap,
+    MediaTitle
+} from "./styles";
 
-import  Slider  from "./slider"
+import Slider from "./slider";
 import './slider.css';
 
-import Image from 'next/image'
-import image1 from '../../../public/assets/gato1.jpg'
-import image2 from '../../../public/assets/gato 2.jpg'
-import image3 from '../../../public/assets/gato3.png'
-import image4 from '../../../public/assets/gato4.jpg'
-import image5 from '../../../public/assets/gato5.jpg'
+import Image from 'next/image';
+import image2 from '../../../public/assets/gato 2.jpg';
+import image1 from '../../../public/assets/gato1.jpg';
+import image3 from '../../../public/assets/gato3.png';
+import image4 from '../../../public/assets/gato4.jpg';
+import image5 from '../../../public/assets/gato5.jpg';
 
 export const Media = () => {
 
@@ -31,7 +31,7 @@ export const Media = () => {
     };
 
     return (
-        <MediaContainer>
+        <MediaContainer id="Mídias">
             <MediaTitle>Mídias</MediaTitle>
             <MediaContent>
                 <MediaContentMap>
