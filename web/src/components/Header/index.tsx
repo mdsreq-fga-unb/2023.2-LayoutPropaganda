@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ page }) => {
 
         return (
           <HeaderContainer>
-            <Logo>
+            <Logo href="/">
                 <Image src={logo} alt="Logo"  />
             </Logo>
             <HeaderNav>{renderLinks()}</HeaderNav>
