@@ -31,7 +31,26 @@ export const MediaContent = styled.div`
 export const MediaContentMap = styled.div`
     margin-top: 5rem;
     margin-bottom: 5rem;
-    width: 80%;
-    height: 400px; //Lembrar de tirar o tamanho fixo quando colocar o mapa
+    width: 70%;
+    height: 600px; //Lembrar de tirar o tamanho fixo quando colocar o mapa
     background-color: #FFFFFF;
 `;
+
+export const MediaContentCarrousel = styled.div`
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const MediaContentCarrouselItem = styled.div`
+    width: 30%;
+    height: 300px;
+    background-color: #FFFFFF;
+`;
+
+export const MediaContentCarrouselItemTitle = styled.h3`
+    color: #FFFFFF;
+`
