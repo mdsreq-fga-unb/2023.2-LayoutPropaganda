@@ -2,14 +2,6 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { MakeCreateMedia } from "../../../useCases/factories/MakeCreateMedia";
 
-// type: string
-// region: string
-// description: string
-// latitude: number
-// longitude: number
-// is_available?: boolean
-// MediaImages?: MediaImages: string[];
-
 export async function CreateMediaController(
   request: FastifyRequest,
   response: FastifyReply,
@@ -23,6 +15,7 @@ export async function CreateMediaController(
     is_available: z.boolean().optional().default(true),
     MediaImages: z.array(z.string()).optional().default([]),
   });
+  console.log(request.body);
 
   const data = createMediaBodySchema.parse(request.body);
 

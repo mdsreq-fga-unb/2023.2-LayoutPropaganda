@@ -32,8 +32,8 @@ export class CreateMedia {
       MediaImages:
         data.MediaImages.length > 0
           ? {
-            create: data.MediaImages.map((url) => ({ url })),
-          }
+              create: data.MediaImages.map((url) => ({ url })),
+            }
           : undefined,
     });
 
