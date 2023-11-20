@@ -9,11 +9,12 @@ services:
       - layout-propaganda-database
     ports:
       - 3333:3333
+      - 5555:5555
     volumes:
       - .:/home/app
     working_dir: /home/app
     command: ["sh", "-c", 
-      "yarn prisma migrate deploy && yarn dev"
+      "yarn prisma migrate deploy && yarn prisma studio & yarn dev"
     ]
 
   layout-propaganda-database:
