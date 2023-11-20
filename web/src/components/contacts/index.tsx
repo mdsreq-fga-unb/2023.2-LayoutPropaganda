@@ -1,11 +1,11 @@
-import { ContactsContainer, ContactsContent, ContactsTitle, ContactsContentBox, ContactInfoBox, ContactInfoType, ContactInfoTitle, ContactInfo, ContactMap, ContactMe } from "./styles"
 import { useState } from "react";
 import Modal from "./modal";
+import { ContactInfo, ContactInfoBox, ContactInfoTitle, ContactInfoType, ContactMap, ContactMe, ContactsContainer, ContactsContent, ContactsContentBox, ContactsTitle } from "./styles";
 
 import Image from 'next/image';
+import endereco from '../../../public/assets/endereco.png';
 import email from '../../../public/assets/o-email.png';
 import telefone from '../../../public/assets/telefone.png';
-import endereco from '../../../public/assets/endereco.png';
 
 export const Contacts = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -20,7 +20,7 @@ export const Contacts = () => {
                         <ContactInfoType>
                             <Image src={email} alt="Images" height="30" width="30"/>
                             <ContactInfo>
-                                <p>edson@layoutpropaganda</p>
+                                <p>edson@layoutpropaganda.com.br</p>
                             </ContactInfo>
                         </ContactInfoType>
 
