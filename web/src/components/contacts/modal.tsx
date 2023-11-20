@@ -54,17 +54,16 @@ const CLOSE_BUTTON_STYLE: CSSProperties = {
 }
 
 
-export default function Modal({ isOpen }: { isOpen: boolean }) {
+export default function Modal({ isOpen, setModalOpen }: { isOpen: boolean, setModalOpen: (value: boolean) => void }) {
     if (isOpen) {
         return (
             <div style={BACKGROUND_STYLE}>
                 <div style={MODAL_STYLE}>Modal
                     <div style={HEADER_STYLE}>
                         <p>Suas informações</p>
-                        <button style={CLOSE_BUTTON_STYLE}>X</button>
+                        <button onClick={() => setModalOpen(false)} style={CLOSE_BUTTON_STYLE}>X</button>
                     </div>
                 </div>
-
             </div>
         )
     }

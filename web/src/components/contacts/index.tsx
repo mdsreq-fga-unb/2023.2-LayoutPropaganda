@@ -48,7 +48,7 @@ export const Contacts = () => {
                         </ContactMap>
                         </ContactsContent>
                         <ContactMe onClick={() => setOpenModal(true)}>Quero que entrem em contato comigo</ContactMe>
-                        <Modal isOpen={openModal}></Modal>
+                        <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}></Modal>
             </ContactsContentBox>
         </ContactsContainer>
     )
