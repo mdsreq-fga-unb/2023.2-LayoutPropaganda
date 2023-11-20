@@ -69,7 +69,7 @@ export const ContactMap = styled.div`
     margin-right: 80px;
 `;
 
-export const ContactMe = styled.div`
+export const ContactMe = styled.button`
     font-size: 36px;
     background-color: #2B2B2B;
     padding: 30px;
@@ -78,4 +78,6 @@ export const ContactMe = styled.div`
     width: fit-content;
     align-self: center;
     margin-bottom: 70px;
+    border: none;
+    outline: none;
 `;
