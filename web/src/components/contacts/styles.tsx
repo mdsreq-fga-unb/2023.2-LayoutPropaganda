@@ -58,14 +58,14 @@ export const ContactInfo = styled.div`
     align-items: top;
     justify-content: center;
     margin-left: 15px;
+    margin-top: 15px;
 `
 
 export const ContactMap = styled.div`
-    background-color: #FFFFFF;
     width: 40%;
     height: 300px;
     margin-top: 80px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     margin-right: 80px;
 `;
 
@@ -78,6 +78,7 @@ export const ContactMe = styled.button`
     width: fit-content;
     align-self: center;
     margin-bottom: 70px;
+    margin-top: 20px;
     border: none;
     outline: none;
 `;

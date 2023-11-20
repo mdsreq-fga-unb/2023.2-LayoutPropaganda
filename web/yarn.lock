@@ -226,10 +226,10 @@
   resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.53.5.tgz#0f3010ab4eabe46721f3604462196975b640aab9"
   integrity sha512-HoRq4Te8J6krH7hj+TfdYepqegoKZCj3kkaK5gf+ySFSHLvyqYkDvkrtbcVJXQ6QBphQ0h1TF7p4J6sOh4r/zg==
 
-"@types/google.maps@^3.54.8":
-  version "3.54.8"
-  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.54.8.tgz#56db76153a4ec90a9a03368afec7a806f8c7d551"
-  integrity sha512-xHdc9bzyMFJK4cyl3FIyXYQYrLES06apQ3TPRllVsLOcwqqCeCRB6o6OdZw8NoJPwmBPIHT+KBBb6e9bccwFkQ==
+"@types/google.maps@^3.45.1":
+  version "3.45.1"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.45.1.tgz#7596ad904eb5961d7ec889cd3aa71b1a0cee3043"
+  integrity sha512-0zOfnLrkLQkZh3rhjdHPodcWsKHj6BFqhIOp7t/g3y6/cKImxowBpcBva+Iq9WrpHPBRAqbdu0rPnAiK66M06w==
 
 "@types/json5@^0.0.29":
   version "0.0.29"

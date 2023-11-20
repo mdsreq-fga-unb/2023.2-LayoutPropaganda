@@ -6,6 +6,7 @@ import Image from 'next/image';
 import endereco from '../../../public/assets/endereco.png';
 import email from '../../../public/assets/o-email.png';
 import telefone from '../../../public/assets/telefone.png';
+import LayoutMap from "../LayoutMap";
 
 export const Contacts = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -40,11 +41,14 @@ export const Contacts = () => {
                             </ContactInfo>
                         </ContactInfoType>
 
-                    </ContactInfoBox>
-                    <ContactMap></ContactMap>
-                </ContactsContent>
-                <ContactMe onClick={() => setOpenModal(true)}>Quero que entrem em contato comigo</ContactMe>
-                <Modal isOpen={openModal}></Modal>
+                        </ContactInfoBox>
+                        <ContactMap>
+                            <LayoutMap center={{ lat: -15.832952, lng: -48.083647}} /> 
+
+                        </ContactMap>
+                        </ContactsContent>
+                        <ContactMe onClick={() => setOpenModal(true)}>Quero que entrem em contato comigo</ContactMe>
+                        <Modal isOpen={openModal}></Modal>
             </ContactsContentBox>
         </ContactsContainer>
     )
