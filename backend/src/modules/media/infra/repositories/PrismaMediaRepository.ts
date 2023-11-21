@@ -15,4 +15,13 @@ export class PrismaMediaRepository implements IMediaRepository {
 
     return media;
   }
+
+   async readOnlyAvailable(): Promise<Media[] | undefined> {
+    const medias = await this.prisma.media.findMany({
+      where: {
+        is_available: true,
+      },
+    })
+    return medias;
+  }
 }
