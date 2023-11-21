@@ -4,12 +4,12 @@ import { SwiperSlide } from "swiper/react";
 import {
     MediaContainer,
     MediaContent,
+    MediaContentButton,
     MediaContentCarrousel,
     MediaContentCarrouselItem,
     MediaContentCarrouselItemTitle,
     MediaContentMap,
-    MediaTitle, 
-    MediaContentButton
+    MediaTitle
 } from "./styles";
 
 import Slider from "./slider";
@@ -36,7 +36,6 @@ export const Media = () => {
             <MediaTitle>Mídias</MediaTitle>
             <MediaContent>
                 <MediaContentMap>
-                    //Espaco para o mapa
                 </MediaContentMap>
                 <MediaContentCarrousel>
                    <Slider settings={settings}>
@@ -77,8 +76,8 @@ export const Media = () => {
                         </SwiperSlide>
                    </Slider>
                 </MediaContentCarrousel>
-            <MediaContentButton>
-                <h1>Ver Todas</h1>
+            <MediaContentButton href="/medias">
+                Ver Todas
             </MediaContentButton>
             </MediaContent>
         </MediaContainer>
