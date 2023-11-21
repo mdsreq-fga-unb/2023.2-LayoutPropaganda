@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { StyleRegistry } from "styled-jsx";
+import StyledComponentsRegistry from "@/lib/registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StyleRegistry>
+        <StyledComponentsRegistry>
           <Header page="home" />
           {children}
-        </StyleRegistry>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
