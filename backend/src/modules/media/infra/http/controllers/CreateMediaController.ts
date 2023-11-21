@@ -1,5 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+import { BadRequestError } from "../../../../../shared/errors/BadRequestError";
 import { MakeCreateMedia } from "../../../useCases/factories/MakeCreateMedia";
 
 export async function CreateMediaController(
@@ -10,14 +11,24 @@ export async function CreateMediaController(
     type: z.string().max(255),
     region: z.string().max(255),
     description: z.string().max(255),
-    latitude: z.number(),
-    longitude: z.number(),
-    is_available: z.boolean().optional().default(true),
+    latitude: z.coerce.number(),
+    longitude: z.coerce.number(),
+    is_available: z
+      .enum(["true", "false"])
+      .optional()
+      .default("true")
+      .transform((value) => value === "true"),
     MediaImages: z.array(z.string()).optional().default([]),
   });
-  console.log(request.body);
 
   const data = createMediaBodySchema.parse(request.body);
+  data.MediaImages =
+    request.files?.map((file) => {
+      if (!(file.mimetype as string).startsWith("image")) {
+        throw new BadRequestError("File must be an image");
+      }
+      return file.filename;
+    }) ?? [];
 
   const createMediaUseCase = MakeCreateMedia();
   const media = await createMediaUseCase.execute(data);

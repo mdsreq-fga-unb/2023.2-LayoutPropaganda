@@ -1,5 +1,8 @@
 import { Media, Prisma, PrismaClient } from "@prisma/client";
-import { IMediaRepository } from "../../repositories/IMediaRepository";
+import {
+  IMediaRepository,
+  listAllDTO,
+} from "../../repositories/IMediaRepository";
 
 export class PrismaMediaRepository implements IMediaRepository {
   private prisma: PrismaClient;
@@ -16,12 +19,38 @@ export class PrismaMediaRepository implements IMediaRepository {
     return media;
   }
 
-   async readOnlyAvailable(): Promise<Media[] | undefined> {
+  async listAll(data: listAllDTO): Promise<Media[]> {
     const medias = await this.prisma.media.findMany({
       where: {
-        is_available: true,
+        is_available: data.onlyAvailable ? true : undefined,
+        OR: data.includesText
+          ? [
+              {
+                description: {
+                  contains: data.includesText,
+                  mode: "insensitive",
+                },
+              },
+              {
+                region: {
+                  contains: data.includesText,
+                  mode: "insensitive",
+                },
+              },
+              {
+                type: {
+                  contains: data.includesText,
+                  mode: "insensitive",
+                },
+              },
+            ]
+          : undefined,
       },
-    })
+      include: {
+        MediaImages: true,
+      },
+    });
+
     return medias;
   }
 }

@@ -1,3 +1,6 @@
 node_modules
 .env
 .docker
+src/files/*
+!src/files/.gitkeep
+

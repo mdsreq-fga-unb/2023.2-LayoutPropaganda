@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/home/app
     working_dir: /home/app
-    command: ["sh", "-c", 
+    command: ["sh", "-c",
       "yarn prisma migrate deploy && yarn prisma studio & yarn dev"
     ]
 
