@@ -45,18 +45,16 @@ export const ContactInfoBox = styled.div`
 export const ContactInfoType = styled.div`
     display: flex;
     flex-direction: row;
-    margin-top: 13px;
+    align-items: end;
+    margin-bottom: 20px;
 `;
 
 export const ContactInfoTitle = styled.h2`
     font-size: 36px;
-    margin-top: 15px;
 `;
 
 export const ContactInfo = styled.div`
     font-size: 26px;
-    align-items: top;
-    justify-content: center;
     margin-left: 15px;
     margin-top: 15px;
 `
