@@ -24,8 +24,12 @@ export const NavLinkContainer = styled.div`
     text-decoration: none;
     color: inherit;
     font-size: 1.8rem;
+    transition: 0.2s;
+    border: 0%;
+    
     &:hover {
-      text-decoration: underline;
+      border: 100%;
+      border-bottom: 2px solid #fff;
     }
   }
 `;
