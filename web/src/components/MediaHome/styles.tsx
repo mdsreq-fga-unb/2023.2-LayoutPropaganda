@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const MediaContainer = styled.div`
@@ -54,11 +55,11 @@ export const MediaContentCarrouselItemTitle = styled.h3`
     color: #FFFFFF;
 `
 
-export const MediaContentButton = styled.div`
-    display: flex;
+export const MediaContentButton = styled(Link)`
     justify-content: center;
     background-color: #2B2B2B;
-    width: 278px;
+    font-size: 2rem;
+    width: 220px;
     margin-top: 20px;
     margin-bottom: 70px;
     padding: 30px;
