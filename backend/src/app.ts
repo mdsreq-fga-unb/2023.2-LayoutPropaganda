@@ -1,6 +1,9 @@
 import fastifyCookie from "@fastify/cookie";
 import fastifyJwt from "@fastify/jwt";
+import fastifyStatic from "@fastify/static";
 import fastify from "fastify";
+import multer from "fastify-multer";
+import path from "path";
 import { ZodError } from "zod";
 import { env } from "./config/env";
 import { contactsRoutes } from "./modules/contacts/infra/http/controllers/routes";
@@ -21,10 +24,15 @@ app.register(fastifyJwt, {
     expiresIn: "30m",
   },
 });
+app.register(multer.contentParser);
 
 app.register(employeeRoutes, { prefix: "/employees" });
 app.register(contactsRoutes, { prefix: "/contacts" });
 app.register(mediaRoutes, { prefix: "/medias" });
+app.register(fastifyStatic, {
+  root: path.join(__dirname, "files"),
+  prefix: "/files/",
+});
 
 app.setErrorHandler((error, _, response) => {
   if (error instanceof ZodError) {
