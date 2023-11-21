@@ -1,124 +1,120 @@
-import React, {CSSProperties} from "react";
+import styled from "styled-components";
 
-const BACKGROUND_STYLE: CSSProperties = {
-    position: "fixed",
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    zIndex: 1000
-}
+export const ModalContainer = styled.div` 
+    position:fixed;
+    top: 50% ;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 500px;
+    padding: 150px;
+    background-color: #3a3838;
+    border-radius: 24px;
+`;
 
-const MODAL_STYLE: CSSProperties = {
-    position:"fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "450px",
-    height: "500px",
-    padding: "150px",
-    backgroundColor: "#FFFFFF",
-    borderRadius: "24px"
-}
+export const ModalHeader = styled.div`
+    position:fixed;
+    top: 25px;
+    left: 225px;
+    transform: translate(-50%, -50%) ;
+    color: #000000;
+    background-Color: #6c6c6c;
+    width: 450px;
+    height: 50px;
+    padding: 13px;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+    border-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-Weight: 500;
+    font-Size: 24px;
+`;
 
-const HEADER_STYLE: CSSProperties = {
-    position:"fixed",
-    top: 25,
-    left: 225,
-    transform: "translate(-50%, -50%)",
-    color: "#000000",
-    backgroundColor: "#B62828",
-    width: "450px",
-    height: "50px",
-    padding: "13px",
-    borderTopLeftRadius: "24px",
-    borderTopRightRadius: "24px",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    fontWeight: "500",
-    fontSize: "24px"
-}
+export const CloseButton = styled.button` 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #000000;
+    width: 50px;
+    font-Weight: 500;
+    font-Size: 24px;
+`;
 
-const CLOSE_BUTTON_STYLE: CSSProperties = {
-    border: "none",
-    outline: "none",
-    cursor: "pointer",
-    color: "#000000",
-    backgroundColor: "#B62828",
-    width: "50px",
-    fontWeight: "500",
-    fontSize: "24px",
-}
+export const ModalContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position:fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+`;
 
-const MODAL_BODY_STYLE: CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-around",
-    position:"fixed",
-    top: "53%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "300px",
-    height: "400px",
-}
 
-const TEXTBOX_STYLE: CSSProperties = {
-    width: "100%",
-    height: "30px",
-    outline: "none",
-    border: "solid 1px #DE8983",
-    borderRadius: "5px",
-    backgroundColor: "#FFFFFF",
-    color: "#000000"
-}
+export const TextBox = styled.input`
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color:  #9c9c9c;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-const MESSAGE_STYLE: CSSProperties = {
-    display: "flex",
-    width: "100%",
-    height: "120px",
-    justifyItems: "start",
-    outline: "none",
-    border: "solid 1px #DE8983",
-    borderRadius: "5px",
-    backgroundColor: "#FFFFFF",
-    color: "#000000"
-}
+    color: #000000;
+`;
 
-const SUBMIT_BUTTON_STYLE: CSSProperties = {
-    width: "60%",
-    height: "40px",
-    outline: "none",
-    border: "solid 1px #DE8983",
-    borderRadius: "30px",
-    backgroundColor: "#FFFFFF",
-    color: "#FF0000",
-    fontSize: "20px"
-}
+export const Message = styled.input` 
+    display: flex;
+    width: 100%;
+    height: 120px;
+    justify-items: start;
+    outline: none;
+    border: solid 1px #DE8983;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000000;
+`;
+
+export const SubmitButton = styled.button`
+    width: 60%;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    background-color: #363636;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    color: #FF0000;
+    font-size: 20px;
+    &:hover {
+        background-color: #FF0000;
+        color: #363636;
+        cursor: pointer;
+    }
+`;
 
 export default function Modal({ isOpen, setModalOpen }: { isOpen: boolean, setModalOpen: (value: boolean) => void }) {
     if (isOpen) {
         return (
-            <div style={BACKGROUND_STYLE}>
-                <div style={MODAL_STYLE}>Modal
-                    <div style={HEADER_STYLE}>
-                        <p>Suas informações</p>
-                        <button onClick={() => setModalOpen(false)} style={CLOSE_BUTTON_STYLE}>X</button>
-                    </div>
-                    <div style={MODAL_BODY_STYLE}>
-                        <input type="text" placeholder="Nome" style={TEXTBOX_STYLE}></input>
-                        <input type="text" placeholder="Email" style={TEXTBOX_STYLE}></input>
-                        <input type="text" placeholder="Telefone" style={TEXTBOX_STYLE}></input>
-                        <input type="text" placeholder="Mensagem" style={MESSAGE_STYLE}></input>
-                        <button style={SUBMIT_BUTTON_STYLE}>Enviar</button>
-                    </div>
-                </div>
-            </div>
+            <ModalContainer>
+                <ModalHeader>
+                    <p>Suas informações</p>
+                    <CloseButton onClick={() => setModalOpen(false)}>X</CloseButton>
+                </ModalHeader>
+                    <ModalContent>
+                        <TextBox type="text" placeholder="Nome" ></TextBox>
+                        <TextBox type="text" placeholder="Email" ></TextBox>
+                        <TextBox type="text" placeholder="Telefone" ></TextBox>
+                        <TextBox type="text" placeholder="Mensagem" ></TextBox>
+                    <SubmitButton> Enviar </SubmitButton>
+                    </ModalContent>
+            </ModalContainer>
         )
     }
-
     return null;
 }

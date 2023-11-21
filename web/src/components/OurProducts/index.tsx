@@ -14,7 +14,7 @@ import {
 import Image from 'next/image'
 import frontlight from '../../../public/assets/FrontLight.png'
 import outdoor from '../../../public/assets/Outdoor.png'
-import triedro from '../../../public/assets/Triedro 1.png'
+import triedro from '../../../public/assets/Triedro.png'
 
 export const OurProducts = () => {
     return(
