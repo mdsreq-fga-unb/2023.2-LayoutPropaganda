@@ -2,87 +2,85 @@ import styled from 'styled-components';
 
 export const OurProductsContainer = styled.div`
   width: 100%;
-  margin-top: 20%;
+  margin-top: 15%; 
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border-sizing: border-box;
+  box-sizing: border-box;
 `;
 
 export const OurProductsTitle = styled.h1`
-    font-size: 3rem;
-    font-weight: 900;
-    color: #fff;
-    padding-top: 1rem;
-    text-align: center;
-    border-bottom: solid #FFFFFF 2px;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  padding-top: 3rem;
+  text-align: center;
+  border-bottom: 2px solid #FFFFFF;
+  margin-bottom: 2rem; 
 `;
 
 export const OurProductsContent = styled.div`
   width: 70%;
-  height: fit-content;
-  margin-top: 5rem;
   border-radius: 20px;
   background-color: #1A1A1A;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  border-sizing: border-box;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 2rem;
 `;
 
 export const OurProductsContentMedia = styled.div`
-  font-size: 40px;
+  font-size: 2.5rem; 
   font-weight: 450;
-  font-family: Georgia, serif;
   color: #FFFFFF;
-  width: 500px;
-  position: static;
-  margin-top: 40px;
-  margin-left: 80px;
-  margin-right: 80px;
+  width: 100%; 
+  text-align: center;
+  margin: 2rem 0; 
 `;
 
 export const OurProductsContentParagraph = styled.p`
   color: #FFFFFF;
-  font-size: 20px;
+  font-size: 1.6rem; 
   text-align: justify;
+  margin: 1rem 0; 
 `;
 
 export const OurProductsContentDivisoryBar = styled.div`
-  height: 50px;
-  width: 500px;
-  justify-self: center;
-  border-bottom: solid #FFFFFF 2px;
-  margin-bottom: 50px;
+  width: 80%; 
+  border-bottom: 2px solid #FFFFFF;
+  margin: 1rem 0; 
 `;
 
 export const List = styled.ul`
-  margin-left: 40px;
+  margin-left: 70px; 
 `;
 
 const translate = {
-  "r" : {
-    x: "50%",
-    y: "0",
+  r: {
+    x: '50%',
+    y: '0',
   },
-  "t": {
-    x: "-50%",
-    y: "-30%",
+  t: {
+    x: '-50%',
+    y: '-30%',
   },
-  "b" : {
-    x: "-50%",
-    y: "30%",
+  b: {
+    x: '-50%',
+    y: '30%',
   },
 } as const;
-export const OuterMedia = styled.div <{direction: "r" | "t" | "b" }>`
 
+export const OuterMedia = styled.div<{ direction: 'r' | 't' | 'b' }>`
   display: flex;
   flex-direction: row;
 
   > img {
-    transform: translate(${({direction}) => translate[direction].x + "," + translate[direction].y});
+    transform: translate(${({ direction }) => translate[direction].x + ',' + translate[direction].y});
+    width: 40%; 
+    height: 80%;
   }
 `;
