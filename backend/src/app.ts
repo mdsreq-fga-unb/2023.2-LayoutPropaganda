@@ -1,4 +1,5 @@
 import fastifyCookie from "@fastify/cookie";
+import fastifyCors from "@fastify/cors";
 import fastifyJwt from "@fastify/jwt";
 import fastifyStatic from "@fastify/static";
 import fastify from "fastify";
@@ -14,6 +15,7 @@ import { AppError } from "./shared/errors/interface/AppError";
 export const app = fastify();
 
 app.register(fastifyCookie);
+app.register(fastifyCors);
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
   cookie: {
