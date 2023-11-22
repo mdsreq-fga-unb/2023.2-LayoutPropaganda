@@ -1,12 +1,49 @@
 "use client";
 
 import LayoutMap from "@/components/LayoutMap";
-import { Container, DivisoryBar, FilterGroup, Filters, MapContainer, MapFilter, MapFilters, Media, MediaList, MediaListContainer,MediaInfo, MediaInfoTexts, MediaInfoMap, MediaImage, RemoveFilterButton, MediaInfoTags, MediaInfoAddress, FilterGroupTitle, FilterGroupChevronExpand, FilterItem, FilterDivisoryBar } from "./styles";
-import { ChevronDown, ChevronRight, MapPin, SlidersHorizontal, X } from "lucide-react";
+import {
+  Container,
+  DivisoryBar,
+  FilterGroup,
+  Filters,
+  MapContainer,
+  MapFilter,
+  MapFilters,
+  Media,
+  MediaList,
+  MediaListContainer,
+  MediaInfo,
+  MediaInfoTexts,
+  MediaInfoMap,
+  MediaImage,
+  RemoveFilterButton,
+  MediaInfoTags,
+  MediaInfoAddress,
+  FilterGroupTitle,
+  FilterGroupChevronExpand,
+  FilterItem,
+  FilterDivisoryBar,
+  FilterItems,
+} from "./styles";
+import {
+  ChevronDown,
+  ChevronRight,
+  MapPin,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
 import { useEffect, useState } from "react";
-import {setKey, fromLatLng} from "react-geocode";
+import { setKey, fromLatLng } from "react-geocode";
+import { motion } from "framer-motion";
 
-
+interface IMediaImage {
+  id_media_image: string;
+  id_media: string;
+  url: string;
+  is_deleted: boolean;
+  updated_at: Date;
+  created_at: Date;
+}
 interface IMedia {
   id_media: string;
   type: string;
@@ -18,29 +55,48 @@ interface IMedia {
   is_available: boolean;
   updated_at: Date;
   created_at: Date;
-
-
+  MediaImages: IMediaImage[];
 }
 
-interface MediaAddresses  {
+interface MediaAddresses {
   [mediaId: string]: string;
-};
-
+}
 
 interface IListFilters {
   [filterName: string]: {
     [filterOption: string]: boolean;
-  }
+  };
 }
 
 export default function Medias() {
-
-
-
   const [mapFilters, setMapFilters] = useState(["exemplo"]);
 
-
   const googleMapsApiKey = process.env.NEXT_PUBLIC_MAP_API_KEY || "";
+
+  const getMedias = async (): Promise<IMedia[]> => {
+    const response = await fetch("http://localhost:3333/medias");
+    const data = await response.json();
+    return data;
+  };
+
+  const [data, setData] = useState<IMedia[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getMedias();
+        setData(response);
+      } catch (error) {
+        setError(error as string);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const fakeMedias: IMedia[] = [
     {
@@ -54,6 +110,7 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
       id_media: "2",
@@ -66,6 +123,7 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
       id_media: "3",
@@ -78,6 +136,7 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
       id_media: "4",
@@ -90,9 +149,10 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
-      id_media: "1",
+      id_media: "11",
       type: "Painel",
       region: "Brasília",
       description: "Casa do caralho",
@@ -102,9 +162,10 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
-      id_media: "2",
+      id_media: "22",
       type: "Painel",
       region: "Brasília",
       description: "Puta que pariu",
@@ -114,9 +175,10 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
-      id_media: "3",
+      id_media: "33",
       type: "Painel",
       region: "Brasília",
       description: "No meio do seu cu",
@@ -126,9 +188,10 @@ export default function Medias() {
       is_available: false,
       updated_at: new Date(),
       created_at: new Date(),
+      MediaImages: [],
     },
     {
-      id_media: "4",
+      id_media: "44",
       type: "Painel",
       region: "Brasília",
       description: "Onde a mãe chora e o filho não vê",
@@ -138,17 +201,19 @@ export default function Medias() {
       is_available: true,
       updated_at: new Date(),
       created_at: new Date(),
-    }
-  ]
+      MediaImages: [],
+    },
+  ];
+
+  const medias = data || [];
 
   // melhorar o nome e por em outro arquivo
   const RenderMedias = () => {
-
     setKey(googleMapsApiKey);
     const [addresses, setAddresses] = useState<MediaAddresses>({});
 
     useEffect(() => {
-      fakeMedias.forEach((media) => {
+      medias.forEach((media) => {
         fromLatLng(media.latitude, media.longitude).then(
           ({ results }) => {
             const address = results[0].formatted_address;
@@ -164,9 +229,13 @@ export default function Medias() {
       });
     }, []);
 
+    if (isLoading) return <p>Loading...</p>;
+
+    if (error) return <p>Error</p>;
+
     return (
       <>
-        {fakeMedias.map((media) => {
+        {medias.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaImage>
@@ -174,54 +243,47 @@ export default function Medias() {
               </MediaImage>
               <MediaInfo>
                 <MediaInfoMap>
-                  <LayoutMap 
+                  <LayoutMap
                     center={{ lat: media.latitude, lng: media.longitude }}
                     style={{
                       width: "100%",
                       height: "100%",
                     }}
-                   />
+                  />
                 </MediaInfoMap>
                 <MediaInfoTexts>
                   <h3>{media.description}</h3>
 
                   <MediaInfoAddress>
-
                     <MapPin />
-                    {
-                      addresses[media.id_media] ? (
-                        <>
-                          <p>{addresses[media.id_media]}</p>
-                        </>
-                      ) : (
-                        <p>Carregando endereço...</p>
-                      )
-                    }
-
+                    {addresses[media.id_media] ? (
+                      <>
+                        <p>{addresses[media.id_media]}</p>
+                      </>
+                    ) : (
+                      <p>Carregando endereço...</p>
+                    )}
                   </MediaInfoAddress>
                   <MediaInfoTags>
-                  <p>{media.type}</p>
-                  <p>{media.region}</p>
+                    <p>{media.type}</p>
+                    <p>{media.region}</p>
 
-                  <p>{media.is_available ? "disponivel" : "indisponivel"}</p>
-
+                    <p>{media.is_available ? "disponivel" : "indisponivel"}</p>
                   </MediaInfoTags>
                 </MediaInfoTexts>
               </MediaInfo>
-
             </Media>
-          )
+          );
         })}
       </>
-    )
-  }
+    );
+  };
 
   // melhorar o nome e por em outro arquivo
   const RenderMapFilters = () => {
-
     const handleRemoveFilter = (filter: string) => {
       setMapFilters(mapFilters.filter((mapFilter) => mapFilter !== filter));
-    }
+    };
 
     return (
       <>
@@ -233,11 +295,11 @@ export default function Medias() {
               </RemoveFilterButton>
               <p>{filter}</p>
             </MapFilter>
-          )
+          );
         })}
       </>
-    )
-  }
+    );
+  };
 
   const filters: IListFilters = {
     tipo: {
@@ -255,13 +317,14 @@ export default function Medias() {
     Disponibilidade: {
       available: true,
       unavailable: true,
-    }
-  }
+    },
+  };
 
   const RenderListFilters = () => {
-
     const [listFilters, setListFilters] = useState<IListFilters>(filters);
-    const [expandedGroups, setExpandedGroups] = useState<{ [key: string]: boolean }>({});
+    const [expandedGroups, setExpandedGroups] = useState<{
+      [key: string]: boolean;
+    }>({});
 
     const handleFilterClick = (filterName: string, filterOption: string) => {
       setListFilters((prevFilters) => ({
@@ -269,9 +332,9 @@ export default function Medias() {
         [filterName]: {
           ...prevFilters[filterName],
           [filterOption]: !prevFilters[filterName][filterOption],
-        }
-      }))
-    }
+        },
+      }));
+    };
 
     const handleGroupToggle = (filterName: string) => {
       setExpandedGroups((prevExpanded) => ({
@@ -284,49 +347,67 @@ export default function Medias() {
       <>
         {Object.entries(listFilters).map(([filterName, filterOptions]) => {
           const isGroupExpanded = expandedGroups[filterName];
-  
+
+          const groupVariants = {
+            collapsed: { height: 0, overflow: "hidden" },
+            expanded: { height: "auto" },
+          };
+
           return (
-            <>
             <FilterGroup key={filterName}>
               <FilterGroupTitle onClick={() => handleGroupToggle(filterName)}>
                 <h3>{filterName}</h3>
                 {isGroupExpanded ? <ChevronDown /> : <ChevronRight />}
               </FilterGroupTitle>
-              {isGroupExpanded &&
-                Object.entries(filterOptions).map(([filterOption, filterOptionValue]) => (
-                  <FilterItem key={filterOption}>
-                    <input
-                      type="checkbox"
-                      checked={filterOptionValue}
-                      onChange={() => handleFilterClick(filterName, filterOption)}
-                    />
-                    <p onClick={() => handleFilterClick(filterName, filterOption)}>{filterOption}</p>
-                  </FilterItem>
-                ))}
+              <FilterItems
+                as={motion.div}
+                key={filterName}
+                variants={groupVariants}
+                initial="collapsed"
+                animate={isGroupExpanded ? "expanded" : "collapsed"}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                {isGroupExpanded &&
+                  Object.entries(filterOptions).map(
+                    ([filterOption, filterOptionValue]) => (
+                      <FilterItem key={filterOption}>
+                        <input
+                          type="checkbox"
+                          checked={filterOptionValue}
+                          onChange={() =>
+                            handleFilterClick(filterName, filterOption)
+                          }
+                        />
+                        <p
+                          onClick={() =>
+                            handleFilterClick(filterName, filterOption)
+                          }
+                        >
+                          {filterOption}
+                        </p>
+                      </FilterItem>
+                    )
+                  )}
+              </FilterItems>
+              <FilterDivisoryBar />
             </FilterGroup>
-
-            <FilterDivisoryBar/>
-            </>
           );
         })}
       </>
     );
-
-  }
-
+  };
 
   return (
     <Container>
-
       <MapContainer>
         <MapFilters>
           <SlidersHorizontal />
-          <RenderMapFilters/>
+          <RenderMapFilters />
         </MapFilters>
-        <LayoutMap center={{ lat: -15.832952, lng: -48.083647}}  /> 
+        <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
       </MapContainer>
 
-      <DivisoryBar/>
+      <DivisoryBar />
 
       <MediaListContainer>
         <Filters>
@@ -336,10 +417,7 @@ export default function Medias() {
         <MediaList>
           <RenderMedias />
         </MediaList>
-
       </MediaListContainer>
-
-
     </Container>
   );
 }
