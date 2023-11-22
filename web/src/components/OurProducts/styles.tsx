@@ -57,6 +57,9 @@ export const OurProductsContentDivisoryBar = styled.div`
 
 export const List = styled.ul`
   margin-left: 70px; 
+  color: #FFFFFF;
+  font-size: 1.6rem; 
+  text-align: justify;
 `;
 
 const translate = {

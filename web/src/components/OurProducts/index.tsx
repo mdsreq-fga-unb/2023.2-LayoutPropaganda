@@ -34,12 +34,12 @@ export const OurProducts = () => {
                             <br></br>
                             Características:
                             <br></br>
-                            <List>
-                                <li>Tamanho: São grandes e visíveis à distância.</li>
-                                <li>Ilustrações: Podem apresentar imagens, texto e gráficos.</li>
-                                <li>Iluminação: Podem ser iluminados ou não, dependendo da localização e do público-alvo.</li>
-                            </List>
                         </OurProductsContentParagraph>
+                        <List>
+                            <li>Tamanho: São grandes e visíveis à distância.</li>
+                            <li>Ilustrações: Podem apresentar imagens, texto e gráficos.</li>
+                            <li>Iluminação: Podem ser iluminados ou não, dependendo da localização e do público-alvo.</li>
+                        </List>
                     </OurProductsContentMedia>
                 </OuterMedia>
 
@@ -55,12 +55,12 @@ export const OurProducts = () => {
                             a mensagem durante a noite.
                             <br></br>
                             Características:
-                            <List>
-                                <li>Iluminação: A principal característica é a iluminação frontal, o que permite que a mensagem seja visível mesmo em condições de pouca luz.</li>
-                                <li>Estética: Proporciona uma aparência vibrante e chamativa, destacando a publicidade no escuro.</li>
-                                <li>Utilização: Muito eficaz para locais com tráfego noturno.</li>
-                            </List>
                         </OurProductsContentParagraph>
+                        <List>
+                            <li>Iluminação: A principal característica é a iluminação frontal, o que permite que a mensagem seja visível mesmo em condições de pouca luz.</li>
+                            <li>Estética: Proporciona uma aparência vibrante e chamativa, destacando a publicidade no escuro.</li>
+                            <li>Utilização: Muito eficaz para locais com tráfego noturno.</li>
+                        </List>
                     </OurProductsContentMedia>
                     <Image src={frontlight} alt="Frontlight1"/>
                 </OuterMedia>
@@ -77,12 +77,12 @@ export const OurProducts = () => {
                             de um painel triangular para exibir mensagens em diferentes direções.
                             <br></br>
                             Características:
-                            <List>
-                                <li>Forma: Geralmente tem a forma de um triângulo, exibindo mensagens em três lados diferentes.</li>
-                                <li>Visibilidade: Oferece visibilidade a partir de múltiplos ângulos e direções, sendo especialmente eficaz em locais de tráfego intenso e interseções.</li>
-                                <li>Flexibilidade: Permite a veiculação de mensagens diferentes em cada face, proporcionando mais oportunidades de marketing.</li>
-                            </List>
                         </OurProductsContentParagraph>
+                        <List>
+                            <li>Forma: Geralmente tem a forma de um triângulo, exibindo mensagens em três lados diferentes.</li>
+                            <li>Visibilidade: Oferece visibilidade a partir de múltiplos ângulos e direções, sendo especialmente eficaz em locais de tráfego intenso e interseções.</li>
+                            <li>Flexibilidade: Permite a veiculação de mensagens diferentes em cada face, proporcionando mais oportunidades de marketing.</li>
+                        </List>
                     </OurProductsContentMedia>
                 </OuterMedia>
             </OurProductsContent>
