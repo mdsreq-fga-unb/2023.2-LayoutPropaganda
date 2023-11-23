@@ -1,23 +1,21 @@
 "use client";
 
 import LayoutMap from "@/components/LayoutMap";
+import { api } from "@/services/api";
 import { regions } from "@/utils/regions";
+import { useState } from "react";
 import {
   Container,
-  MapContainer,
-  DataContainer,
   CreateButton,
-  InfoForm,
-  Input,
-  InfoFormFields,
-  Select,
-  Images,
-  ImageUploadInputInput,
+  DataContainer,
   ImageUploadInput,
-  ImageUploadInputHover,
+  ImageUploadInputInput,
+  InfoForm,
+  InfoFormFields,
+  Input,
+  MapContainer,
+  Select
 } from "./styles";
-import { useState } from "react";
-import { api } from "@/services/api";
 
 interface IMediaImage {
   id_media_image: string;
@@ -55,12 +53,12 @@ export default function CreateMedia() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const file = e.target.files[0];
-    if (file) {
-      setPreviewImage(URL.createObjectURL(file));
-    } else {
-      setPreviewImage(null);
-    }
+    const file = e.target.files?.[0];
+    // if (file) {
+    //   setPreviewImage(URL.createObjectURL(file));
+    // } else {
+    //   setPreviewImage(null);
+    // }
     if (name === "description") {
       setDescription(value);
     }
@@ -174,15 +172,17 @@ export default function CreateMedia() {
                 </option>
               ))}
             </Select>
-            {previewImage && (
-              <img
+            {/* {previewImage && (
+              <Image
                 src={previewImage}
                 alt="Selected Image"
-                width="200px"
-                height="200px"
+                width={200}
+                height={200}
               />
-            )}
-            <ImageUploadInput previewImage={previewImage}>
+            )} */}
+            <ImageUploadInput 
+            // previewImage={previewImage}
+            >
               <ImageUploadInputInput
                 onChange={handleChange}
                 name="image1"
