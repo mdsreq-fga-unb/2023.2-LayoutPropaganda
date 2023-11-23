@@ -15,7 +15,18 @@ import { AppError } from "./shared/errors/interface/AppError";
 export const app = fastify();
 
 app.register(fastifyCookie);
-app.register(fastifyCors);
+app.addHook("onResponse", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+  );
+});
+app.register(fastifyCors, {
+  credentials: true,
+  origin: true,
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+});
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
   cookie: {
