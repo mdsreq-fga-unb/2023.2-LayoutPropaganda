@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { BadRequestError } from "../../../../../shared/errors/BadRequestError";
+import { regions } from "../../../../../shared/utils/regions";
 import { MakeUpdateMedia } from "../../../useCases/factories/MakeUpdateMedia";
 
 export async function UpdateMediaController(
@@ -8,8 +9,8 @@ export async function UpdateMediaController(
   response: FastifyReply,
 ) {
   const updateMediaBodySchema = z.object({
-    type: z.string().max(255).optional(),
-    region: z.string().max(255).optional(),
+    type: z.enum(["painel", "outdoor", "frontlight"]).optional(),
+    region: z.enum(regions),
     description: z.string().max(255).optional(),
     latitude: z.coerce.number().optional(),
     longitude: z.coerce.number().optional(),

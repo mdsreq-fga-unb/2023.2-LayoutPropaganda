@@ -25,6 +25,12 @@ export class PrismaMediaRepository implements IMediaRepository {
       where: {
         is_deleted: false,
         is_available: data.onlyAvailable ? true : undefined,
+        region: data.regions
+          ? {
+              in: data.regions,
+            }
+          : undefined,
+        type: data.types ? { in: data.types } : undefined,
         OR: data.includesText
           ? [
               {

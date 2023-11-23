@@ -1,8 +1,29 @@
 "use client";
 
 import LayoutMap from "@/components/LayoutMap";
-import { api } from "@/services/api";
-import { motion } from "framer-motion";
+import {
+  Container,
+  DivisoryBar,
+  FilterGroup,
+  Filters,
+  MapContainer,
+  MapFilter,
+  MapFilters,
+  Media,
+  MediaList,
+  MediaListContainer,
+  MediaInfo,
+  MediaInfoTexts,
+  MediaInfoMap,
+  RemoveFilterButton,
+  MediaInfoTags,
+  MediaInfoAddress,
+  FilterGroupTitle,
+  FilterGroupChevronExpand,
+  FilterItem,
+  FilterDivisoryBar,
+  FilterItems,
+} from "@/app/medias/styles";
 import {
   ChevronDown,
   ChevronRight,
@@ -10,37 +31,17 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { fromLatLng, setKey } from "react-geocode";
+import { setKey, fromLatLng } from "react-geocode";
+import { motion } from "framer-motion";
+import { api } from "@/services/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Container,
-  DivisoryBar,
-  FilterDivisoryBar,
-  FilterGroup,
-  FilterGroupTitle,
-  FilterItem,
-  FilterItems,
-  Filters,
-  MapContainer,
-  MapFilter,
-  MapFilters,
-  Media,
-  MediaImage,
-  MediaInfo,
-  MediaInfoAddress,
-  MediaInfoMap,
-  MediaInfoTags,
-  MediaInfoTexts,
-  MediaList,
-  MediaListContainer,
-  RemoveFilterButton
-} from "./styles";
+import MediaEmployerButtons from "@/components/mediaEmployerButtons";
+import { MediaImage, MediaEditorMenu } from "./styles";
 
 interface IMediaImage {
   id_media_image: string;
@@ -74,28 +75,13 @@ interface IListFilters {
   };
 }
 
-type getMediasDTO = {
-  regions: string[];
-  types: string[];
-  onlyAvailable: boolean;
-}
-
 export default function Medias() {
   const [mapFilters, setMapFilters] = useState(["exemplo"]);
 
   const googleMapsApiKey = process.env.NEXT_PUBLIC_MAP_API_KEY || "";
 
-  const getMedias = async ({ regions, types, onlyAvailable }: getMediasDTO): Promise<IMedia[]> => {
-    const queryParams = new URLSearchParams();
-    if (regions.length > 0) {
-      queryParams.set("regions", regions.join(","));
-    }
-    if (types.length > 0) {
-      queryParams.set("types", types.join(","));
-    }
-    queryParams.set("onlyAvailable", onlyAvailable ? "true" : "false");
-
-    const response = await api.get(`/medias?${queryParams}`);
+  const getMedias = async (): Promise<IMedia[]> => {
+    const response = await api.get("/medias");
     return response.data;
   };
 
@@ -103,7 +89,20 @@ export default function Medias() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getMedias();
+        setData(response);
+      } catch (error) {
+        setError(error as string);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
+    fetchData();
+  }, []);
   // melhorar o nome e por em outro arquivo
   setKey(googleMapsApiKey);
   const [addresses, setAddresses] = useState<MediaAddresses>({});
@@ -136,29 +135,30 @@ export default function Medias() {
         {data.map((media) => {
           return (
             <Media key={media.id_media}>
-              <MediaImage>
-                <Swiper
-                  modules={[Navigation, Pagination]}
-                  navigation={true}
-                  pagination={{ clickable: true }}
-                  className="image-swiper"
-                  slidesPerView={1}
-                  loop={true}
-                >
-                  {media.MediaImages.map((image) => {
-                    return (
-                      <SwiperSlide key={image.id_media_image}>
-                        <Image
-                          width={500}
-                          height={500}
-                          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${image.url}`}
-                          alt="Media Image"
-                        />
-                      </SwiperSlide>
-                    );
-                  })}
-                </Swiper>
-              </MediaImage>
+              <MediaEditorMenu>
+                <MediaImage>
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    navigation={true}
+                    pagination={{ clickable: true }}
+                    className="image-swiper"
+                    slidesPerView={1}
+                    loop={true}
+                  >
+                    {media.MediaImages.map((image) => {
+                      return (
+                        <SwiperSlide key={image.id_media_image}>
+                          <img
+                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${image.url}`}
+                            alt="Media Image"
+                          />
+                        </SwiperSlide>
+                      );
+                    })}
+                  </Swiper>
+                </MediaImage>
+                <MediaEmployerButtons id={media.id_media} />
+              </MediaEditorMenu>
               <MediaInfo>
                 <MediaInfoMap>
                   <LayoutMap
@@ -219,18 +219,18 @@ export default function Medias() {
     );
   };
 
-  const filters = {
+  const filters: IListFilters = {
     tipo: {
       painel: true,
       outdoor: true,
       frontlight: true,
+      backlight: true,
     },
     região: {
-      "Ceilândia": true,
-      "Taguatinga": true,
-      "Águas Claras": true,
-      "Plano Piloto": true,
-      "Riacho Fundo": true,
+      brasilia: true,
+      goiania: true,
+      saopaulo: true,
+      riodejaneiro: true,
     },
     Disponibilidade: {
       available: true,
@@ -238,28 +238,8 @@ export default function Medias() {
     },
   };
 
-  const [listFilters, setListFilters] = useState<IListFilters>(filters);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const selectedRegions = Object.keys(listFilters["região"]).filter((k) => listFilters["região"][k]);
-        const selectedTypes = Object.keys(listFilters["tipo"]).filter((k) => listFilters["tipo"][k]);
-        const onlyAvailable = !listFilters["Disponibilidade"].unavailable;
-
-        const response = await getMedias({ regions: selectedRegions, onlyAvailable, types: selectedTypes });
-        setData(response);
-      } catch (error) {
-        setError(error as string);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [listFilters]);
-
   const RenderListFilters = () => {
+    const [listFilters, setListFilters] = useState<IListFilters>(filters);
     const [expandedGroups, setExpandedGroups] = useState<{
       [key: string]: boolean;
     }>({});
@@ -311,7 +291,7 @@ export default function Medias() {
                       <FilterItem key={filterOption}>
                         <input
                           type="checkbox"
-                          checked={filterOptionValue as boolean}
+                          checked={filterOptionValue}
                           onChange={() =>
                             handleFilterClick(filterName, filterOption)
                           }
