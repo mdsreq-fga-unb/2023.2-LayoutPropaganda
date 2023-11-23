@@ -10,6 +10,7 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fromLatLng, setKey } from "react-geocode";
 import "swiper/css";
@@ -147,7 +148,9 @@ export default function Medias() {
                   {media.MediaImages.map((image) => {
                     return (
                       <SwiperSlide key={image.id_media_image}>
-                        <img
+                        <Image
+                          width={500}
+                          height={500}
                           src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${image.url}`}
                           alt="Media Image"
                         />
@@ -244,7 +247,7 @@ export default function Medias() {
         const selectedTypes = Object.keys(listFilters["tipo"]).filter((k) => listFilters["tipo"][k]);
         const onlyAvailable = !listFilters["Disponibilidade"].unavailable;
 
-        const response = await getMedias({regions: selectedRegions, onlyAvailable, types: selectedTypes});
+        const response = await getMedias({ regions: selectedRegions, onlyAvailable, types: selectedTypes });
         setData(response);
       } catch (error) {
         setError(error as string);
