@@ -2,7 +2,9 @@ import { IMediaRepository } from "../repositories/IMediaRepository";
 
 interface IRequest {
   onlyAvailable: boolean;
-  includesText: string;
+  regions?: string[];
+  types?: string[];
+  includesText?: string;
 }
 
 export class ListMedia {

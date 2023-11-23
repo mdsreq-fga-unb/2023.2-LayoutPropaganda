@@ -10,7 +10,9 @@ export interface IMediaRepository {
 
 export type listAllDTO = {
   onlyAvailable: boolean;
-  includesText: string;
+  includesText?: string;
+  regions?: string[];
+  types?: string[];
 };
 
 export type saveDTO = Prisma.MediaUpdateInput & { id_media: string };
