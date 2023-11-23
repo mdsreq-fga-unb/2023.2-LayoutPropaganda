@@ -35,7 +35,12 @@ import {
 import { useEffect, useState } from "react";
 import { setKey, fromLatLng } from "react-geocode";
 import { motion } from "framer-motion";
-
+import { api } from "@/services/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 interface IMediaImage {
   id_media_image: string;
   id_media: string;
@@ -74,9 +79,8 @@ export default function Medias() {
   const googleMapsApiKey = process.env.NEXT_PUBLIC_MAP_API_KEY || "";
 
   const getMedias = async (): Promise<IMedia[]> => {
-    const response = await fetch("http://localhost:3333/medias");
-    const data = await response.json();
-    return data;
+    const response = await api.get("/medias");
+    return response.data;
   };
 
   const [data, setData] = useState<IMedia[]>([]);
@@ -97,149 +101,58 @@ export default function Medias() {
 
     fetchData();
   }, []);
-
-  const fakeMedias: IMedia[] = [
-    {
-      id_media: "1",
-      type: "Painel",
-      region: "Brasília",
-      description: "Casa do caralho",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "2",
-      type: "Painel",
-      region: "Brasília",
-      description: "Puta que pariu",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "3",
-      type: "Painel",
-      region: "Brasília",
-      description: "No meio do seu cu",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "4",
-      type: "Painel",
-      region: "Brasília",
-      description: "Onde a mãe chora e o filho não vê",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "11",
-      type: "Painel",
-      region: "Brasília",
-      description: "Casa do caralho",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "22",
-      type: "Painel",
-      region: "Brasília",
-      description: "Puta que pariu",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "33",
-      type: "Painel",
-      region: "Brasília",
-      description: "No meio do seu cu",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: false,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-    {
-      id_media: "44",
-      type: "Painel",
-      region: "Brasília",
-      description: "Onde a mãe chora e o filho não vê",
-      latitude: -15.832952,
-      longitude: -48.083647,
-      is_deleted: false,
-      is_available: true,
-      updated_at: new Date(),
-      created_at: new Date(),
-      MediaImages: [],
-    },
-  ];
-
-  const medias = data || [];
-
   // melhorar o nome e por em outro arquivo
+  setKey(googleMapsApiKey);
+  const [addresses, setAddresses] = useState<MediaAddresses>({});
+
+  useEffect(() => {
+    data.forEach((media) => {
+      console.log("entrou no foreach");
+      fromLatLng(media.latitude, media.longitude).then(
+        ({ results }) => {
+          const address = results[0].formatted_address;
+          setAddresses((prevAddresses) => ({
+            ...prevAddresses,
+            [media.id_media]: address,
+          }));
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    });
+  }, [data]);
+
   const RenderMedias = () => {
-    setKey(googleMapsApiKey);
-    const [addresses, setAddresses] = useState<MediaAddresses>({});
-
-    useEffect(() => {
-      medias.forEach((media) => {
-        fromLatLng(media.latitude, media.longitude).then(
-          ({ results }) => {
-            const address = results[0].formatted_address;
-            setAddresses((prevAddresses) => ({
-              ...prevAddresses,
-              [media.id_media]: address,
-            }));
-          },
-          (error) => {
-            console.error(error);
-          }
-        );
-      });
-    }, []);
-
     if (isLoading) return <p>Loading...</p>;
 
     if (error) return <p>Error</p>;
 
     return (
       <>
-        {medias.map((media) => {
+        {data.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaImage>
-                <p>Imagem</p>
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  navigation={true}
+                  pagination={{ clickable: true }}
+                  className="image-swiper"
+                  slidesPerView={1}
+                  loop={true}
+                >
+                  {media.MediaImages.map((image) => {
+                    return (
+                      <SwiperSlide key={image.id_media_image}>
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/files/${image.url}`}
+                          alt="Media Image"
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
               </MediaImage>
               <MediaInfo>
                 <MediaInfoMap>
