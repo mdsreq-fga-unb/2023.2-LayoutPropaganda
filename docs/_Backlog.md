@@ -151,6 +151,26 @@ Historias de usuário com uma pontuação de 13-15 pontos são essenciais para o
 </br>
 </br>
 
+# Definition of Ready (DoR):
+Uma história atingirá a definição de preparada quando estiver de acordo com esses quatro itens:
+
+* A história de usuário está representando um requisito?;
+* A história possui informação necessária para ser trabalhada?;
+* A história possui critérios de aceitação?;
+* A história cabe em uma sprint?
+
+A história atingirá a definição de pronta quando estiver de acordo com esses itens:
+
+* Estiver de acordo com todos os critérios de aceitação;
+* Sua implementação estiver de acordo com os padrões de codificação;
+* Ter passado por todos os testes;
+* Estiver devidamente documentada.
+
+
+
+
+
+
 # Proposta de MVP1
 | US | Descrição |
 |------|----------|
