@@ -4,7 +4,9 @@ import { rmSync } from "fs";
 import { multerDiskStorage } from "../../../../../config/DiskStorage";
 import { verifyJWT } from "../../../../../shared/middlewares/VerifyJWT";
 import { CreateMediaController } from "./CreateMediaController";
+import { DeleteMediaController } from "./DeleteMediaController";
 import { ListMediaController } from "./ListMediaController";
+import { UpdateMediaController } from "./UpdateMediaController";
 
 const upload = multer({ storage: multerDiskStorage });
 export async function mediaRoutes(app: FastifyInstance) {
@@ -15,6 +17,9 @@ export async function mediaRoutes(app: FastifyInstance) {
 
 const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
   app.addHook("onRequest", verifyJWT);
+
+  app.put("/:id_media", UpdateMediaController);
+  app.delete("/:id_media", DeleteMediaController);
 
   app.post(
     "/",
