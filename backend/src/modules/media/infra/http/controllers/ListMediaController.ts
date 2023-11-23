@@ -1,5 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+import { regions } from "../../../../../shared/utils/regions";
 import { MakeListMedia } from "../../../useCases/factories/MakeListMedia";
 
 export async function ListMediaController(
@@ -13,6 +14,8 @@ export async function ListMediaController(
       .default("false")
       .transform((value) => value === "true"),
     includesText: z.string().optional().default(""),
+    region: z.array(z.enum(regions)).optional(),
+    type: z.array(z.enum(["painel", "outdoor", "frontlight"])).optional(),
   });
 
   const query = listMediaQuerySchema.parse(request.query);
