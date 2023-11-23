@@ -1,3 +1,5 @@
+import { api } from "@/services/api";
+import React from "react";
 import styled from "styled-components";
 
 export const ModalContainer = styled.div` 
@@ -18,7 +20,7 @@ export const ModalHeader = styled.div`
     left: 225px;
     transform: translate(-50%, -50%) ;
     color: #000000;
-    background-Color: #6c6c6c;
+    background-Color: #0d0d0d;
     width: 450px;
     height: 50px;
     padding: 13px;
@@ -37,13 +39,14 @@ export const CloseButton = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
-    color: #000000;
+    color: #fff;
     width: 50px;
     font-Weight: 500;
     font-Size: 24px;
+    background-Color: transparent;S
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,14 +62,19 @@ export const ModalContent = styled.div`
 
 export const TextBox = styled.input`
     width: 100%;
-    height: 30px;
+    height: 50px;
     outline: none;
     border: none;
     border-radius: 5px;
-    background-color:  #9c9c9c;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #9c9c9c;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ajuste o valor aqui para tornar a sombra mais aparente */
+    transition: box-shadow 0.3s ease; /* Adiciona uma transição suave para a sombra */
 
     color: #000000;
+
+    &:focus {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Ajuste o valor aqui para a sombra quando estiver em foco */
+    }
 `;
 
 export const Message = styled.input` 
@@ -99,18 +107,64 @@ export const SubmitButton = styled.button`
 `;
 
 export default function Modal({ isOpen, setModalOpen }: { isOpen: boolean, setModalOpen: (value: boolean) => void }) {
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [phone, setPhone] = React.useState('');
+    const [message, setMessage] = React.useState('');
+
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target;
+        if(name === 'name') {
+          setName(value);
+        }
+        if(name === 'email') {
+          setEmail(value);
+        }
+        if(name === 'phone') {
+          setPhone(value);
+        }
+        if(name === 'message') {
+          setMessage(value);
+        }
+    }
+    
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const data = {
+          name,
+          email,
+          phone,
+          message
+        }
+        try {
+            const response = await api.post('/contacts', data);
+            alert("Mensagem enviada com sucesso!");
+            setModalOpen(false);
+          
+        } catch (error: any) {
+            alert("Algum campo foi preenchido incorretamente")
+        }
+    }
+
+    const Title = styled.h1`
+        color: #fff;
+        font-Weight: 500;
+        font-Size: 24px;
+    `;
+
+
     if (isOpen) {
         return (
             <ModalContainer>
                 <ModalHeader>
-                    <p>Suas informações</p>
+                    <Title>Suas informações</Title>
                     <CloseButton onClick={() => setModalOpen(false)}>X</CloseButton>
                 </ModalHeader>
-                    <ModalContent>
-                        <TextBox type="text" placeholder="Nome" ></TextBox>
-                        <TextBox type="text" placeholder="Email" ></TextBox>
-                        <TextBox type="text" placeholder="Telefone" ></TextBox>
-                        <TextBox type="text" placeholder="Mensagem" ></TextBox>
+                    <ModalContent onSubmit={handleSubmit}>
+                        <TextBox type="text" placeholder="Nome" name="name" onChange={handleChange}></TextBox>
+                        <TextBox type="text" placeholder="Email" name="email" onChange={handleChange}></TextBox>
+                        <TextBox type="text" placeholder="Telefone" name="phone" onChange={handleChange}></TextBox>
+                        <TextBox type="text" placeholder="Mensagem" name="message" onChange={handleChange}></TextBox>
                     <SubmitButton> Enviar </SubmitButton>
                     </ModalContent>
             </ModalContainer>

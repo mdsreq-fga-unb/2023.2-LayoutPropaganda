@@ -1,15 +1,34 @@
 "use client";
-import { Container, ContactListBox, ContactAtributeBox, ContactAtribute, ContactInfoBox } from "./styles"
-import React from "react";
+import { api } from "@/services/api";
+import { useEffect, useState } from "react";
+import { Checkbox, ContactAtribute, ContactAtributeBox, ContactAtributeEmail, ContactAtributeName, ContactAtributeTel, ContactInfoBox, ContactInfoLine, ContactListBox, Container } from "./styles";
 
 export default function Clients() {
-    const contatos = [
-        { id: 1, nome: "Gustavo Kenzo", email: "gkat@gmail.com", telefone: "(61) 98147-1212" },
-        { id: 2, nome: "Gustavo Henrique", email: "gugabalatensa@gmail.com", telefone: "(61) 98166-6912"},
-        { id: 3, nome: "Samuel Ricardo", email: "samucards@gmail.com", telefone: "(61) 98186-2937"},
-        { id: 4, nome: "Manoel Felipe", email: "pernalongacomu@gmail.com", telefone: "(61) 98129-8108"},
-    ];
 
+    interface Client {
+        name: string;
+        email: string;
+        phone: string;
+        message?: string; 
+    }
+    
+    const [clients, setClients] = useState<Client[]>([]);
+
+    useEffect(() => {
+        api.get('/contacts').then(response => {
+            const responseData: any[] = response.data;
+        
+            const formattedClients: Client[] = responseData.map(clientData => ({
+                name: clientData.name,
+                email: clientData.email,
+                phone: clientData.phone,
+                message: clientData.message || '' 
+            }));
+            setClients(formattedClients);
+        });
+    }, []);
+
+    console.log(clients);
     return (
         <Container>
             <ContactListBox>
@@ -19,7 +38,16 @@ export default function Clients() {
                     <ContactAtribute>Telefone</ContactAtribute>
                 </ContactAtributeBox>
                 <ContactInfoBox>
-                    <div background-color="#000000">Teste</div>
+                    {clients.map((clients) => (
+                        <div key={clients.email}>
+                            <ContactInfoLine>
+                                <Checkbox></Checkbox>
+                                <ContactAtributeName>{clients.name}</ContactAtributeName>
+                                <ContactAtributeEmail>{clients.email}</ContactAtributeEmail>
+                                <ContactAtributeTel>{clients.phone}</ContactAtributeTel>
+                            </ContactInfoLine>
+                        </div>
+                    ))}
                 </ContactInfoBox>
             </ContactListBox>
         </Container>
