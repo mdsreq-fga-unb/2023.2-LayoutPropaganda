@@ -34,5 +34,4 @@ export const regions = [
   "Arniqueira",
   "Arapoanga",
   "Água Quente",
-];
-
+] as const;
