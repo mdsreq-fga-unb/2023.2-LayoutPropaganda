@@ -43,7 +43,7 @@ export const CloseButton = styled.button`
     width: 50px;
     font-Weight: 500;
     font-Size: 24px;
-    background-Color: transparent;S
+    background-Color: transparent;
 `;
 
 export const ModalContent = styled.form`
@@ -67,13 +67,13 @@ export const TextBox = styled.input`
     border: none;
     border-radius: 5px;
     background-color: #9c9c9c;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ajuste o valor aqui para tornar a sombra mais aparente */
-    transition: box-shadow 0.3s ease; /* Adiciona uma transição suave para a sombra */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    transition: box-shadow 0.3s ease; 
 
     color: #000000;
 
     &:focus {
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Ajuste o valor aqui para a sombra quando estiver em foco */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
     }
 `;
 
