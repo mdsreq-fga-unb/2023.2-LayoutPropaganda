@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const ContactListBox = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #878584;
+    background-color: #2d2d2d;
     align-items: center;
     width: 90%;
     min-height: 700px;
