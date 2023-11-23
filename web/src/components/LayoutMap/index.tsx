@@ -7,6 +7,8 @@ interface LayoutMapProps {
     lat: number;
     lng: number;
   };
+
+  style?: React.CSSProperties;
 }
 
 // Coordenadas fixas
@@ -15,10 +17,10 @@ const defaultCenter = {
   lng: -48.083647,
 };
 
-const LayoutMap: React.FC<LayoutMapProps> = ({ center = defaultCenter }) => {
-  const containerStyle = {
-    width: "658px",
-    height: "385px",
+const LayoutMap: React.FC<LayoutMapProps> = ({ center = defaultCenter, style }) => {
+  const containerStyle = style ? style : {
+    width: "100%",
+    height: "594px",
   };
 
   const { isLoaded } = useJsApiLoader({
