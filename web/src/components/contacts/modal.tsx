@@ -43,7 +43,7 @@ export const CloseButton = styled.button`
     width: 50px;
     font-Weight: 500;
     font-Size: 24px;
-    background-Color: transparent;S
+    background-Color: transparent;
 `;
 
 export const ModalContent = styled.form`
