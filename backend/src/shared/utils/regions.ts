@@ -35,3 +35,4 @@ export const regions = [
   "Arapoanga",
   "Água Quente",
 ];
+
