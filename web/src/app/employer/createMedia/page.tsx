@@ -14,7 +14,7 @@ import {
   InfoFormFields,
   Input,
   MapContainer,
-  Select
+  Select,
 } from "./styles";
 
 interface IMediaImage {
@@ -180,7 +180,7 @@ export default function CreateMedia() {
                 height={200}
               />
             )} */}
-            <ImageUploadInput 
+            <ImageUploadInput
             // previewImage={previewImage}
             >
               <ImageUploadInputInput

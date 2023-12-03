@@ -1,3 +1,7 @@
-export default function Edit() {
-  return <h1>Hello World!</h1>
+export default function editMedia() {
+  return (
+    <div>
+      <h1>editMedia</h1>
+    </div>
+  );
 }
