@@ -39,30 +39,10 @@ import {
   MediaInfoTexts,
   MediaList,
   MediaListContainer,
-  RemoveFilterButton
+  RemoveFilterButton,
 } from "./styles";
-
-interface IMediaImage {
-  id_media_image: string;
-  id_media: string;
-  url: string;
-  is_deleted: boolean;
-  updated_at: Date;
-  created_at: Date;
-}
-interface IMedia {
-  id_media: string;
-  type: string;
-  region: string;
-  description: string;
-  latitude: number;
-  longitude: number;
-  is_deleted: boolean;
-  is_available: boolean;
-  updated_at: Date;
-  created_at: Date;
-  MediaImages: IMediaImage[];
-}
+import { IMedia } from "@/types/media";
+import MediasSearchBar from "@/components/mediasSearchBar";
 
 interface MediaAddresses {
   [mediaId: string]: string;
@@ -78,14 +58,18 @@ type getMediasDTO = {
   regions: string[];
   types: string[];
   onlyAvailable: boolean;
-}
+};
 
 export default function Medias() {
   const [mapFilters, setMapFilters] = useState(["exemplo"]);
 
   const googleMapsApiKey = process.env.NEXT_PUBLIC_MAP_API_KEY || "";
 
-  const getMedias = async ({ regions, types, onlyAvailable }: getMediasDTO): Promise<IMedia[]> => {
+  const getMedias = async ({
+    regions,
+    types,
+    onlyAvailable,
+  }: getMediasDTO): Promise<IMedia[]> => {
     const queryParams = new URLSearchParams();
     if (regions.length > 0) {
       queryParams.set("regions", regions.join(","));
@@ -95,14 +79,22 @@ export default function Medias() {
     }
     queryParams.set("onlyAvailable", onlyAvailable ? "true" : "false");
 
-    const response = await api.get(`/medias?${queryParams}`);
-    return response.data;
+    if (regions.length > 0 || types.length > 0 || onlyAvailable) {
+      const response = await api.get(`/medias?${queryParams}`);
+
+      return response.data;
+    } else {
+      const response = await api.get(`/medias`);
+
+      return response.data;
+    }
   };
 
   const [data, setData] = useState<IMedia[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const [searchResult, setSearchResult] = useState<IMedia[]>([]);
 
   // melhorar o nome e por em outro arquivo
   setKey(googleMapsApiKey);
@@ -131,9 +123,11 @@ export default function Medias() {
 
     if (error) return <p>Error</p>;
 
+    const info = searchResult.length > 0 ? searchResult : data;
+
     return (
       <>
-        {data.map((media) => {
+        {info.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaImage>
@@ -221,16 +215,16 @@ export default function Medias() {
 
   const filters = {
     tipo: {
-      painel: true,
-      outdoor: true,
-      frontlight: true,
+      painel: false,
+      outdoor: false,
+      frontlight: false,
     },
     região: {
-      "Ceilândia": true,
-      "Taguatinga": true,
-      "Águas Claras": true,
-      "Plano Piloto": true,
-      "Riacho Fundo": true,
+      Ceilândia: false,
+      Taguatinga: false,
+      "Águas Claras": false,
+      "Plano Piloto": false,
+      "Riacho Fundo": false,
     },
     Disponibilidade: {
       available: true,
@@ -243,11 +237,19 @@ export default function Medias() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const selectedRegions = Object.keys(listFilters["região"]).filter((k) => listFilters["região"][k]);
-        const selectedTypes = Object.keys(listFilters["tipo"]).filter((k) => listFilters["tipo"][k]);
+        const selectedRegions = Object.keys(listFilters["região"]).filter(
+          (k) => listFilters["região"][k]
+        );
+        const selectedTypes = Object.keys(listFilters["tipo"]).filter(
+          (k) => listFilters["tipo"][k]
+        );
         const onlyAvailable = !listFilters["Disponibilidade"].unavailable;
 
-        const response = await getMedias({ regions: selectedRegions, onlyAvailable, types: selectedTypes });
+        const response = await getMedias({
+          regions: selectedRegions,
+          onlyAvailable: false,
+          types: selectedTypes,
+        });
         setData(response);
       } catch (error) {
         setError(error as string);
@@ -344,7 +346,11 @@ export default function Medias() {
         </MapFilters>
         <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
       </MapContainer>
-
+      <MediasSearchBar
+        medias={data}
+        setMedias={setData}
+        setMediasFiltered={setSearchResult}
+      />
       <DivisoryBar />
 
       <MediaListContainer>
