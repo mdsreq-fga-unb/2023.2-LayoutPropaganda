@@ -17,6 +17,7 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
     const employee = await this.prisma.employee.findUnique({
       where: {
         email,
+        is_deleted: false,
       },
     });
 
@@ -27,6 +28,7 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
     return this.prisma.employee.findUnique({
       where: {
         id_employee,
+        is_deleted: false,
       },
     });
   }
@@ -41,6 +43,32 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
   }
 
   async listAll(): Promise<Employee[]> {
-    return this.prisma.employee.findMany();
+    return this.prisma.employee.findMany({
+      where: {
+        is_deleted: false,
+      },
+    });
+  }
+
+  async deleteById(id: string): Promise<void> {
+    await this.prisma.employee.update({
+      where: {
+        id_employee: id,
+      },
+      data: {
+        is_deleted: true,
+      },
+    });
+  }
+
+  async restoreById(id: string): Promise<void> {
+    await this.prisma.employee.update({
+      where: {
+        id_employee: id,
+      },
+      data: {
+        is_deleted: false,
+      },
+    });
   }
 }

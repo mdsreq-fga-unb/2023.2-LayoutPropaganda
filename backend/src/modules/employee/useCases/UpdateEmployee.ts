@@ -1,4 +1,4 @@
-import { ConflictError } from "../../../shared/errors/ConflictError";
+import { NotFoundError } from "../../../shared/errors/NotFoundError";
 import { IEmployeeRepository } from "../repositories/IEmployeeRepository";
 
 interface IRequest {
@@ -28,7 +28,7 @@ export class UpdateEmployee {
   public async execute(data: IRequest): Promise<IResponse> {
     const employee = await this.employeeRepository.findById(data.id_employee);
     if (!employee) {
-      throw new ConflictError("Email already exists");
+      throw new NotFoundError("Employee does not exist");
     }
 
     Object.entries(data).forEach(([key, value]) => {

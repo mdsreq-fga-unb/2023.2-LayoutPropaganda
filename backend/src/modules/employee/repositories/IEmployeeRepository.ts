@@ -6,4 +6,6 @@ export interface IEmployeeRepository {
   findById(id: string): Promise<Employee | null>;
   save(data: Employee): Promise<Employee>;
   listAll(): Promise<Employee[]>;
+  deleteById(id: string): Promise<void>;
+  restoreById(id: string): Promise<void>;
 }
