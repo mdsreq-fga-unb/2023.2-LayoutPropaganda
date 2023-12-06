@@ -5,4 +5,5 @@ export interface IEmployeeRepository {
   findByEmail(email: string): Promise<Employee | null>;
   findById(id: string): Promise<Employee | null>;
   save(data: Employee): Promise<Employee>;
+  listAll(): Promise<Employee[]>;
 }

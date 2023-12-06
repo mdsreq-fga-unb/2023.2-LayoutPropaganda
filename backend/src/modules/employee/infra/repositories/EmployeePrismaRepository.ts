@@ -39,4 +39,8 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
       data,
     });
   }
+
+  async listAll(): Promise<Employee[]> {
+    return this.prisma.employee.findMany();
+  }
 }
