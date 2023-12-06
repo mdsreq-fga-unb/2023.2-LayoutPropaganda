@@ -36,4 +36,4 @@ export const NavLinkContainer = styled.div`
 
 export const Logo = styled(Link) `
 /* padding: 30px; */
-`
+`;
