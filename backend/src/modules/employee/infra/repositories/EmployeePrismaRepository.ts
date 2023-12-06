@@ -22,4 +22,21 @@ export class PrismaEmployeeRepository implements IEmployeeRepository {
 
     return employee;
   }
+
+  async findById(id_employee: string): Promise<Employee | null> {
+    return this.prisma.employee.findUnique({
+      where: {
+        id_employee,
+      },
+    });
+  }
+
+  save(data: Employee): Promise<Employee> {
+    return this.prisma.employee.update({
+      where: {
+        id_employee: data.id_employee,
+      },
+      data,
+    });
+  }
 }
