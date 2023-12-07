@@ -1,11 +1,9 @@
 "use client";
 
-import LayoutMap from "@/components/LayoutMap";
 import { api } from "@/services/api";
 import { regions } from "@/utils/regions";
 import { useState } from "react";
 import {
-  Container,
   CreateButton,
   DataContainer,
   ImageUploadInput,
@@ -13,7 +11,6 @@ import {
   InfoForm,
   InfoFormFields,
   Input,
-  MapContainer,
   Select
 } from "./styles";
 
@@ -48,17 +45,12 @@ export default function CreateMedia() {
   const [is_available, setIsAvailable] = useState("");
   const [largura, setLargura] = useState(0);
   const [altura, setAltura] = useState(0);
-  const [image1, setImage1] = useState("");
-  const [previewImage, setPreviewImage] = useState(null);
+  const [image1, setImage1] = useState<File | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    const file = e.target.files?.[0];
-    // if (file) {
-    //   setPreviewImage(URL.createObjectURL(file));
-    // } else {
-    //   setPreviewImage(null);
-    // }
+
     if (name === "description") {
       setDescription(value);
     }
@@ -81,8 +73,9 @@ export default function CreateMedia() {
       setAltura(Number(value));
     }
     if (name === "image1") {
-      setImage1(value);
-      console.log({ value });
+      const file = e.target?.files?.[0] ?? null;
+      setImage1(file);
+      setPreviewImage(file ? URL.createObjectURL(file) : null);
     }
   };
 
@@ -101,30 +94,27 @@ export default function CreateMedia() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = {
-      description,
-      altura,
-      largura,
-      region,
-      type,
-      latitude,
-      longitude,
-      is_available,
-      media: [image1],
-    };
-    console.log(data);
+    const formData = new FormData();
+    formData.append("description", description);
+    formData.append("altura", String(altura));
+    formData.append("largura", String(largura));
+    formData.append("region", region);
+    formData.append("type", type);
+    formData.append("latitude", String(latitude));
+    formData.append("longitude", String(longitude));
+    formData.append("is_available", is_available);
+    if(image1) {
+      formData.append("media", image1);
+    }
+
     try {
-      await api.postForm("/medias", data);
+      await api.post("/medias", formData);
     } catch (error) {
-      console.log(error);
+      console.log("Oieee", error);
     }
   };
 
   return (
-    <Container>
-      <MapContainer>
-        <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
-      </MapContainer>
       <DataContainer>
         <InfoForm onSubmit={handleSubmit}>
           <InfoFormFields>
@@ -132,17 +122,25 @@ export default function CreateMedia() {
               placeholder="Largura"
               name="largura"
               onChange={handleChange}
+              type="number"
             />
-            <Input placeholder="Altura" name="altura" onChange={handleChange} />
+            <Input 
+              placeholder="Altura"
+              name="altura"
+              onChange={handleChange}
+              type="number"
+            />
             <Input
               placeholder="Latitude"
               name="latitude"
               onChange={handleChange}
+              type="number"
             />
             <Input
               placeholder="Longitude"
               name="longitude"
               onChange={handleChange}
+              type="number"
             />
             <Input placeholder="Manutenção" name="" onChange={handleChange} />
 
@@ -172,21 +170,14 @@ export default function CreateMedia() {
                 </option>
               ))}
             </Select>
-            {/* {previewImage && (
-              <Image
-                src={previewImage}
-                alt="Selected Image"
-                width={200}
-                height={200}
-              />
-            )} */}
             <ImageUploadInput 
-            // previewImage={previewImage}
+              previewImage={previewImage}
             >
               <ImageUploadInputInput
                 onChange={handleChange}
                 name="image1"
                 type="file"
+                multiple
                 accept="image/*"
               />
             </ImageUploadInput>
@@ -195,6 +186,5 @@ export default function CreateMedia() {
           <CreateButton>Registrar Mídia</CreateButton>
         </InfoForm>
       </DataContainer>
-    </Container>
   );
 }

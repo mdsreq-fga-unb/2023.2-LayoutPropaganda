@@ -88,7 +88,11 @@ export const Input = styled.input`
   }
 `;
 
-export const ImageUploadInput = styled.div`
+interface ImageUploadInputProps {
+  previewImage?: string | null;
+}
+
+export const ImageUploadInput = styled.div<ImageUploadInputProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,7 +104,7 @@ export const ImageUploadInput = styled.div`
   bottom: 0;
   width: 200px;
   height: 200px;
-  background-image: url("https://www.svgrepo.com/show/357902/image-upload.svg");
+  background-image: url(${props => '"' + (props.previewImage ? props.previewImage : "https://www.svgrepo.com/show/357902/image-upload.svg") + '"'});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
