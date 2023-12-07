@@ -1,7 +1,7 @@
 "use client"
 
 import { Media } from "@/components/MediaHome";
-import { OurProducts } from "@/components/OurProducts";
+import { OurServices } from "@/components/OurServices";
 import { Slogan } from "@/components/Slogan";
 import { Contacts } from "@/components/contacts";
 import styled from "styled-components";
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <PageContainer>
       <Slogan />
-      <OurProducts />
+      <OurServices />
       <Media />
       <Contacts />
     </PageContainer>
