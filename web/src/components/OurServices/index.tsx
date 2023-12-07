@@ -16,10 +16,10 @@ import frontlight from '../../../public/assets/FrontLight.png'
 import outdoor from '../../../public/assets/Outdoor.png'
 import triedro from '../../../public/assets/Triedro.png'
 
-export const OurProducts = () => {
+export const OurServices = () => {
     return(
         <OurProductsContainer id="Nossos Produtos">
-            <OurProductsTitle>Nossos Produtos</OurProductsTitle>
+            <OurProductsTitle>Nossos Serviços</OurProductsTitle>
             <OurProductsContent>
                 <OuterMedia direction="t">
                     <Image src={outdoor} alt="Outdoor1" />
