@@ -10,6 +10,9 @@ export interface IMediaRepository {
     data: Prisma.MediaCashFlowUncheckedCreateInput,
   ): Promise<MediaCashFlow>;
   listCashFlowByMediaId(id_media: string): Promise<MediaCashFlow[]>;
+  listAllWithCashFlow(): Promise<
+    (Media & { MediaCashFlow: MediaCashFlow[] })[]
+  >;
 }
 
 export type listAllDTO = {

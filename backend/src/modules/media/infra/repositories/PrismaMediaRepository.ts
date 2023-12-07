@@ -114,4 +114,24 @@ export class PrismaMediaRepository implements IMediaRepository {
       },
     });
   }
+
+  async listAllWithCashFlow(): Promise<
+    (Media & { MediaCashFlow: MediaCashFlow[] })[]
+  > {
+    return this.prisma.media.findMany({
+      where: {
+        is_deleted: false,
+      },
+      include: {
+        MediaCashFlow: {
+          where: {
+            is_deleted: false,
+          },
+          orderBy: {
+            reference_date: "asc",
+          },
+        },
+      },
+    });
+  }
 }
