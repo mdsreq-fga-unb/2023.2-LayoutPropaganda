@@ -4,36 +4,58 @@ Utilizamos sprints apenas para o desenvolvimento de produto de software funciona
 
 | Fase | Atividade desenvolvida | Data |
 |--------|------|-----------|
-| Sprint Planning  | Foi realizada uma reunião com o cliente e apresentado as histórias: 1.1.1.1; 1.1.1.2; 1.1.2.1; 1.1.2.2; 1.2.1.1; 1.2.1.2; 1.2.1.4. os quais correspondem às histórias do MVP 1. Ficou então acordado que todas elas estão prontas para entrar nessa sprint. | 09/11/2023|
+| Sprint Planning  | Foi realizada uma reunião com o cliente e apresentado as histórias: 1.1.1.1; 1.1.1.2; 1.1.2.1; 1.1.2.2; 1.2.1.1; 1.2.1.2. os quais correspondem às histórias do MVP 1. Ficou então acordado que todas elas estão prontas para entrar nessa sprint. | 09/11/2023|
 | Sprint | Desenvolvimento das histórias acordadas com o Product Owner durante a Sprint Planning. | 10/11/2023 até 21/11/2023|
 | Dailies |As dailies são realizadas presencialmente de segunda a sexta na faculdade. Caso nem todos os membros consigam participar, atualizações diárias são enviadas via whatsapp do grupo | -------- |
-| Sprint Review | -------- | 22/11/2023 |
-| Sprint Retrospective| -------- | 22/11/2023 |
+| Sprint Review | A Sprint Review foi realizada por meio de uma reuniao com o cliente, em que foi mostrado a ele as funcionalidades que a equipe implementou do MVP 1. Foi comunicado ao cliente que houveram débitos técnicos na sprint e ficou acertado que os mesmos seriam resolvidos na próxima sprint. Levando isso em conta, o cliente deu um feedback positivo quanto ao que foi implementado e entregue conforme o acordado. | 22/11/2023 |
+| Sprint Retrospective| A sprint Retrospective foi realizada com o grupo logo após a sprint Review. Nela o grupo apontou os pontos fortes da equipe e reforçou os pontos negativos. Cada membro deu seu ponto de vista do que poderia melhorar para a próxima entrega e ficou acordado que todos trabalhariam para botar em prática as novas suugestões| 22/11/2023 |
 
-## Critérios de aceitação
-| História | Critério |
-|----------| ---------|
-| Como cliente, eu quero informar meu contato para que algum funcionário me auxilie na edição.| O cliente deve ser capaz de fornecer seu nome, email e telefone; O funcionário deve ser notificado do contato do cliente; Os dados devem ser salvos em um banco de dados. |
-| Como funcionário, eu quero ter uma forma de visualizar os contatos preenchidos para que eu possa dialogar com os interessados. | O funcionário deve ser capaz de visualizar todos os contatos preenchidos em uma tabela; O funcionário deve ser capaz de visualizar as informações de contato do cliente, incluindo nome, e-mail, telefone e data/hora em que o contato foi preenchido. |
-| Como cliente, eu quero visualizar os produtos em lista e mapa, para facilitar a identificação e busca. | A lista deve conter as seguintes informações: nome, região, tipo de mídia e disponibilidade; Deve ter um mapa ao lado de cada produto mostrando a sua localização  O cliente deve ser capaz de filtrar os produtos por: nome, localização, tipo de mídia e disponibilidade. |
-| Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas. | Conforme o cliente digita no campo de pesquisa, o sistema deve atualizar os resultados da pesquisa em tempo real; Os resultados da pesquisa devem mostrar produtos que contém o texto pesquisado, seja no nome, descrição, região ou tipo; Se a pesquisa não retornar resultados, deve ser mostrada uma mensagem informando que nenhum produto correspondente foi encontrado; Os resultados da pesquisa devem fornecer o nome, imagem, região, descrição e localização por mapa de cada mídia correspondente; O sistema pode sugerir pesquisas anteriores ao cliente ao começar a digitar.|
-| Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema. | O formulário deve solicitar nome, localização, tamanho, tipo, descrição, região, e imagens (no máximo 4); Os tipos devem ser: Outdoor, Triedro e Frontlight; O funcionário deve receber um pop-up de confirmação quando o produto for adicionado; O novo produto deve ser exibido na listagem após a adição; O funcionário deve receber um pop-up de falha quando a adição falhar |
-| Como funcionário, eu quero remover produtos para manter a visualização coerente com o mundo real. |O sistema deve solicitar uma confirmação ao funcionário antes de remover um produto; O Sistema deve manter um registro da remoção de um produto para restauração; A listagem de mídias deve ser atualizada automaticamente após a remoção de um produto; O funcionário deve receber um pop-up de que a remoção foi bem-sucedida; Em caso de falha na remoção, o funcionário deve receber um pop-up informando sobre o erro.|
-|  Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas. |O sistema deve fornecer campos para editar nome, localização e disponibilidade; Após a atualização das informações e do estado do produto, o funcionário deve receber um pop-up de que as alterações foram salvas com sucesso; O funcionário deve ter uma opção para desfazer as alterações, caso perceba um erro imediatamente após a atualização. |
-|  Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento. |A notificação deve ser enviada via e-mail ao funcionário responsável; Deve constar no conteúdo do e-mail as seguintes informações sobre o contato: Nome das partes envolvidas, data do início e do vencimento no formato XX/XX/XXXX e localização do produto; Em caso de falha, o sistema deve tentar reenviar o e-mail após 1 hora, no máximo 3 tentativas.|
-|  Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez. |O sistema deve aceitar e processar arquivos nos formatos .csv e .xlxs Após a importação, o sistema deve fornecer um resumo dos produtos importados, incluindo qualquer erro ou problema encontrado; Se um produto com informações idênticas já existir no sistema, o mesmo não deve ser duplicado. O sistema pode alertar o usuário ou ignorar a entrada duplicada; Após a importação, bem-sucedida, os produtos importados devem ser adequadamente integrados ao sistema e aparecer em pesquisas, listagens e outras funções pertinentes.|
-| Como funcionário, eu quero adicionar novos funcionários ao meu sistema para que tenham acesso à plataforma |O sistema deve solicitar nome, sobrenome, CPF, e-mail e senha inicial Não deve ser possível adicionar dois funcionários com o mesmo endereço de e-mail; Após a adição bem-sucedida, o sistema deve mostrar um pop-up de confirmação e deve atualizar a lista de funcionários; O novo funcionário deve receber as instruções de primeiro acesso por e-mail, incluindo como configurar a senha |
-| Como funcionário, eu quero excluir funcionários para, em caso de demissão, não terem mais acesso à plataforma.|Antes de excluir um funcionário, o sistema deve solicitar uma confirmação da ação; Após a exclusão, um pop-up de confirmação de que o funcionário foi removido com sucesso deve ser exibido; Após a exclusão, o funcionário não deve mais ser capaz de acessar a plataforma usando suas credenciais; Em caso de erro na exclusão, deve existir um procedimento para restaurar o acesso do funcionário |
-| Como funcionário, eu quero atualizar outros funcionários já criados para corrigir erros cometidos na criação.|Deve ser possível alterar nome, sobrenome, CPF, e e-mail; Se o e-mail for alterado, o sistema deve garantir que não exista outro funcionário com o mesmo endereço de e-mail; Após editar e salvar as alterações, informações, um pop-up de confirmação deve ser exibido.|
-| Como funcionário, eu quero ver todos os funcionários criados para ver quem tem acesso à plataforma.|Cada entrada de lista deve mostrar informações básicas do funcionário, como nome, sobrenome, ID, cargo, e data de criação no sistema; Deve ser possível ordenar a lista de funcionários por diversos critérios, como nome e data de adesão; Deve haver uma funcionalidade de buscas que permite filtrar a lista de funcionários por nome e sobrenome; A visualização da lista de funcionários deve ser acessível apenas a funcionários com as devidas permissões, como gerentes e administradores.|
-| Como funcionário, eu quero adicionar tarefas aos funcionários para melhor organização.|Cada entrada de lista deve mostrar informações básicas do funcionário, como nome, sobrenome, ID, cargo, e data de criação no sistema; Deve ser possível ordenar a lista de funcionários por diversos critérios, como nome e data de adesão; Deve haver uma funcionalidade de buscas que permite filtrar a lista de funcionários por nome e sobrenome; A visualização da lista de funcionários deve ser acessível apenas a funcionários com as devidas permissões, como gerentes e administradores.|
-| Como funcionário, eu quero adicionar tarefas aos funcionários para melhor organização.|Deve ser solicitado, descrição, prazo e o funcionário que terá a tarefa; Após atribuir a tarefa, o sistema deve confirmar que a ação foi realizada com sucesso; Quando uma nova tarefa for atribuída, o funcionário deve receber uma notificação via e-mail com as informações de sua nova tarefa|
-| Como funcionário, eu quero remover tarefas dos funcionários para manter suas responsabilidades atualizadas.|Ao tentar remover uma tarefa, um pop-up de confirmação deve ser exibido; Ao remover uma tarefa, a lista de tarefas do funcionário deve ser imediatamente atualizada; O funcionário deve receber uma notificação via e-mail informando da remoção de sua tarefa.|
-| Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.|O funcionário deve poder marcar uma tarefa como concluída e receber um pop-up de confirmação antes da ação.|
-| Como funcionário, eu quero poder visualizar o histórico de fluxo de caixa dos produtos, para acompanhar o desempenho financeiro dos produtos.|O funcionário deve ter a opção de definir um intervalo de datas para visualizar o fluxo de caixa em um período específico; O histórico deve mostrar os detalhes: receitas, despesas, lucro/prejuízo associado a cada produto dentro do período selecionado; Os termos financeiros e os números exibidos devem possuir legendas ou tooltips explicativos.
-| Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes.|Deve haver um seletor para selecionar a visualização do gráfico ou por região ou por produto; Os gráficos devem refletir os dados mais recentes disponíveis sobre lucros por região e produto; O funcionário deve ter a opção de definir um intervalo de datas para analisar o lucro; Deve ser exibido um tooltip mostrando os valores exatos e informações adicionais relevantes ao passar o cursor sobre um segmento do gráfico |
-| Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa. |Ao adicionar um ganho ou gasto, os campos como “Quantidade”, “Data”, “Descrição” e “Tipo (Ganho/Gasto)” devem ser obrigatórios; Os valores inseridos para ganhos e gastos devem ser numéricos e não-negativos; Após adicionar um ganho ou gasto, deve ser exibido um pop-up confirmando a ação; Após a adição de um novo ganho ou gasto, o fluxo de caixa associado ao produto deve ser atualizado automaticamente.|
-| Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa. |Ao tentar realizar uma remoção o sistema deve solicitar uma confirmação; Após a remoção, um pop-up confirmando a remoção deve ser exibido; Após a remoção, o fluxo de caixa associado ao produto deve ser atualizado automaticamente; Deve haver um botão para desfazer a remoção.|
+## Débito técnico
+| Débito técnico - MVP1  |
+|------|
+|Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.|
+|Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema.|
+|Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas.|
+
+## DoR e DoD do MVP1
+|História | Atende ao DoR ? | Atende ao DoD ? |
+|---------|-----------------|-----------------|
+|Como cliente, eu quero informar meu contato para que algum funcionário me auxilie na escolha.| Sim | Sim |
+|Como funcionário, eu quero ter uma forma de visualizar os contatos preenchidos para que eu possa dialogar com os interessados.| Sim | Sim |
+|Como cliente, eu quero visualizar os produtos em tabela e mapa, para facilitar a identificação e busca.| Sim | Sim |
+|Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas.| Sim | não implementado |
+|Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema.| Sim | Não. Não atende ao critério de aceitação para adicionar uma imagem à mídia.|
+|Como funcionário, eu quero remover produtos para manter a visualização coerente com o mundo real.| Sim | Sim |
+|Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.| Sim | Sim |
+
+
+## Sprint 2
+Utilizamos sprints apenas para o desenvolvimento de produto de software funcional
+
+| Fase | Atividade desenvolvida | Data |
+|--------|------|-----------|
+| Sprint Planning  | Foi realizada uma reunião com o cliente e apresentado as histórias: 1.2.1.2, 1.2.1.4, 2.1.1.1, 2.1.1.2, 2.1.1.3, 2.1.1.4, 2.1.2.1, 2.1.2.2, 2.1.2.3, 2.2.1.1, 2.2.1.2, 2.2.2.1 e 2.2.2.2 os quais correspondem às histórias do MVP 2. Ficou então acordado que todas elas estão prontas para entrar nessa sprint. | 30/11/2023 |
+| Sprint | 	Desenvolvimento das histórias acordadas com o Product Owner durante a Sprint Planning. | 01/12/2023 até 13/12/2023 |
+| Dailies |As dailies são realizadas presencialmente de segunda a sexta na faculdade. Caso nem todos os membros consigam participar, atualizações diárias são enviadas via whatsapp do grupo| -------- |
+| Sprint Review | ------- | ------ |
+| Sprint Retrospective| -------- | ------ |
+
+## DoR e DoD do MVP2
+|História | Atende ao DoR ? | Atende ao DoD ? |
+|---------|-----------------|-----------------|
+|Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.| Sim | --- |
+|Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.| Sim | --- |
+|Como funcionário, eu quero adicionar novos funcionários ao meu sistema para que tenham acesso a plataforma.| Sim | --- |
+|Como funcionário, eu quero de excluir funcionários para em caso de demissão, eles não terem mais acesso a plataforma.| Sim | --- |
+|Como funcionário, eu quero atualizar outros funcionários já criados para corrigir erros cometidos na criação.| Sim | --- |
+|Como funcionário, eu quero ver todos os funcionários criados para ver quem tem acesso a plataforma.| Sim | --- |
+|Como funcionário, eu quero adicionar responsabilidades aos funcionários para melhor organização.| Sim | --- |
+|Como funcionário, eu quero remover responsabilidades aos funcionários para que tarefas.| Sim | --- |
+|Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.| Sim | --- |
+|Como funcionário, eu quero poder visualizar o histórico de fluxo de caixa dos produtos, para acompanhar o desempenho financeiro dos produtos.| Sim | --- |
+|Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes.| Sim | --- |
+|Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa.| Sim | --- |
+|Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa.| Sim | --- |
 
 
 
