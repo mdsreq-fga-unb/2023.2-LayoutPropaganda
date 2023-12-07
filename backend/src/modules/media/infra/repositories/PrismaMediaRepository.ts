@@ -1,4 +1,4 @@
-import { Media, Prisma, PrismaClient } from "@prisma/client";
+import { Media, MediaCashFlow, Prisma, PrismaClient } from "@prisma/client";
 import {
   IMediaRepository,
   listAllDTO,
@@ -88,6 +88,66 @@ export class PrismaMediaRepository implements IMediaRepository {
     await this.prisma.media.update({
       where: {
         id_media: id,
+      },
+      data: {
+        is_deleted: true,
+      },
+    });
+  }
+
+  async addCashFlow(
+    data: Prisma.MediaCashFlowUncheckedCreateInput,
+  ): Promise<MediaCashFlow> {
+    return this.prisma.mediaCashFlow.create({
+      data,
+    });
+  }
+
+  async listCashFlowByMediaId(id_media: string): Promise<MediaCashFlow[]> {
+    return this.prisma.mediaCashFlow.findMany({
+      where: {
+        id_media,
+        is_deleted: false,
+      },
+      orderBy: {
+        reference_date: "asc",
+      },
+    });
+  }
+
+  async listAllWithCashFlow(): Promise<
+    (Media & { MediaCashFlow: MediaCashFlow[] })[]
+  > {
+    return this.prisma.media.findMany({
+      where: {
+        is_deleted: false,
+      },
+      include: {
+        MediaCashFlow: {
+          where: {
+            is_deleted: false,
+          },
+          orderBy: {
+            reference_date: "asc",
+          },
+        },
+      },
+    });
+  }
+
+  async findCashFlowById(id: string): Promise<MediaCashFlow | null> {
+    return this.prisma.mediaCashFlow.findUnique({
+      where: {
+        id_media_cash_flow: id,
+        is_deleted: false,
+      },
+    });
+  }
+
+  async deleteCashFlowById(id: string): Promise<void> {
+    await this.prisma.mediaCashFlow.update({
+      where: {
+        id_media_cash_flow: id,
       },
       data: {
         is_deleted: true,

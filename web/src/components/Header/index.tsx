@@ -18,6 +18,16 @@ export function Header() {
   console.log(page);
 
   const renderLinks = () => {
+    if (page.startsWith("/employer")) {
+      return (
+        <NavLinkContainer>
+          <Link href="/employer">Funcionário</Link>
+          <Link href="/midias">Mídias</Link>
+          <Link href="/clientes">Clientes</Link>
+        </NavLinkContainer>
+      );
+    }
+
     switch (page) {
       case "/login":
         return (
@@ -39,16 +49,13 @@ export function Header() {
             </Link>
           </NavLinkContainer>
         );
-      case "/funcionario":
+
+      default:
         return (
           <NavLinkContainer>
-            <Link href="/funcionario">Funcionário</Link>
-            <Link href="/midias">Mídias</Link>
-            <Link href="/clientes">Clientes</Link>
+            <Link href="/medias">Nossos produtos</Link>
           </NavLinkContainer>
         );
-      default:
-        return null;
     }
   };
 

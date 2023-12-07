@@ -1,4 +1,4 @@
-import { Media, Prisma } from "@prisma/client";
+import { Media, MediaCashFlow, Prisma } from "@prisma/client";
 
 export interface IMediaRepository {
   create(data: Prisma.MediaUncheckedCreateInput): Promise<Media>;
@@ -6,6 +6,15 @@ export interface IMediaRepository {
   findById(id: string): Promise<Media | null>;
   save(data: saveDTO): Promise<Media>;
   deleteById(id: string): Promise<void>;
+  addCashFlow(
+    data: Prisma.MediaCashFlowUncheckedCreateInput,
+  ): Promise<MediaCashFlow>;
+  listCashFlowByMediaId(id_media: string): Promise<MediaCashFlow[]>;
+  listAllWithCashFlow(): Promise<
+    (Media & { MediaCashFlow: MediaCashFlow[] })[]
+  >;
+  findCashFlowById(id: string): Promise<MediaCashFlow | null>;
+  deleteCashFlowById(id: string): Promise<void>;
 }
 
 export type listAllDTO = {
