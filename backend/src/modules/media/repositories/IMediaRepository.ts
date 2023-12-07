@@ -13,6 +13,8 @@ export interface IMediaRepository {
   listAllWithCashFlow(): Promise<
     (Media & { MediaCashFlow: MediaCashFlow[] })[]
   >;
+  findCashFlowById(id: string): Promise<MediaCashFlow | null>;
+  deleteCashFlowById(id: string): Promise<void>;
 }
 
 export type listAllDTO = {

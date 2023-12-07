@@ -134,4 +134,24 @@ export class PrismaMediaRepository implements IMediaRepository {
       },
     });
   }
+
+  async findCashFlowById(id: string): Promise<MediaCashFlow | null> {
+    return this.prisma.mediaCashFlow.findUnique({
+      where: {
+        id_media_cash_flow: id,
+        is_deleted: false,
+      },
+    });
+  }
+
+  async deleteCashFlowById(id: string): Promise<void> {
+    await this.prisma.mediaCashFlow.update({
+      where: {
+        id_media_cash_flow: id,
+      },
+      data: {
+        is_deleted: true,
+      },
+    });
+  }
 }

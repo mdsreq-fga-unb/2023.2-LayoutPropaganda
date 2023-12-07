@@ -5,6 +5,7 @@ import { multerDiskStorage } from "../../../../../config/DiskStorage";
 import { verifyJWT } from "../../../../../shared/middlewares/VerifyJWT";
 import { CreateMediaCashFlowController } from "./CreateMediaCashFlowController";
 import { CreateMediaController } from "./CreateMediaController";
+import { DeleteMediaCashFlowController } from "./DeleteMediaCashFlowController";
 import { DeleteMediaController } from "./DeleteMediaController";
 import { GetCashFlowPieChartController } from "./GetCashFlowPieChartController";
 import { ListMediaCashFlowController } from "./ListMediaCashFlowController";
@@ -23,6 +24,7 @@ const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
 
   app.post("/cashFlow/:id_media", CreateMediaCashFlowController);
   app.get("/cashFlow/:id_media", ListMediaCashFlowController);
+  app.delete("/cashFlow/:id_media_cash_flow", DeleteMediaCashFlowController);
 
   app.get("cashFlow/pieChart", GetCashFlowPieChartController);
 
