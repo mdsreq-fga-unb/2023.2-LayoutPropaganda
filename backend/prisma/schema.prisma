@@ -63,17 +63,18 @@ model Task {
 }
 
 model Media {
-  id_media     String        @id @default(uuid())
-  type         String
-  region       String
-  description  String
-  latitude     Float
-  longitude    Float
-  is_deleted   Boolean       @default(false)
-  is_available Boolean       @default(true)
-  updated_at   DateTime      @updatedAt
-  created_at   DateTime      @default(now())
-  MediaImages  MediaImages[]
+  id_media      String          @id @default(uuid())
+  type          String
+  region        String
+  description   String
+  latitude      Float
+  longitude     Float
+  is_deleted    Boolean         @default(false)
+  is_available  Boolean         @default(true)
+  updated_at    DateTime        @updatedAt
+  created_at    DateTime        @default(now())
+  MediaImages   MediaImages[]
+  MediaCashFlow MediaCashFlow[]
 
   @@map("media")
 }
@@ -90,4 +91,18 @@ model MediaImages {
   created_at DateTime @default(now())
 
   @@map("media_images")
+}
+
+model MediaCashFlow {
+  id_media_cash_flow String   @id @default(uuid())
+  id_media           String
+  media              Media    @relation(fields: [id_media], references: [id_media])
+  description        String
+  reference_date     DateTime
+  quantity           Float
+  is_deleted         Boolean  @default(false)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  @@map("media_cash_flow")
 }

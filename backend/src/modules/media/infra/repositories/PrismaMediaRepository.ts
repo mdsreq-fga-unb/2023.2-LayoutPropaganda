@@ -1,4 +1,4 @@
-import { Media, Prisma, PrismaClient } from "@prisma/client";
+import { Media, MediaCashFlow, Prisma, PrismaClient } from "@prisma/client";
 import {
   IMediaRepository,
   listAllDTO,
@@ -91,6 +91,26 @@ export class PrismaMediaRepository implements IMediaRepository {
       },
       data: {
         is_deleted: true,
+      },
+    });
+  }
+
+  async addCashFlow(
+    data: Prisma.MediaCashFlowUncheckedCreateInput,
+  ): Promise<MediaCashFlow> {
+    return this.prisma.mediaCashFlow.create({
+      data,
+    });
+  }
+
+  async listCashFlowByMediaId(id_media: string): Promise<MediaCashFlow[]> {
+    return this.prisma.mediaCashFlow.findMany({
+      where: {
+        id_media,
+        is_deleted: false,
+      },
+      orderBy: {
+        reference_date: "asc",
       },
     });
   }
