@@ -6,6 +6,7 @@ import {
     OurProductsContent,
     OurProductsContentDivisoryBar,
     OurProductsContentMedia,
+    OurProductsContentMediaTitle,
     OurProductsContentParagraph,
     OurProductsTitle,
     OuterMedia
@@ -24,7 +25,9 @@ export const OurServices = () => {
                 <OuterMedia direction="t">
                     <Image src={outdoor} alt="Outdoor1" />
                     <OurProductsContentMedia>
+                        <OurProductsContentMediaTitle>
                         Outdoor
+                        </OurProductsContentMediaTitle>
                         <OurProductsContentParagraph>
                             <br></br>
                             Definição: O outdoor é um tipo de publicidade exterior que
@@ -47,7 +50,9 @@ export const OurServices = () => {
 
                 <OuterMedia direction="r">
                     <OurProductsContentMedia>
+                        <OurProductsContentMediaTitle>
                         Frontlight
+                        </OurProductsContentMediaTitle>
                         <OurProductsContentParagraph>
                             <br></br>
                             Definição: O front-light é um tipo específico de painel que possui 
@@ -70,7 +75,9 @@ export const OurServices = () => {
                 <OuterMedia direction="b">
                     <Image src={triedro} alt="Triedro1"/>
                     <OurProductsContentMedia>
+                        <OurProductsContentMediaTitle>
                         Triedro
+                        </OurProductsContentMediaTitle>
                         <OurProductsContentParagraph>
                             <br></br>
                             Definição: O triedo é um formato inovador que combina três faces 
