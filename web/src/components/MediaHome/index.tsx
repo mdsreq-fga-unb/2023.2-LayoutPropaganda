@@ -2,6 +2,7 @@
 
 import { SwiperSlide } from "swiper/react";
 import {
+  ImageContainer,
   MediaContainer,
   MediaContent,
   MediaContentButton,
@@ -9,7 +10,8 @@ import {
   MediaContentCarrouselItem,
   MediaContentCarrouselItemTitle,
   MediaContentMap,
-  MediaTitle,
+  MediaImage,
+  MediaTitle
 } from "./styles";
 
 import Slider from "./slider";
@@ -31,6 +33,28 @@ export const Media = () => {
     loop: true,
   };
 
+  // const [imageWidth, setImageWidth] = useState(238);
+  // const [imageHeight, setImageHeight] = useState(378);
+  
+  
+  // useEffect(() => {
+
+  //     if( typeof window !== undefined) {
+    
+  //       if(window.innerWidth < sizesNumber.laptopS) {
+
+  //         setImageWidth(119)
+  //         setImageHeight(189)
+          
+
+  //       }
+    
+    
+  //     }
+
+  // },[window.innerWidth])
+  
+
   return (
     <MediaContainer id="Mídias">
       <MediaTitle>Mídias</MediaTitle>
@@ -48,7 +72,9 @@ export const Media = () => {
           <Slider settings={settings}>
             <SwiperSlide>
               <MediaContentCarrouselItem>
-                <Image src={image1} alt="Images" height="378" width="238" />
+                <ImageContainer>
+                <MediaImage src={image1} alt="Images" width={100} height={100}   />
+                </ImageContainer>
                 <MediaContentCarrouselItemTitle>
                   Triedo
                 </MediaContentCarrouselItemTitle>
@@ -57,7 +83,9 @@ export const Media = () => {
             </SwiperSlide>
             <SwiperSlide>
               <MediaContentCarrouselItem>
-                <Image src={image2} alt="Images" height="378" width="238" />
+                <ImageContainer>
+                <MediaImage src={image2} alt="Images" width={100} height={100}  />
+                </ImageContainer>
                 <MediaContentCarrouselItemTitle>
                   Front-Light
                 </MediaContentCarrouselItemTitle>
@@ -66,7 +94,9 @@ export const Media = () => {
             </SwiperSlide>
             <SwiperSlide>
               <MediaContentCarrouselItem>
-                <Image src={image3} alt="Images" height="378" width="238" />
+                <ImageContainer>
+                <MediaImage src={image3} alt="Images"/>
+                </ImageContainer>
                 <MediaContentCarrouselItemTitle>
                   Outdoor
                 </MediaContentCarrouselItemTitle>
@@ -75,7 +105,9 @@ export const Media = () => {
             </SwiperSlide>
             <SwiperSlide>
               <MediaContentCarrouselItem>
-                <Image src={image4} alt="Images" height="378" width="238" />
+                <ImageContainer>
+                <MediaImage src={image4} alt="Images" width={100} height={100}  />
+                </ImageContainer>
                 <MediaContentCarrouselItemTitle>
                   Triedo
                 </MediaContentCarrouselItemTitle>
@@ -84,7 +116,9 @@ export const Media = () => {
             </SwiperSlide>
             <SwiperSlide>
               <MediaContentCarrouselItem>
-                <Image src={image5} alt="Images" height="378" width="238" />
+                <ImageContainer>
+                <MediaImage src={image5} alt="Images" width={100} height={100}  />
+                </ImageContainer>
                 <MediaContentCarrouselItemTitle>
                   Front-Light
                 </MediaContentCarrouselItemTitle>

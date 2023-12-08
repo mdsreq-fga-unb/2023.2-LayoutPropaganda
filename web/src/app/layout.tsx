@@ -1,10 +1,14 @@
 import { Header } from "@/components/Header";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
+import type { Metadata } from "next";
+import { Inter, Raleway } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const raleway = Raleway({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: "Layout Propaganda",
@@ -18,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={raleway.className}>
         <StyledComponentsRegistry>
           <Header />
           {children}
