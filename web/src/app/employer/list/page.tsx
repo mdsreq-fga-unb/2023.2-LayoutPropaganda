@@ -19,6 +19,7 @@ import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
 import { Pencil } from "lucide-react";
+import NewEmployeeModal from "@/components/newEmployeeModal";
 
 // [
 // 	{
@@ -49,18 +50,21 @@ export default function Employers() {
   const [isLoading, setIsLoading] = useState(true);
   const [Error, setError] = useState(false);
 
-  function ButtonActionRenderer() {
+  const [openCreateModal, setOpenCreateModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+
+  const EditEmployeeButton = () => {
     // props is ICellRenererParams. See:
     // https://www.ag-grid.com/react-grid/component-cell-renderer/#cell-renderer-component-2
 
     return (
       <>
-        <button onClick={() => console.log("dawdawd")}>
+        <button onClick={() => setOpenEditModal(true)}>
           <Pencil />
         </button>
       </>
     );
-  }
+  };
 
   const autoSizeStrategy = {
     type: "fitGridWidth",
@@ -93,7 +97,7 @@ export default function Employers() {
     {
       headerName: "Ações",
       field: "actions",
-      cellRenderer: ButtonActionRenderer,
+      cellRenderer: EditEmployeeButton,
     },
   ]);
 
@@ -130,6 +134,11 @@ export default function Employers() {
           />
         </div>
       </EmployerListBox>
+
+      <NewEmployeeModal
+        isOpen={openEditModal}
+        setModalOpen={setOpenEditModal}
+      />
     </Container>
   );
 }
