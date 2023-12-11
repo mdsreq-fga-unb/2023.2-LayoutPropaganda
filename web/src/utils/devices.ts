@@ -8,6 +8,17 @@ const sizes = {
     laptopL: '1880px',
     desktop: '2560px',
   };
+  
+  export const sizesNumber = {
+    mobileS: 320,
+    mobileM: 375,
+    mobileL: 425,
+    tablet: 768,
+    laptopS: 1024,
+    laptopM: 1440,
+    laptopL: 1880,
+    desktop: 2560,
+  }
 
   export const devices = {
     mobileS: `(min-width: ${sizes.mobileS})`,

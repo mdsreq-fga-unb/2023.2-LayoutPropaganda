@@ -55,12 +55,15 @@ export const OurProductsContent = styled.div`
 
 export const OurProductsContentMedia = styled.div`
   font-size: 2.5rem; 
-  font-weight: 450;
   color: #FFFFFF;
   width: 100%; 
   text-align: center;
-  margin: 2rem; 
+  margin: 2rem;   
+`;
 
+export const OurProductsContentMediaTitle = styled.h1`
+  font-weight: 900;
+  color: #FFFFFF;
   @media ${devices.mobileS} {
     font-size: 1.2rem;
     margin: 0;
@@ -68,13 +71,15 @@ export const OurProductsContentMedia = styled.div`
   @media ${devices.laptopS} {
     font-size: 2.5rem;
   }
-`;
+`
+
 
 export const OurProductsContentParagraph = styled.p`
   color: #FFFFFF;
   font-size: 1.6rem; 
   text-align: justify;
   margin: 3rem; 
+  font-weight: 550;
 
   @media ${devices.mobileS} {
     font-size: 1rem;
@@ -98,6 +103,7 @@ export const List = styled.ul`
   color: #FFFFFF;
   font-size: 1.6rem; 
   text-align: justify;
+  font-weight: 200;
 
   @media ${devices.mobileS} {
     font-size: 1rem;
