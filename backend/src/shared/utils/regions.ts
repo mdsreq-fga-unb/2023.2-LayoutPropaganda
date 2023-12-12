@@ -1,4 +1,4 @@
-export const regions = [
+export const regions: [string, ...string[]] = [
   "Plano Piloto",
   "Gama",
   "Taguatinga",
@@ -35,4 +35,3 @@ export const regions = [
   "Arapoanga",
   "Água Quente",
 ];
-

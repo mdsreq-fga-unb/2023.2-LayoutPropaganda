@@ -17,12 +17,12 @@ import {
 import Slider from "./slider";
 import "./slider.css";
 
-import { useState } from "react";
-import image2 from "../../../public/assets/gato 2.jpg";
-import image1 from "../../../public/assets/gato1.jpg";
-import image3 from "../../../public/assets/gato3.png";
-import image4 from "../../../public/assets/gato4.jpg";
-import image5 from "../../../public/assets/gato5.jpg";
+import Image from "next/image";
+import image2 from "../../../public/assets/PainelDisponivel2.jpeg";
+import image1 from "../../../public/assets/PainelDisponivel1.jpeg";
+import image3 from "../../../public/assets/PainelDisponivel3.jpeg";
+import image4 from "../../../public/assets/PainelDisponivel4.jpeg";
+import image5 from "../../../public/assets/PainelDisponivel5.jpeg";
 import LayoutMap from "../LayoutMap";
 
 export const Media = () => {
@@ -33,8 +33,8 @@ export const Media = () => {
     loop: true,
   };
 
-  const [imageWidth, setImageWidth] = useState(238);
-  const [imageHeight, setImageHeight] = useState(378);
+  // const [imageWidth, setImageWidth] = useState(238);
+  // const [imageHeight, setImageHeight] = useState(378);
   
   
   // useEffect(() => {
@@ -76,9 +76,9 @@ export const Media = () => {
                 <MediaImage src={image1} alt="Images" width={100} height={100}   />
                 </ImageContainer>
                 <MediaContentCarrouselItemTitle>
-                  Gato 1
+                  Triedo
                 </MediaContentCarrouselItemTitle>
-                <p>Um gatinho extremamente charmoso</p>
+                <p>Ceilândia</p>
               </MediaContentCarrouselItem>
             </SwiperSlide>
             <SwiperSlide>
@@ -87,9 +87,9 @@ export const Media = () => {
                 <MediaImage src={image2} alt="Images" width={100} height={100}  />
                 </ImageContainer>
                 <MediaContentCarrouselItemTitle>
-                  Gato 2
+                  Front-Light
                 </MediaContentCarrouselItemTitle>
-                <p>Um gato completamente aesthetic</p>
+                <p>Taguatinga norte</p>
               </MediaContentCarrouselItem>
             </SwiperSlide>
             <SwiperSlide>
@@ -98,9 +98,9 @@ export const Media = () => {
                 <MediaImage src={image3} alt="Images"/>
                 </ImageContainer>
                 <MediaContentCarrouselItemTitle>
-                  Gato 3
+                  Outdoor
                 </MediaContentCarrouselItemTitle>
-                <p>Apenas um gato</p>
+                <p>Santa Maria</p>
               </MediaContentCarrouselItem>
             </SwiperSlide>
             <SwiperSlide>
@@ -109,9 +109,9 @@ export const Media = () => {
                 <MediaImage src={image4} alt="Images" width={100} height={100}  />
                 </ImageContainer>
                 <MediaContentCarrouselItemTitle>
-                  Gato 4
+                  Triedo
                 </MediaContentCarrouselItemTitle>
-                <p>Gatinho cuti cuti</p>
+                <p>Candangolândia</p>
               </MediaContentCarrouselItem>
             </SwiperSlide>
             <SwiperSlide>
@@ -120,9 +120,9 @@ export const Media = () => {
                 <MediaImage src={image5} alt="Images" width={100} height={100}  />
                 </ImageContainer>
                 <MediaContentCarrouselItemTitle>
-                  Gato 5
+                  Front-Light
                 </MediaContentCarrouselItemTitle>
-                <p>Bonito, mas nao tanto quanto a Charlotte</p>
+                <p>Ponte Alta</p>
               </MediaContentCarrouselItem>
             </SwiperSlide>
           </Slider>

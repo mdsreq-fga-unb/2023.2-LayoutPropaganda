@@ -3,8 +3,12 @@ import multer from "fastify-multer";
 import { rmSync } from "fs";
 import { multerDiskStorage } from "../../../../../config/DiskStorage";
 import { verifyJWT } from "../../../../../shared/middlewares/VerifyJWT";
+import { CreateMediaCashFlowController } from "./CreateMediaCashFlowController";
 import { CreateMediaController } from "./CreateMediaController";
+import { DeleteMediaCashFlowController } from "./DeleteMediaCashFlowController";
 import { DeleteMediaController } from "./DeleteMediaController";
+import { GetCashFlowPieChartController } from "./GetCashFlowPieChartController";
+import { ListMediaCashFlowController } from "./ListMediaCashFlowController";
 import { ListMediaController } from "./ListMediaController";
 import { UpdateMediaController } from "./UpdateMediaController";
 
@@ -17,6 +21,12 @@ export async function mediaRoutes(app: FastifyInstance) {
 
 const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
   app.addHook("onRequest", verifyJWT);
+
+  app.post("/cashFlow/:id_media", CreateMediaCashFlowController);
+  app.get("/cashFlow/:id_media", ListMediaCashFlowController);
+  app.delete("/cashFlow/:id_media_cash_flow", DeleteMediaCashFlowController);
+
+  app.get("cashFlow/pieChart", GetCashFlowPieChartController);
 
   app.put("/:id_media", UpdateMediaController);
   app.delete("/:id_media", DeleteMediaController);
