@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
 `;
 
@@ -14,7 +15,6 @@ export const EmployerListBox = styled.div`
   align-items: center;
   width: 70%;
   min-height: 700px;
-  margin-top: 70px;
   border-radius: 25px;
   border-left: 8px solid #ff0000;
   overflow: hidden;
@@ -68,4 +68,36 @@ export const EmployerAtributeTel = styled.p`
 export const Checkbox = styled.input.attrs({ type: "checkbox" })`
   width: 24px;
   height: 24px;
+`;
+
+export const SearchEmployeeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: space-between;
+`;
+
+export const CreateEmployeeButton = styled.button`
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  background-color: #383838;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+`;
+
+export const SearchEmployeeInput = styled.input`
+  width: 60%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  background-color: #383838;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-size: 20px;
 `;

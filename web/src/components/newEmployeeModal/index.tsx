@@ -53,14 +53,14 @@ export default function NewEmployeeModal({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = {
-      firstName,
-      LastName,
+      first_name: firstName,
+      last_name: LastName,
       email,
       cpf,
       password,
     };
     try {
-      const response = await api.post("/employee", data);
+      const response = await api.post("/employees", data);
       alert("Funcionário cadastrado com sucesso!");
       setModalOpen(false);
     } catch (error: any) {
