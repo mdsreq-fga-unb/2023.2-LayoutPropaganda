@@ -15,29 +15,16 @@ import {
   SearchEmployeeInput,
   SearchEmployeeContainer,
   CreateEmployeeButton,
+  ActionsContainer,
 } from "./styles";
 
 import { AgGridReact } from "ag-grid-react"; // React Grid Logic
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
-import { Pencil } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import NewEmployeeModal from "@/components/newEmployeeModal";
 import EditEmployeeModal from "@/components/editEmployeeModal";
-
-// [
-// 	{
-// 		"id_employee": "d222abb0-54ef-46c5-a25b-7f3c58f0c49d",
-// 		"first_name": "John",
-// 		"last_name": "Doe",
-// 		"email": "jhondoe@gmail.com",
-// 		"cpf": "12345678910",
-// 		"password": "$2b$12$x6oayb.tWvL43aj7d1yMu.BKAtgSL2IQ/3IaK00/buYD/d7BOChqO",
-// 		"is_deleted": false,
-// 		"updated_at": "2023-12-07T00:23:08.271Z",
-// 		"created_at": "2023-12-07T00:23:08.271Z"
-// 	}
-// ]
 
 interface Employee {
   id_employee: string;
@@ -84,18 +71,37 @@ export default function Employers() {
     }
   };
 
-  const EditEmployeeButton = (props: any) => {
+  const DeleteEmployee = async (id: string) => {
+    try {
+      console.log("fefsefsef");
+      await api.delete(`/employees/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const EmployeeActions = (props: any) => {
     const employee = props.data;
 
     return (
-      <button
-        onClick={() => {
-          setSelectedEmployee(employee);
-          setOpenEditModal(true);
-        }}
-      >
-        <Pencil />
-      </button>
+      <ActionsContainer>
+        <button
+          onClick={() => {
+            setSelectedEmployee(employee);
+            setOpenEditModal(true);
+          }}
+        >
+          <Pencil />
+        </button>
+
+        <button
+          onClick={() => {
+            DeleteEmployee(employee.id_employee);
+          }}
+        >
+          <Trash2 />
+        </button>
+      </ActionsContainer>
     );
   };
 
@@ -130,7 +136,7 @@ export default function Employers() {
     {
       headerName: "Ações",
       field: "actions",
-      cellRenderer: EditEmployeeButton,
+      cellRenderer: EmployeeActions,
     },
   ]);
 
@@ -156,7 +162,7 @@ export default function Employers() {
       setEmployeeSearch(employeeSearch);
     }
     updateGridData();
-  }, [employers, search]);
+  }, [employers, search, DeleteEmployee]);
 
   return (
     <Container>

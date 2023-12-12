@@ -4,6 +4,7 @@ import { AuthenticateController } from "./AuthenticateController";
 import { CreateEmployeeController } from "./CreateEmployeeController";
 import { ListEmployeeController } from "./ListEmployeeController";
 import { UpdateEmployeeController } from "./UpdateEmployeeController";
+import { DeleteEmployeeController } from "./DeleteEmployeeController";
 
 export async function employeeRoutes(app: FastifyInstance) {
   app.post("/authenticate", AuthenticateController);
@@ -17,6 +18,7 @@ const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
   app.post("/", CreateEmployeeController);
   app.put("/:id_employee", UpdateEmployeeController);
   app.get("/", ListEmployeeController);
+  app.delete("/:id_employee", DeleteEmployeeController);
 
   done();
 };

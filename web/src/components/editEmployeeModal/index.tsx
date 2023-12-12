@@ -76,8 +76,8 @@ export default function EditEmployeeModal({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = {
-      firstName,
-      lastName,
+      first_name: firstName,
+      last_name: lastName,
       email,
       cpf,
       password,

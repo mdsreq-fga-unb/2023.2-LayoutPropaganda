@@ -101,3 +101,10 @@ export const SearchEmployeeInput = styled.input`
   padding-left: 10px;
   font-size: 20px;
 `;
+export const ActionsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 8px;
+  padding-top: 4px;
+`;
