@@ -1,7 +1,8 @@
+import { IMedia } from "@/app/employer/medias/page";
 import { BookOpenText, PenSquare, Trash2 } from "lucide-react";
-import styled from "styled-components";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import styled from "styled-components";
 import Modal from "./modal";
 import { IconButton } from "./styles";
 const ButtonContainer = styled.div`
@@ -12,7 +13,7 @@ const ButtonContainer = styled.div`
   height: 100%;
 `;
 
-export default function MediaEmployerButtons({ id }: { id: string }) {
+export default function MediaEmployerButtons({ id, setMedias }: { id: string, setMedias: (data: IMedia[]) => void }) {
   const router = useRouter();
 
   const [openModal, setOpenModal] = useState(false);
@@ -25,7 +26,7 @@ export default function MediaEmployerButtons({ id }: { id: string }) {
       <IconButton onClick={() => setOpenModal(true)}>
         <Trash2 color="#bd0e0e" />
       </IconButton>
-      <Modal isOpen={openModal} setModalOpen={setOpenModal} id={id} />
+      <Modal isOpen={openModal} setModalOpen={setOpenModal} id={id} setMedias={setMedias}/>
     </ButtonContainer>
   );
 }

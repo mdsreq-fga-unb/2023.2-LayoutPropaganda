@@ -1,29 +1,31 @@
 "use client";
 
-import LayoutMap from "@/components/LayoutMap";
 import {
   Container,
   DivisoryBar,
+  FilterDivisoryBar,
   FilterGroup,
+  FilterGroupTitle,
+  FilterItem,
+  FilterItems,
   Filters,
   MapContainer,
   MapFilter,
   MapFilters,
   Media,
+  MediaInfo,
+  MediaInfoAddress,
+  MediaInfoMap,
+  MediaInfoTags,
+  MediaInfoTexts,
   MediaList,
   MediaListContainer,
-  MediaInfo,
-  MediaInfoTexts,
-  MediaInfoMap,
-  RemoveFilterButton,
-  MediaInfoTags,
-  MediaInfoAddress,
-  FilterGroupTitle,
-  FilterGroupChevronExpand,
-  FilterItem,
-  FilterDivisoryBar,
-  FilterItems,
+  RemoveFilterButton
 } from "@/app/medias/styles";
+import LayoutMap from "@/components/LayoutMap";
+import MediaEmployerButtons from "@/components/mediaEmployerButtons";
+import { api } from "@/services/api";
+import { motion } from "framer-motion";
 import {
   ChevronDown,
   ChevronRight,
@@ -32,16 +34,13 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { setKey, fromLatLng } from "react-geocode";
-import { motion } from "framer-motion";
-import { api } from "@/services/api";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { fromLatLng, setKey } from "react-geocode";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import MediaEmployerButtons from "@/components/mediaEmployerButtons";
-import { MediaImage, MediaEditorMenu } from "./styles";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { MediaEditorMenu, MediaImage } from "./styles";
 
 interface IMediaImage {
   id_media_image: string;
@@ -51,7 +50,7 @@ interface IMediaImage {
   updated_at: Date;
   created_at: Date;
 }
-interface IMedia {
+export interface IMedia {
   id_media: string;
   type: string;
   region: string;
@@ -157,7 +156,7 @@ export default function Medias() {
                     })}
                   </Swiper>
                 </MediaImage>
-                <MediaEmployerButtons id={media.id_media} />
+                <MediaEmployerButtons id={media.id_media} setMedias={setData}/>
               </MediaEditorMenu>
               <MediaInfo>
                 <MediaInfoMap>

@@ -1,13 +1,14 @@
+import { IMedia } from "@/app/employer/medias/page";
 import {
+  ButtonContainer,
+  CancelButton,
+  CloseButton,
+  DeleteButton,
   ModalContainer,
   ModalContent,
   ModalHeader,
-  Title,
-  CloseButton,
-  DeleteButton,
-  CancelButton,
-  ButtonContainer,
   ModalText,
+  Title,
 } from "./styles";
 
 import { api } from "@/services/api";
@@ -16,15 +17,18 @@ export default function Modal({
   isOpen,
   setModalOpen,
   id,
+  setMedias
 }: {
   isOpen: boolean;
   setModalOpen: (value: boolean) => void;
   id: string;
+  setMedias: (value: IMedia[]) => void;
 }) {
   const handleSubmit = async () => {
     try {
       await api.delete("/medias/" + id);
       alert("Mídia exluída com sucesso");
+      setMedias((await api.get("/medias")).data);
       setModalOpen(false);
     } catch (error) {
       console.log(error);
