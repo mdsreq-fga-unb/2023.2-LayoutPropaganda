@@ -13,7 +13,13 @@ const ButtonContainer = styled.div`
   height: 100%;
 `;
 
-export default function MediaEmployerButtons({ id, setMedias }: { id: string, setMedias: (data: IMedia[]) => void }) {
+export default function MediaEmployerButtons({
+  id,
+  setMedias,
+}: {
+  id: string;
+  setMedias: (data: IMedia[]) => void;
+}) {
   const router = useRouter();
 
   const [openModal, setOpenModal] = useState(false);
@@ -26,7 +32,12 @@ export default function MediaEmployerButtons({ id, setMedias }: { id: string, se
       <IconButton onClick={() => setOpenModal(true)}>
         <Trash2 color="#bd0e0e" />
       </IconButton>
-      <Modal isOpen={openModal} setModalOpen={setOpenModal} id={id} setMedias={setMedias}/>
+      <Modal
+        isOpen={openModal}
+        setModalOpen={setOpenModal}
+        id={id}
+        setMedias={setMedias}
+      />
     </ButtonContainer>
   );
 }

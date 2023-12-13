@@ -16,9 +16,17 @@ import {
   ImageUploadInput,
   ImageUploadInputHover,
 } from "../../createMedia/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "@/services/api";
-import { Info, InfoFields } from "./styles";
+import {
+  Info,
+  InfoContainer,
+  InfoText,
+  InfoTitle,
+  SharedLineInfo,
+  SharedLineInfos,
+} from "./styles";
+import { useRouter } from "next/navigation";
 
 interface IMediaImage {
   id_media_image: string;
@@ -42,23 +50,71 @@ interface IMedia {
   MediaImages: IMediaImage[];
 }
 
-export default function ReadMedia() {
+export default function ReadMedia({ params }: { params: { id: string } }) {
+  const [media, setMedia] = useState<IMedia>({
+    id_media: "",
+    type: "",
+    region: "",
+    description: "",
+    latitude: 0,
+    longitude: 0,
+    is_deleted: false,
+    is_available: false,
+    updated_at: new Date(),
+    created_at: new Date(),
+    MediaImages: [],
+  });
+
+  const getMedia = async (id: string): Promise<IMedia> => {
+    const response = await api.get("/medias/" + id);
+    return response.data;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getMedia(params.id);
+
+        setMedia(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Container>
       <MapContainer>
         <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
       </MapContainer>
       <DataContainer>
-        <Info>
-          <InfoFields>description</InfoFields>
-          <InfoFields>altura</InfoFields>
-          <InfoFields>largura</InfoFields>
-          <InfoFields>region</InfoFields>
-          <InfoFields>type</InfoFields>
-          <InfoFields>latitude</InfoFields>
-          <InfoFields>longitude</InfoFields>
-          <InfoFields>is_available</InfoFields>
-        </Info>
+        <InfoContainer>
+          <SharedLineInfos>
+            <SharedLineInfo>
+              <InfoTitle>Tipo</InfoTitle>
+              <InfoText>{media.type}</InfoText>
+            </SharedLineInfo>
+            <SharedLineInfo>
+              <InfoTitle>Região</InfoTitle>
+              <InfoText>{media.region}</InfoText>
+            </SharedLineInfo>
+          </SharedLineInfos>
+          <SharedLineInfos>
+            <SharedLineInfo>
+              <InfoTitle>Latitude</InfoTitle>
+              <InfoText>{media.latitude}</InfoText>
+            </SharedLineInfo>
+            <SharedLineInfo>
+              <InfoTitle>Longitude</InfoTitle>
+              <InfoText>{media.longitude}</InfoText>
+            </SharedLineInfo>
+          </SharedLineInfos>
+          <Info>
+            <InfoTitle>Descrição</InfoTitle>
+            <InfoText>{media.description}</InfoText>
+          </Info>
+        </InfoContainer>
       </DataContainer>
     </Container>
   );

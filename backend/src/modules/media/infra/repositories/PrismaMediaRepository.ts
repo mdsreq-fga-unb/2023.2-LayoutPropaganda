@@ -69,6 +69,10 @@ export class PrismaMediaRepository implements IMediaRepository {
         id_media: id,
         is_deleted: false,
       },
+      include: {
+        MediaImages: true,
+        MediaCashFlow: true,
+      },
     });
 
     return media;
