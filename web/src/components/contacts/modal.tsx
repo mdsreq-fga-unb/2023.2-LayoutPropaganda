@@ -61,7 +61,7 @@ const ModalContent = styled.form`
 
 const TextBox = styled.input`
   width: 100%;
-  height: 50px;
+  padding: 16px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -70,6 +70,10 @@ const TextBox = styled.input`
   transition: box-shadow 0.3s ease;
 
   color: #000000;
+  
+  &::placeholder {
+    color: #fff;
+  }
 
   &:focus {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -150,7 +154,7 @@ export default function Modal({
       message,
     };
     try {
-      const response = await api.post("/contacts", data);
+      await api.post("/contacts", data);
       alert("Mensagem enviada com sucesso!");
       setModalOpen(false);
     } catch (error: any) {

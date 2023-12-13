@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const Info = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 80%;
   height: 100%;
   background-color: #383838;
@@ -13,14 +12,34 @@ export const Info = styled.div`
   justify-content: center;
 `;
 
-export const InfoFields = styled.label`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  width: 70%;
+export const SharedLineInfos = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
   gap: 20px;
-  justify-content: center;
-  align-items: stretch;
-  margin: 0 auto;
-  margin-top: 5%;
+`;
+export const SharedLineInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 48%;
+  margin-bottom: 20px;
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+`;
+
+export const InfoTitle = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+`;
+
+export const InfoText = styled.p`
+  font-size: 14px;
+  color: #ffffff;
 `;

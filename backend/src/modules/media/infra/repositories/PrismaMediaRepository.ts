@@ -56,6 +56,7 @@ export class PrismaMediaRepository implements IMediaRepository {
       },
       include: {
         MediaImages: true,
+        MediaCashFlow: true,
       },
     });
 
@@ -67,6 +68,10 @@ export class PrismaMediaRepository implements IMediaRepository {
       where: {
         id_media: id,
         is_deleted: false,
+      },
+      include: {
+        MediaImages: true,
+        MediaCashFlow: true,
       },
     });
 

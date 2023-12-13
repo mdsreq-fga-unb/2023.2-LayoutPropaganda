@@ -4,8 +4,8 @@ import Image from "next/image";
 import logo from "../../../public/assets/Logo.svg";
 
 import Link from "next/link";
-import { HeaderContainer, HeaderNav, Logo, NavLinkContainer } from "./styles";
 import { usePathname } from "next/navigation";
+import { HeaderContainer, HeaderNav, Logo, NavLinkContainer } from "./styles";
 
 export function Header() {
   const scrollTo = (sectionName: string) => {
@@ -21,9 +21,9 @@ export function Header() {
     if (page.startsWith("/employer")) {
       return (
         <NavLinkContainer>
-          <Link href="/employer">Funcionário</Link>
-          <Link href="/midias">Mídias</Link>
-          <Link href="/clientes">Clientes</Link>
+          <Link href="/employer/list">Funcionário</Link>
+          <Link href="/employer/medias">Mídias</Link>
+          <Link href="/employer/clientes">Clientes</Link>
         </NavLinkContainer>
       );
     }

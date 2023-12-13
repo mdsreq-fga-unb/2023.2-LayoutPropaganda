@@ -36,8 +36,7 @@ export default function Login() {
     try {
       const response = await api.post('/employees/authenticate', { email, password });
       localStorage.setItem('token', response.data.token);
-      await router.push("/clientes");
-      console.log("Pushed")
+      router.push("/employer/clientes");
     } catch (error) {
       alert('Invalid email or password');
     }

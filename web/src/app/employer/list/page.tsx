@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/services/api";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Checkbox,
   EmployerAtribute,
@@ -12,30 +12,22 @@ import {
   EmployerInfoLine,
   EmployerListBox,
   Container,
+  SearchEmployeeInput,
+  SearchEmployeeContainer,
+  CreateEmployeeButton,
+  ActionsContainer,
 } from "./styles";
 
 import { AgGridReact } from "ag-grid-react"; // React Grid Logic
 import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
-import { Pencil } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import NewEmployeeModal from "@/components/newEmployeeModal";
-
-// [
-// 	{
-// 		"id_employee": "d222abb0-54ef-46c5-a25b-7f3c58f0c49d",
-// 		"first_name": "John",
-// 		"last_name": "Doe",
-// 		"email": "jhondoe@gmail.com",
-// 		"cpf": "12345678910",
-// 		"password": "$2b$12$x6oayb.tWvL43aj7d1yMu.BKAtgSL2IQ/3IaK00/buYD/d7BOChqO",
-// 		"is_deleted": false,
-// 		"updated_at": "2023-12-07T00:23:08.271Z",
-// 		"created_at": "2023-12-07T00:23:08.271Z"
-// 	}
-// ]
+import EditEmployeeModal from "@/components/editEmployeeModal";
 
 interface Employee {
+  id_employee: string;
   first_name: string;
   last_name: string;
   email: string;
@@ -47,22 +39,69 @@ interface Employee {
 
 export default function Employers() {
   const [employers, setEmployees] = useState<Employee[]>([]);
+  const [selectedEmployee, setSelectedEmployee] = useState<
+    Employee | undefined
+  >(undefined);
   const [isLoading, setIsLoading] = useState(true);
   const [Error, setError] = useState(false);
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
 
-  const EditEmployeeButton = () => {
-    // props is ICellRenererParams. See:
-    // https://www.ag-grid.com/react-grid/component-cell-renderer/#cell-renderer-component-2
+  const [employeeSearch, setEmployeeSearch] = useState<Employee[]>([]);
+  const [search, setSearch] = useState("");
+  const searchFuncion = (e: any) => {
+    const { value } = e.target;
+    setSearch(value);
+    const filteredEmployees = employers.filter((employee) => {
+      return (
+        employee.first_name.toLowerCase().includes(value.toLowerCase()) ||
+        employee.last_name.toLowerCase().includes(value.toLowerCase()) ||
+        employee.email.toLowerCase().includes(value.toLowerCase()) ||
+        employee.cpf.toLowerCase().includes(value.toLowerCase())
+      );
+    });
+    setEmployeeSearch(filteredEmployees);
+  };
+
+  const gridRef = useRef<any>(null);
+  const updateGridData = () => {
+    if (gridRef.current && gridRef.current.api) {
+      gridRef.current.api.refreshCells();
+    }
+  };
+
+  const DeleteEmployee = async (id: string) => {
+    try {
+      console.log("fefsefsef");
+      await api.delete(`/employees/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const EmployeeActions = (props: any) => {
+    const employee = props.data;
 
     return (
-      <>
-        <button onClick={() => setOpenEditModal(true)}>
+      <ActionsContainer>
+        <button
+          onClick={() => {
+            setSelectedEmployee(employee);
+            setOpenEditModal(true);
+          }}
+        >
           <Pencil />
         </button>
-      </>
+
+        <button
+          onClick={() => {
+            DeleteEmployee(employee.id_employee);
+          }}
+        >
+          <Trash2 />
+        </button>
+      </ActionsContainer>
     );
   };
 
@@ -97,12 +136,13 @@ export default function Employers() {
     {
       headerName: "Ações",
       field: "actions",
-      cellRenderer: EditEmployeeButton,
+      cellRenderer: EmployeeActions,
     },
   ]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await api.get("/employees");
         setEmployees(response.data);
@@ -113,18 +153,39 @@ export default function Employers() {
       }
     };
     fetchData();
-  }, []);
+  }, [openCreateModal, openEditModal]);
+
+  useEffect(() => {
+    if (search === "") {
+      setEmployeeSearch(employers);
+    } else {
+      setEmployeeSearch(employeeSearch);
+    }
+    updateGridData();
+  }, [employers, search, DeleteEmployee]);
 
   return (
     <Container>
+      <SearchEmployeeContainer>
+        <SearchEmployeeInput
+          value={search}
+          onChange={searchFuncion}
+          placeholder="Buscar funcionário"
+        />
+        <CreateEmployeeButton onClick={() => setOpenCreateModal(true)}>
+          Criar funcionário
+        </CreateEmployeeButton>
+      </SearchEmployeeContainer>
+
       <EmployerListBox>
         <div
           className="ag-theme-alpine-dark"
           style={{ height: "700px", width: "100%" }}
         >
           <AgGridReact
+            ref={gridRef}
             columnDefs={columnDefs}
-            rowData={employers}
+            rowData={employeeSearch}
             pagination={true}
             paginationPageSize={10}
             autoSizeStrategy={autoSizeStrategy}
@@ -136,6 +197,12 @@ export default function Employers() {
       </EmployerListBox>
 
       <NewEmployeeModal
+        isOpen={openCreateModal}
+        setModalOpen={setOpenCreateModal}
+      />
+
+      <EditEmployeeModal
+        employee={selectedEmployee}
         isOpen={openEditModal}
         setModalOpen={setOpenEditModal}
       />

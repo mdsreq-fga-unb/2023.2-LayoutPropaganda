@@ -1,5 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+import { BadRequestError } from "../../../../../shared/errors/BadRequestError";
 import { MakeUpdateEmployee } from "../../../useCases/factories/MakeUpdateEmployee";
 
 export async function UpdateEmployeeController(
@@ -16,11 +17,16 @@ export async function UpdateEmployeeController(
   const updateParamsSchema = z.object({
     id_employee: z.string().uuid(),
   });
+
   const data = updateBodySchema.parse(request.body);
   const { id_employee } = updateParamsSchema.parse(request.params);
 
-  const updateUseCase = MakeUpdateEmployee();
-  await updateUseCase.execute({ ...data, id_employee });
+  if (Object.keys(data).length === 0) {
+    throw new BadRequestError("No data to update");
+  }
 
-  return response.status(200).send();
+  const updateUseCase = MakeUpdateEmployee();
+  const updatedEmployee = await updateUseCase.execute({ ...data, id_employee });
+
+  return response.status(200).send(updatedEmployee);
 }

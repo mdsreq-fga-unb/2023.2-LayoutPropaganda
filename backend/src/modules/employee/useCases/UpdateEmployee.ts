@@ -31,11 +31,7 @@ export class UpdateEmployee {
       throw new NotFoundError("Employee does not exist");
     }
 
-    Object.entries(data).forEach(([key, value]) => {
-      if (value) {
-        employee[key] = value;
-      }
-    });
+    Object.assign(employee, data);
 
     await this.employeeRepository.save(employee);
 
