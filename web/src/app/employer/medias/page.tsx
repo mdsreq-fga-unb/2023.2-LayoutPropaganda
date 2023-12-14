@@ -135,7 +135,7 @@ export default function Medias() {
 
     return (
       <>
-        {data.map((media) => {
+        {info.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaEditorMenu>
