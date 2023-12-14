@@ -30,7 +30,7 @@ interface IMedia {
   description: string;
   latitude: number;
   longitude: number;
-  high: number;
+  height: number;
   width: number;
   maintenance: string;
   is_deleted: boolean;

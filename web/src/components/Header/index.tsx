@@ -24,6 +24,7 @@ export function Header() {
           <Link href="/employer/list">Funcionário</Link>
           <Link href="/employer/medias">Mídias</Link>
           <Link href="/employer/clientes">Clientes</Link>
+          <Link href="/employer/tasks">Responsabilidades</Link>
         </NavLinkContainer>
       );
     }
