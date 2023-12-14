@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const InfoContainer = styled.div`
@@ -24,6 +25,7 @@ export const SharedLineInfo = styled.div`
   flex-direction: row;
   width: 48%;
   margin-bottom: 20px;
+  gap: 16px;
 `;
 
 export const Info = styled.div`
@@ -42,4 +44,25 @@ export const InfoTitle = styled.p`
 export const InfoText = styled.p`
   font-size: 14px;
   color: #ffffff;
+`;
+
+export const ImagesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+`;
+
+export const ImageContainer = styled.div`
+  height: 100%;
+`;
+
+export const MediaImage = styled(Image)`
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ffffff;
 `;
