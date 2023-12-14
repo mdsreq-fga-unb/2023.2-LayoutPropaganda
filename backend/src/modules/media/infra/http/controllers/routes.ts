@@ -22,14 +22,14 @@ export async function mediaRoutes(app: FastifyInstance) {
 
 const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
   app.addHook("onRequest", verifyJWT);
-
-  app.post("/cashFlow/:id_media", CreateMediaCashFlowController);
-  app.get("cashFlow/pieChart", GetCashFlowPieChartController);
+  app.get("/cashFlow/pieChart", GetCashFlowPieChartController);
   app.get("/cashFlow/:id_media", ListMediaCashFlowController);
   app.get("/:id_media", GetMediaController);
-  app.delete("/cashFlow/:id_media_cash_flow", DeleteMediaCashFlowController);
 
+  app.post("/cashFlow/:id_media", CreateMediaCashFlowController);
   app.put("/:id_media", UpdateMediaController);
+
+  app.delete("/cashFlow/:id_media_cash_flow", DeleteMediaCashFlowController);
   app.delete("/:id_media", DeleteMediaController);
 
   app.post(

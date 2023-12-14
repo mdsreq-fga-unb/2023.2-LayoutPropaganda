@@ -1,55 +1,90 @@
 "use client";
 import { api } from "@/services/api";
+import "ag-grid-community/styles/ag-grid.css"; // Core CSS
+import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+import { AgGridReact } from "ag-grid-react";
 import { useEffect, useState } from "react";
-import { Checkbox, ContactAtribute, ContactAtributeBox, ContactAtributeEmail, ContactAtributeName, ContactAtributeTel, ContactInfoBox, ContactInfoLine, ContactListBox, Container } from "./styles";
+import { Container, CustomerListBox } from "./styles";
+
+interface Client {
+    name: string;
+    email: string;
+    phone: string;
+    message?: string;
+    was_contacted: boolean;
+    created_at: string
+}
 
 export default function Clients() {
-
-    interface Client {
-        name: string;
-        email: string;
-        phone: string;
-        message?: string; 
-    }
-    
     const [clients, setClients] = useState<Client[]>([]);
 
     useEffect(() => {
         api.get('/contacts').then(response => {
-            const responseData: any[] = response.data;
-        
-            const formattedClients: Client[] = responseData.map(clientData => ({
-                name: clientData.name,
-                email: clientData.email,
-                phone: clientData.phone,
-                message: clientData.message || '' 
-            }));
-            setClients(formattedClients);
+            setClients(response.data);
+            console.log(response.data)
         });
     }, []);
 
-    console.log(clients);
+    const [columnDefs, setColumnDefs] = useState([
+        {
+            headerName: "Contatado?",
+            field: "was_contacted",
+        },
+        {
+            field: "name",
+            headerName: "Nome",
+        },
+        {
+            field: "email",
+            headerName: "Email",
+        },
+        {
+            field: "phone",
+            headerName: "Telefone",
+        },
+        {
+            headerName: "Mensagem",
+            field: "message",
+        },
+        {
+            headerName: "Data",
+            field: "created_at",
+            sortable: true
+        },
+    ]);
+
+    const autoSizeStrategy = {
+        type: "fitGridWidth",
+        defaultMinWidth: 100,
+        columnLimits: [
+            {
+                colId: "Mensagem",
+                minWidth: 1500,
+            },
+        ],
+    };
+
+
     return (
         <Container>
-            <ContactListBox>
-                <ContactAtributeBox>
-                    <ContactAtribute>Nome</ContactAtribute>
-                    <ContactAtribute>Email</ContactAtribute>
-                    <ContactAtribute>Telefone</ContactAtribute>
-                </ContactAtributeBox>
-                <ContactInfoBox>
-                    {clients.map((clients) => (
-                        <div key={clients.email}>
-                            <ContactInfoLine>
-                                <Checkbox></Checkbox>
-                                <ContactAtributeName>{clients.name}</ContactAtributeName>
-                                <ContactAtributeEmail>{clients.email}</ContactAtributeEmail>
-                                <ContactAtributeTel>{clients.phone}</ContactAtributeTel>
-                            </ContactInfoLine>
-                        </div>
-                    ))}
-                </ContactInfoBox>
-            </ContactListBox>
+            <CustomerListBox>
+                <div
+                    className="ag-theme-alpine-dark"
+                    style={{ height: "700px", width: "100%" }}
+                >
+                    <AgGridReact
+                        columnDefs={columnDefs}
+                        rowData={clients as any[]}
+                        // pagination={true}
+                        // paginationPageSize={10}
+                        autoSizeStrategy={autoSizeStrategy}
+                        overlayNoRowsTemplate={
+                            "Não foi possível encontrar nenhum dado, tente novamente mais tarde"
+                        }
+                    />
+                </div>
+            </CustomerListBox>
         </Container>
     );
 }
