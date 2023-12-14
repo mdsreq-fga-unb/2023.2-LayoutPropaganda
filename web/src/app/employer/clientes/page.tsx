@@ -54,18 +54,6 @@ export default function Clients() {
         },
     ]);
 
-    const autoSizeStrategy = {
-        type: "fitGridWidth",
-        defaultMinWidth: 100,
-        columnLimits: [
-            {
-                colId: "Mensagem",
-                minWidth: 1500,
-            },
-        ],
-    };
-
-
     return (
         <Container>
             <CustomerListBox>
@@ -78,7 +66,16 @@ export default function Clients() {
                         rowData={clients as any[]}
                         // pagination={true}
                         // paginationPageSize={10}
-                        autoSizeStrategy={autoSizeStrategy}
+                        autoSizeStrategy={{
+                            type: "fitGridWidth",
+                            defaultMinWidth: 100,
+                            columnLimits: [
+                                {
+                                    colId: "message",
+                                    minWidth: 1500,
+                                },
+                            ],
+                        }}
                         overlayNoRowsTemplate={
                             "Não foi possível encontrar nenhum dado, tente novamente mais tarde"
                         }

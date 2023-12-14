@@ -1,7 +1,11 @@
 "use client";
 import { api } from "@/services/api";
+import "ag-grid-community/styles/ag-grid.css"; // Core CSS
+import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+import { AgGridReact } from "ag-grid-react";
 import { useEffect, useState } from "react";
-import { Checkbox, ContactAtribute, ContactAtributeBox, ContactAtributeEmail, ContactAtributeName, ContactAtributeTel, ContactInfoBox, ContactInfoLine, ContactListBox, Container } from "../clientes/styles";
+import { Container, TasksListBox } from "./styles";
 
 interface Task {
     title: string;
@@ -13,8 +17,33 @@ interface Task {
 export default function Tasks({params}: {params: {id: string}}) {
     const [tasks, setTasks] = useState<Task[]>([]);
 
+    const [columnDefs, setColumnDefs] = useState([
+        {
+            field: "title",
+            headerName: "Titulo",
+        },
+        {
+            field: "description",
+            headerName: "Descrição",
+        },
+        {
+            field: "deadline",
+            headerName: "Prazo",
+            sortable: true
+        },
+        {
+            field: "Status",
+            headerName: "status",
+        },
+        {
+            headerName: "Criado em",
+            field: "created_at",
+            sortable: true
+        },
+    ]);
+
     useEffect(() => {
-        api.get(`/tasks/${params.id}`).then(response => {
+        api.get(`/tasks`).then(response => {
             const responseData: any[] = response.data;
         
             const formattedTasks: Task[] = responseData.map(Tasks => ({
@@ -29,26 +58,32 @@ export default function Tasks({params}: {params: {id: string}}) {
 
     return (
         <Container>
-            <ContactListBox>
-                <ContactAtributeBox>
-                    <ContactAtribute>Tarefas</ContactAtribute>
-                    <ContactAtribute>Detalhes</ContactAtribute>
-                    <ContactAtribute>Prazo</ContactAtribute>
-                    <ContactAtribute>Status</ContactAtribute>
-                </ContactAtributeBox>
-                <ContactInfoBox>
-                    {tasks.map((tasks) => (
-                        <div key={tasks.}>
-                            <ContactInfoLine>
-                                <Checkbox></Checkbox>
-                                <ContactAtributeName>{tasks.name}</ContactAtributeName>
-                                <ContactAtributeEmail>{tasks.email}</ContactAtributeEmail>
-                                <ContactAtributeTel>{tasks.phone}</ContactAtributeTel>
-                            </ContactInfoLine>
-                        </div>
-                    ))}
-                </ContactInfoBox>
-            </ContactListBox>
+            <TasksListBox>
+                <div
+                    className="ag-theme-alpine-dark"
+                    style={{ height: "700px", width: "100%" }}
+                >
+                    <AgGridReact
+                        columnDefs={columnDefs}
+                        rowData={tasks as any[]}
+                        // pagination={true}
+                        // paginationPageSize={10}
+                        autoSizeStrategy={{
+                            type: "fitGridWidth",
+                            defaultMinWidth: 100,
+                            columnLimits: [
+                                {
+                                    colId: "message",
+                                    minWidth: 1500,
+                                },
+                            ],
+                        }}
+                        overlayNoRowsTemplate={
+                            "Não foi possível encontrar nenhum dado, tente novamente mais tarde"
+                        }
+                    />
+                </div>
+            </TasksListBox>
         </Container>
     );
 }

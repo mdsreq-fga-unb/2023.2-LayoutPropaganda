@@ -13,7 +13,7 @@ const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
   app.addHook("onRequest", verifyJWT);
 
   app.post("/", CreateTaskController);
-  app.get("/:id_employee", ListTaskController);
+  app.get("/", ListTaskController);
   app.delete("/:id_task", DeleteTaskController);
   app.put("/:id_task", UpdateTaskController);
 
