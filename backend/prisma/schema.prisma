@@ -65,8 +65,8 @@ model Task {
 model Media {
   id_media      String          @id @default(uuid())
   type          String
-  height        Float           @default(0)
-  width         Float           @default(0)
+  height        Float
+  width         Float
   region        String
   description   String
   latitude      Float
