@@ -9,29 +9,3 @@ Layout Propaganda é um sistema web de código fechado, construído com a finali
 ## Guia
 
 Por meio desta documentação, espera-se que aqueles que estejam autorizados à utilizar do sistema compreendam os requisitos funcionais e não funcionais trabalhados, bem como a arquitetura implementada para solucionar os problemas da empresa
-
-## Tecnologias
-
-### _Front_
-
-- Linguagem
-  `TypeScript`
-- Framework
-  `Next`
-- Api
-  `Google Maps`
-- Estilização
-  `Styled-Components`
-- Bibliotecas
-  `React`
-
-### _Back_
-
-- Linguagem
-  `Java`
-- Framework
-  `Springboot`
-- Banco de Dados
-  `PostgreSQL`
-- Conteinerização
-  `Docker`

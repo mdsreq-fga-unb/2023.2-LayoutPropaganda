@@ -30,7 +30,7 @@
 | Definição do problema e levantamento de requisitos | Diagrama de Ishikawa contendo o problema e suas causas; </br> Lista formal de requisitos funcionais e não funcionais; Backlog do produto organizado em User Stories devidamente priorizadas; | 20/09/23 | 20/09/23 |
 | Refinamento de requisitos                          | Entrega das histórias referentes ao MVP 1                | 09/11/23 | 23/11/23 |
 | Sprint 1             | Entrega das histórias referentes ao MVP 1 (USs 1.1.1.1; 1.1.1.2; 1.1.2.1; 1.1.2.2; 1.2.1.1; 1.2.1.2; 1.2.1.4).                                                                                                                                       | 09/11/23 | 23/11/23 |
-| Sprint 2                             | Versão final do produto de software com todos os seus requisitos devidamente implementados e testados. | 30/11/23 | 14/12/23 |
+| Sprint 2                             |Entrega das histórias referentes ao MVP 2 (USs 1.2.1.2; 1.2.1.4; 2.1.1.1; 2.1.1.2; 2.1.1.3; 2.1.1.4; 2.1.2.1; 2.1.2.2; 2.1.2.3; 2.2.1.1; 2.2.1.2; 2.2.2.1 e 2.2.2.2). | 30/11/23 | 14/12/23 |
 
 </br>
 </br>

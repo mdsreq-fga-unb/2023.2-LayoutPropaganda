@@ -33,8 +33,8 @@ O objetivo secundário do produto está centrado na melhoria da gestão empresar
 
 #### No Desenvolvimento Back-End:
 
-- Java
-- Spring-Boot
+- Node
 - Docker
 - PostgreSQL
-- SupaBase
+- PrismaORM
+- Express

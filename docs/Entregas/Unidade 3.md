@@ -18,3 +18,4 @@ Nesta unidade, aprendemos a coordenar melhor as interações da equipe. Isso se 
 ![USM1](../img/USM1.png)
 ![USM2](../img/USM2.png)
 
+
