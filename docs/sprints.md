@@ -10,10 +10,10 @@ Utilizamos sprints apenas para o desenvolvimento de produto de software funciona
 | Sprint Review | A Sprint Review foi realizada por meio de uma reuniao com o cliente, em que foi mostrado a ele as funcionalidades que a equipe implementou do MVP 1. Foi comunicado ao cliente que houveram débitos técnicos na sprint e ficou acertado que os mesmos seriam resolvidos na próxima sprint. Levando isso em conta, o cliente deu um feedback positivo quanto ao que foi implementado e entregue conforme o acordado. | 22/11/2023 |
 | Sprint Retrospective| A sprint Retrospective foi realizada com o grupo logo após a sprint Review. Nela o grupo apontou os pontos fortes da equipe e reforçou os pontos negativos. Cada membro deu seu ponto de vista do que poderia melhorar para a próxima entrega e ficou acordado que todos trabalhariam para botar em prática as novas suugestões| 22/11/2023 |
 
-## Débito técnico
+## Débitos técnicos
 | Débito técnico - MVP1| Status |
 |------| ----- |
-|Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.|
+|Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.| Feito |
 |Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema.| Feito |
 |Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas.| Feito |
 
@@ -40,22 +40,29 @@ Utilizamos sprints apenas para o desenvolvimento de produto de software funciona
 | Sprint Review | A Sprint Review estava marcada com o cliente para o dia 13/12, porém não foi possível para o cliente na data estipulada. A nova data foi então passada para o dia 14/12 | 14/12/2023 |
 | Sprint Retrospective| -------- | 14/12/2023 |
 
+## Débitos técnicos
+| Débito técnico - MVP2|
+|------|
+|Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.|
+|Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.|
+|Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa.|
+
 ## DoR e DoD do MVP2
 |História | Atende ao DoR ? | Atende ao DoD ? |
 |---------|-----------------|-----------------|
-|Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.| Sim | --- |
-|Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.| Sim | --- |
+|Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.| Sim | Não foi implementado |
+|Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.| Sim | Não foi implementado |
 |Como funcionário, eu quero adicionar novos funcionários ao meu sistema para que tenham acesso a plataforma.| Sim | Sim |
 |Como funcionário, eu quero de excluir funcionários para em caso de demissão, eles não terem mais acesso a plataforma.| Sim | Sim |
 |Como funcionário, eu quero atualizar outros funcionários já criados para corrigir erros cometidos na criação.| Sim | Sim |
 |Como funcionário, eu quero ver todos os funcionários criados para ver quem tem acesso a plataforma.| Sim | Sim |
-|Como funcionário, eu quero adicionar responsabilidades aos funcionários para melhor organização.| Sim | --- |
-|Como funcionário, eu quero remover responsabilidades aos funcionários para que tarefas.| Sim | --- |
-|Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.| Sim | --- |
+|Como funcionário, eu quero adicionar responsabilidades aos funcionários para melhor organização.| Sim | Sim |
+|Como funcionário, eu quero remover responsabilidades aos funcionários para que tarefas.| Sim | Sim |
+|Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.| Sim | Sim |
 |Como funcionário, eu quero poder visualizar o histórico de fluxo de caixa dos produtos, para acompanhar o desempenho financeiro dos produtos.| Sim | Sim |
-|Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes.| Sim | --- |
-|Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa.| Sim | --- |
-|Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa.| Sim | --- |
+|Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes.| Sim | Sim |
+|Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa.| Sim | Sim |
+|Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa.| Sim | Não foi implementado|
 
 
 
