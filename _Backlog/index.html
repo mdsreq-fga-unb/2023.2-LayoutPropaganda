@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title> Backlog - Layout Propaganda Doc</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Layout Propaganda Doc</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Início</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Visao-de-Projeto/" class="nav-link">Visão de Projeto</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Vis%C3%A3o-de-Produto/" class="nav-link">Visão de Produto</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link"> Backlog</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../historias/" class="nav-link">Historias</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../sprints/" class="nav-link">Registro das sprints:</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Entregas <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Entregas/Unidade%201/" class="dropdown-item">Entrega Unidade 1</a>
+</li>
+                                    
+<li>
+    <a href="../Entregas/Unidade%202/" class="dropdown-item">Entrega Unidade 2</a>
+</li>
+                                    
+<li>
+    <a href="../Entregas/Unidade%203/" class="dropdown-item">Entrega Unidade 3</a>
+</li>
+                                    
+<li>
+    <a href="../Entregas/Unidade%204/" class="dropdown-item">Entrega Unidade 4</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Vis%C3%A3o-de-Produto/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../historias/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link"></a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#requisitos-funcionais" class="nav-link">Requisitos Funcionais</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#requisitos-nao-funcionais" class="nav-link">Requisitos Não Funcionais</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#definition-of-ready-dor" class="nav-link">Definition of Ready (DoR):</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#definition-of-done-dod" class="nav-link">Definition of Done (DoD):</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#backlog" class="nav-link">Backlog</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#proposta-de-mvp1" class="nav-link">Proposta de MVP1</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#proposta-de-mvp2" class="nav-link">Proposta de MVP2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#criterios-de-aceitacao" class="nav-link">Critérios de aceitação</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1"></h1>
+<h1 id="requisitos-funcionais">Requisitos Funcionais</h1>
+<table>
+<thead>
+<tr>
+<th>código</th>
+<th>Requisitos Funcionais</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RF01</td>
+<td>Captação de dados de contato do cliente.</td>
+</tr>
+<tr>
+<td>RF02</td>
+<td>Visualização dos produtos por meio de tabela e mapa.</td>
+</tr>
+<tr>
+<td>RF03</td>
+<td>Pesquisar os produtos por texto</td>
+</tr>
+<tr>
+<td>RF04</td>
+<td>Cadastrar novos produtos.</td>
+</tr>
+<tr>
+<td>RF05</td>
+<td>Excluir produtos existentes.</td>
+</tr>
+<tr>
+<td>RF06</td>
+<td>Atualizar dados dos produtos.</td>
+</tr>
+<tr>
+<td>RF07</td>
+<td>Cadastrar novos funcionários.</td>
+</tr>
+<tr>
+<td>RF08</td>
+<td>Visualizar funcionários.</td>
+</tr>
+<tr>
+<td>RF09</td>
+<td>Alterar dados do funcionário.</td>
+</tr>
+<tr>
+<td>RF10</td>
+<td>Excluir funcionários.</td>
+</tr>
+<tr>
+<td>RF11</td>
+<td>Visualizar o faturamento dos produtos.</td>
+</tr>
+<tr>
+<td>RF12</td>
+<td>Visualizar lucro dos produtos.</td>
+</tr>
+<tr>
+<td>RF13</td>
+<td>Importar produtos com csv e xlsx.</td>
+</tr>
+<tr>
+<td>RF14</td>
+<td>Notificar com email validade de contrato</td>
+</tr>
+<tr>
+<td>RF15</td>
+<td>Atribuir responsabilidades à funcionários</td>
+</tr>
+<tr>
+<td>RF16</td>
+<td>Remover responsabilidades de funcionários</td>
+</tr>
+<tr>
+<td>RF17</td>
+<td>Visualizar responsabilidades de funcionários</td>
+</tr>
+<tr>
+<td>RF18</td>
+<td>Completar responsabilidades de funcionários</td>
+</tr>
+<tr>
+<td>RF19</td>
+<td>Gerar gráficos de lucro por região</td>
+</tr>
+<tr>
+<td>RF20</td>
+<td>Adicionar lucros e gastos</td>
+</tr>
+<tr>
+<td>RF21</td>
+<td>Remover lucros e gastos</td>
+</tr>
+</tbody>
+</table>
+<p></br>
+</br></p>
+<h1 id="requisitos-nao-funcionais">Requisitos Não Funcionais</h1>
+<table>
+<thead>
+<tr>
+<th>código</th>
+<th>tipo</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RNF01</td>
+<td>INTERFACE</td>
+<td>Deve ser possível visualizar a interface sem scroll horizontal nas proporções: 16:9, 9:16</td>
+</tr>
+<tr>
+<td>RNF02</td>
+<td>DESEMPENHO</td>
+<td>Todas as requisições devem retornar em menos de um 1 segundo para velocidade de banda acima de 50MB/s</td>
+</tr>
+<tr>
+<td>RNF03</td>
+<td>INTERFACE</td>
+<td>A interface deve ter o mapa de calor com distribuição do tipo: distribuição uniforme</td>
+</tr>
+<tr>
+<td>RNF04</td>
+<td>PORTABILIDADE</td>
+<td>O sistema deve ser compatível com as últimas versões do Chrome, Firefox e Safari</td>
+</tr>
+<tr>
+<td>RNF05</td>
+<td>REQUISITOS DE IMPLEMENTAÇÃO</td>
+<td>A aplicação deve garantir a privacidade dos dados dos usuários, estando de acordo com a Lei Geral de Proteção de Dados (13.709/2018)</td>
+</tr>
+<tr>
+<td>RNF06</td>
+<td>SUPORTABILIDADE</td>
+<td>O código deve ser escrito de forma que facilite a manutenção e atualizações por meio de arquitetura SOLID e uso do DDD</td>
+</tr>
+<tr>
+<td>RNF07</td>
+<td>USABILIDADE</td>
+<td>A aplicação deve conter uma seção informativa acerca dos tipos de painéis que a empresa aluga</td>
+</tr>
+<tr>
+<td>RNF08</td>
+<td>REQUISITOS DE IMPLEMENTAÇÃO</td>
+<td>A área restrita do sistema deve permitir acesso apenas aos funcionários autenticados</td>
+</tr>
+<tr>
+<td>RNF09</td>
+<td>USABILIDADE</td>
+<td>Filtrar os produtos por cidades, disponibilidade e tipos de mídias.</td>
+</tr>
+</tbody>
+</table>
+<p></br>
+</br></p>
+<h1 id="definition-of-ready-dor">Definition of Ready (DoR):</h1>
+<p>Uma história atingirá a definição de preparada quando estiver de acordo com esses quatro itens:</p>
+<ul>
+<li>A história de usuário está representando um requisito?;</li>
+<li>A história possui informação necessária para ser trabalhada?;</li>
+<li>A história possui critérios de aceitação?;</li>
+<li>A história cabe em uma sprint?</li>
+</ul>
+<h1 id="definition-of-done-dod">Definition of Done (DoD):</h1>
+<p>A história atingirá a definição de pronta quando estiver de acordo com esses itens:</p>
+<ul>
+<li>Estiver de acordo com todos os critérios de aceitação;</li>
+<li>Sua implementação estiver de acordo com os padrões de codificação;</li>
+</ul>
+<h1 id="backlog">Backlog</h1>
+<table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Épico</th>
+<th>Capability</th>
+<th>Feature</th>
+<th>User Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.1</strong> Suporte ao cliente</td>
+<td><strong>1.1.1</strong> Gerir contatos de clientes</td>
+<td><strong>1.1.1.1</strong> Como cliente, eu quero informar meu contato para que algum funcionário me auxilie na escolha.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.1</strong> Suporte ao cliente</td>
+<td><strong>1.1.1</strong> Gerir contatos de clientes</td>
+<td><strong>1.1.1.2</strong> Como funcionário, eu quero ter uma forma de visualizar os contatos preenchidos para que eu possa dialogar com os interessados.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.1</strong> Suporte ao cliente</td>
+<td><strong>1.1.2</strong> Disponibilizar os produtos para visualização</td>
+<td><strong>1.1.2.1</strong> Como cliente, eu quero visualizar os produtos em tabela e mapa, para facilitar a identificação e busca.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.1</strong> Suporte ao cliente</td>
+<td><strong>1.1.2</strong> Disponibilizar os produtos para visualização</td>
+<td><strong>1.1.2.2</strong> Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.2</strong> Administração de informações dos produtos</td>
+<td><strong>1.2.1</strong> Gerir detalhes de informações de produtos</td>
+<td><strong>1.2.1.1</strong> Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.2</strong> Administração de informações dos produtos</td>
+<td><strong>1.2.1</strong> Gerir detalhes de informações de produtos</td>
+<td><strong>1.2.1.2</strong> Como funcionário, eu quero remover produtos para manter a visualização coerente com o mundo real.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.2</strong> Administração de informações dos produtos</td>
+<td><strong>1.2.1</strong> Gerir detalhes de informações de produtos</td>
+<td><strong>1.2.1.3</strong> Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.2</strong> Administração de informações dos produtos</td>
+<td><strong>1.2.1</strong> Gerir detalhes de informações de produtos</td>
+<td><strong>1.2.1.4</strong> Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>1</strong> Plataforma de gerênciamento e visualização de catálogo</td>
+<td><strong>1.2</strong> Administração de informações dos produtos</td>
+<td><strong>1.2.1</strong> Gerir detalhes de informações de produtos</td>
+<td><strong>1.2.1.5</strong> Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.1</strong> Gerir detalhes de informações dos funcionários</td>
+<td><strong>2.1.1.1</strong> Como funcionário, eu quero adicionar novos funcionário são meu sistema para que tenham acesso a plataforma.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.1</strong> Gerir detalhes de informações dos funcionários</td>
+<td><strong>2.1.1.2</strong> Como funcionário, eu quero de excluir funcionários para em caso de demissão, eles não terem mais acesso a plataforma.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.1</strong> Gerir detalhes de informações dos funcionários</td>
+<td><strong>2.1.1.3</strong> Como funcionário, eu quero atualizar outros funcionários já criados para corrigir erros cometidos na criação.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.1</strong> Gerir detalhes de informações dos funcionários</td>
+<td><strong>2.1.1.4</strong> Como funcionário, eu quero ver todos os funcionários criados para ver quem tem acesso a plataforma.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.2</strong> Gerir responsabilidades dos funcionários</td>
+<td><strong>2.1.2.1</strong> Como funcionário, eu quero adicionar responsabilidades aos funcionários para melhor organização.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.2</strong> Gerir responsabilidades dos funcionários</td>
+<td><strong>2.1.2.2</strong> Como funcionário, eu quero remover responsabilidades aos funcionários para que tarefas.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.1</strong> Administração dos funcionários</td>
+<td><strong>2.1.2</strong> Gerir responsabilidades dos funcionários</td>
+<td><strong>2.1.2.3</strong> Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.2</strong> Gerenciar finanças</td>
+<td><strong>2.2.1</strong> Visualizar  métricas do financeiro</td>
+<td><strong>2.2.1.1</strong> Como funcionário, eu quero poder visualizar o histórico de fluxo de caixa dos produtos, para acompanhar o desempenho financeiro dos produtos.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.2</strong> Gerenciar finanças</td>
+<td><strong>2.2.1</strong> Visualizar  métricas do financeiro</td>
+<td><strong>2.2.1.2</strong> Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.2</strong> Gerenciar finanças</td>
+<td><strong>2.2.2</strong> Gerenciar  dados financeiros dos produtos</td>
+<td><strong>2.2.2.1</strong> Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa.</td>
+</tr>
+<tr>
+<td>Melhorar visibilidade de produtos e gerenciamento empresarial.</td>
+<td><strong>2</strong> Plataforma de gerenciamento empresarial</td>
+<td><strong>2.2</strong> Gerenciar finanças</td>
+<td><strong>2.2.2</strong> Gerenciar  dados financeiros dos produtos</td>
+<td><strong>2.2.2.2</strong> Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa</td>
+</tr>
+</tbody>
+</table>
+<p></br>
+</br></p>
+<h1 id="proposta-de-mvp1">Proposta de MVP1</h1>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1.1.1</td>
+<td> Como cliente, eu quero informar meu contato para que algum funcionário me auxilie na escolha.</td>
+</tr>
+<tr>
+<td>1.1.1.2</td>
+<td> Como funcionário, eu quero ter uma forma de visualizar os contatos preenchidos para que eu possa dialogar com os interessados.</td>
+</tr>
+<tr>
+<td>1.1.2.1</td>
+<td> Como cliente, eu quero visualizar os produtos em tabela e mapa, para facilitar a identificação e busca.</td>
+</tr>
+<tr>
+<td>1.1.2.2</td>
+<td> Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas.</td>
+</tr>
+<tr>
+<td>1.2.1.1</td>
+<td> Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema.</td>
+</tr>
+<tr>
+<td>1.2.1.2</td>
+<td> Como funcionário, eu quero remover produtos para manter a visualização coerente com o mundo real.</td>
+</tr>
+<tr>
+<td>1.2.1.3</td>
+<td> Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.</td>
+</tr>
+</tbody>
+</table>
+<p></br>
+</br></p>
+<h1 id="proposta-de-mvp2">Proposta de MVP2</h1>
+<table>
+<thead>
+<tr>
+<th>US</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.2.1.2</td>
+<td> Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.</td>
+</tr>
+<tr>
+<td>1.2.1.4</td>
+<td> Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.</td>
+</tr>
+<tr>
+<td>2.1.1.1</td>
+<td> Como funcionário, eu quero adicionar novos funcionários ao meu sistema para que tenham acesso a plataforma.</td>
+</tr>
+<tr>
+<td>2.1.1.2</td>
+<td> Como funcionário, eu quero de excluir funcionários para em caso de demissão, eles não terem mais acesso a plataforma.</td>
+</tr>
+<tr>
+<td>2.1.1.3</td>
+<td> Como funcionário, eu quero atualizar outros funcionários já criados para corrigir erros cometidos na criação.</td>
+</tr>
+<tr>
+<td>2.1.1.4</td>
+<td> Como funcionário, eu quero ver todos os funcionários criados para ver quem tem acesso a plataforma.</td>
+</tr>
+<tr>
+<td>2.1.2.1</td>
+<td> Como funcionário, eu quero adicionar responsabilidades aos funcionários para melhor organização.</td>
+</tr>
+<tr>
+<td>2.1.2.2</td>
+<td> Como funcionário, eu quero remover responsabilidades aos funcionários para que tarefas.</td>
+</tr>
+<tr>
+<td>2.1.2.3</td>
+<td> Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.</td>
+</tr>
+<tr>
+<td>2.2.1.1</td>
+<td> Como funcionário, eu quero poder visualizar o histórico de fluxo de caixa dos produtos, para acompanhar o desempenho financeiro dos produtos.</td>
+</tr>
+<tr>
+<td>2.2.1.2</td>
+<td> Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes</td>
+</tr>
+<tr>
+<td>2.2.2.1</td>
+<td>Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa</td>
+</tr>
+<tr>
+<td>2.2.2.2</td>
+<td> Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa</td>
+</tr>
+</tbody>
+</table>
+<h1 id="criterios-de-aceitacao">Critérios de aceitação</h1>
+<table>
+<thead>
+<tr>
+<th>História</th>
+<th>Critério</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Como cliente, eu quero informar meu contato para que algum funcionário me auxilie na edição.</td>
+<td>O cliente deve ser capaz de fornecer seu nome, email e telefone; O funcionário deve ser notificado do contato do cliente; Os dados devem ser salvos em um banco de dados.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero ter uma forma de visualizar os contatos preenchidos para que eu possa dialogar com os interessados.</td>
+<td>O funcionário deve ser capaz de visualizar todos os contatos preenchidos em uma tabela; O funcionário deve ser capaz de visualizar as informações de contato do cliente, incluindo nome, e-mail, telefone e data/hora em que o contato foi preenchido.</td>
+</tr>
+<tr>
+<td>Como cliente, eu quero visualizar os produtos em lista e mapa, para facilitar a identificação e busca.</td>
+<td>A lista deve conter as seguintes informações: nome, região, tipo de mídia e disponibilidade; Deve ter um mapa ao lado de cada produto mostrando a sua localização  O cliente deve ser capaz de filtrar os produtos por: nome, localização, tipo de mídia e disponibilidade.</td>
+</tr>
+<tr>
+<td>Como cliente, eu quero pesquisar os produtos por texto, para achar produtos por informações específicas.</td>
+<td>Conforme o cliente digita no campo de pesquisa, o sistema deve atualizar os resultados da pesquisa em tempo real; Os resultados da pesquisa devem mostrar produtos que contém o texto pesquisado, seja no nome, descrição, região ou tipo; Se a pesquisa não retornar resultados, deve ser mostrada uma mensagem informando que nenhum produto correspondente foi encontrado; Os resultados da pesquisa devem fornecer o nome, imagem, região, descrição e localização por mapa de cada mídia correspondente; O sistema pode sugerir pesquisas anteriores ao cliente ao começar a digitar.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero adicionar novos produtos para que a atualização da página inicial seja pelo sistema.</td>
+<td>O formulário deve solicitar nome, localização, tamanho, tipo, descrição, região, e imagens (no máximo 4); Os tipos devem ser: Outdoor, Triedro e Frontlight; O funcionário deve receber um pop-up de confirmação quando o produto for adicionado; O novo produto deve ser exibido na listagem após a adição; O funcionário deve receber um pop-up de falha quando a adição falhar</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero remover produtos para manter a visualização coerente com o mundo real.</td>
+<td>O sistema deve solicitar uma confirmação ao funcionário antes de remover um produto; O Sistema deve manter um registro da remoção de um produto para restauração; A listagem de mídias deve ser atualizada automaticamente após a remoção de um produto; O funcionário deve receber um pop-up de que a remoção foi bem-sucedida; Em caso de falha na remoção, o funcionário deve receber um pop-up informando sobre o erro.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero atualizar informações e estado sobre um produto, para que os produtos mantenham informações corretas.</td>
+<td>O sistema deve fornecer campos para editar nome, localização e disponibilidade; Após a atualização das informações e do estado do produto, o funcionário deve receber um pop-up de que as alterações foram salvas com sucesso; O funcionário deve ter uma opção para desfazer as alterações, caso perceba um erro imediatamente após a atualização.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero ser notificado via email sempre que um contrato estiver 15 dias antes do seu vencimento.</td>
+<td>A notificação deve ser enviada via e-mail ao funcionário responsável; Deve constar no conteúdo do e-mail as seguintes informações sobre o contato: Nome das partes envolvidas, data do início e do vencimento no formato XX/XX/XXXX e localização do produto; Em caso de falha, o sistema deve tentar reenviar o e-mail após 1 hora, no máximo 3 tentativas.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero importar arquivos .csv ou .xslx sobre os produtos para criar vários de uma vez.</td>
+<td>O sistema deve aceitar e processar arquivos nos formatos .csv e .xlxs Após a importação, o sistema deve fornecer um resumo dos produtos importados, incluindo qualquer erro ou problema encontrado; Se um produto com informações idênticas já existir no sistema, o mesmo não deve ser duplicado. O sistema pode alertar o usuário ou ignorar a entrada duplicada; Após a importação, bem-sucedida, os produtos importados devem ser adequadamente integrados ao sistema e aparecer em pesquisas, listagens e outras funções pertinentes.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero adicionar novos funcionários ao meu sistema para que tenham acesso à plataforma</td>
+<td>O sistema deve solicitar nome, sobrenome, CPF, e-mail e senha inicial Não deve ser possível adicionar dois funcionários com o mesmo endereço de e-mail; Após a adição bem-sucedida, o sistema deve mostrar um pop-up de confirmação e deve atualizar a lista de funcionários; O novo funcionário deve receber as instruções de primeiro acesso por e-mail, incluindo como configurar a senha</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero excluir funcionários para, em caso de demissão, não terem mais acesso à plataforma.</td>
+<td>Antes de excluir um funcionário, o sistema deve solicitar uma confirmação da ação; Após a exclusão, um pop-up de confirmação de que o funcionário foi removido com sucesso deve ser exibido; Após a exclusão, o funcionário não deve mais ser capaz de acessar a plataforma usando suas credenciais; Em caso de erro na exclusão, deve existir um procedimento para restaurar o acesso do funcionário</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero atualizar outros funcionários já criados para corrigir erros cometidos na criação.</td>
+<td>Deve ser possível alterar nome, sobrenome, CPF, e e-mail; Se o e-mail for alterado, o sistema deve garantir que não exista outro funcionário com o mesmo endereço de e-mail; Após editar e salvar as alterações, informações, um pop-up de confirmação deve ser exibido.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero ver todos os funcionários criados para ver quem tem acesso à plataforma.</td>
+<td>Cada entrada de lista deve mostrar informações básicas do funcionário, como nome, sobrenome, ID, cargo, e data de criação no sistema; Deve ser possível ordenar a lista de funcionários por diversos critérios, como nome e data de adesão; Deve haver uma funcionalidade de buscas que permite filtrar a lista de funcionários por nome e sobrenome; A visualização da lista de funcionários deve ser acessível apenas a funcionários com as devidas permissões, como gerentes e administradores.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero adicionar tarefas aos funcionários para melhor organização.</td>
+<td>Cada entrada de lista deve mostrar informações básicas do funcionário, como nome, sobrenome, ID, cargo, e data de criação no sistema; Deve ser possível ordenar a lista de funcionários por diversos critérios, como nome e data de adesão; Deve haver uma funcionalidade de buscas que permite filtrar a lista de funcionários por nome e sobrenome; A visualização da lista de funcionários deve ser acessível apenas a funcionários com as devidas permissões, como gerentes e administradores.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero adicionar tarefas aos funcionários para melhor organização.</td>
+<td>Deve ser solicitado, descrição, prazo e o funcionário que terá a tarefa; Após atribuir a tarefa, o sistema deve confirmar que a ação foi realizada com sucesso; Quando uma nova tarefa for atribuída, o funcionário deve receber uma notificação via e-mail com as informações de sua nova tarefa</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero remover tarefas dos funcionários para manter suas responsabilidades atualizadas.</td>
+<td>Ao tentar remover uma tarefa, um pop-up de confirmação deve ser exibido; Ao remover uma tarefa, a lista de tarefas do funcionário deve ser imediatamente atualizada; O funcionário deve receber uma notificação via e-mail informando da remoção de sua tarefa.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero ver as responsabilidades a mim atribuídas para melhor organização.</td>
+<td>O funcionário deve poder marcar uma tarefa como concluída e receber um pop-up de confirmação antes da ação.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero poder visualizar o histórico de fluxo de caixa dos produtos, para acompanhar o desempenho financeiro dos produtos.</td>
+<td>O funcionário deve ter a opção de definir um intervalo de datas para visualizar o fluxo de caixa em um período específico; O histórico deve mostrar os detalhes: receitas, despesas, lucro/prejuízo associado a cada produto dentro do período selecionado; Os termos financeiros e os números exibidos devem possuir legendas ou tooltips explicativos.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero poder gerar gráficos de pizza sobre o lucro por região e por produto para facilitar a identificação dos produtos mais importantes.</td>
+<td>Deve haver um seletor para selecionar a visualização do gráfico ou por região ou por produto; Os gráficos devem refletir os dados mais recentes disponíveis sobre lucros por região e produto</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero poder adicionar ganhos e gastos a um produto para que eu controle o fluxo de caixa.</td>
+<td>Ao adicionar um ganho ou gasto, os campos como “Quantidade”, “Data” e “Descrição” devem ser obrigatórios; Os valores inseridos para ganhos e gastos devem ser numéricos; Após adicionar um ganho ou gasto, deve ser exibido um pop-up confirmando a ação; Após a adição de um novo ganho ou gasto, o fluxo de caixa associado ao produto deve ser atualizado automaticamente.</td>
+</tr>
+<tr>
+<td>Como funcionário, eu quero poder remover ganhos e gastos a um produto para que eu controle o fluxo de caixa.</td>
+<td>Ao tentar realizar uma remoção o sistema deve solicitar uma confirmação; Após a remoção, um pop-up confirmando a remoção deve ser exibido; Após a remoção, o fluxo de caixa associado ao produto deve ser atualizado automaticamente; Deve haver um botão para desfazer a remoção.</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
