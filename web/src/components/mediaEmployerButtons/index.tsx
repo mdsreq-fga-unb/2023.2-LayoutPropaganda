@@ -25,7 +25,7 @@ export default function MediaEmployerButtons({
   const [openModal, setOpenModal] = useState(false);
   return (
     <ButtonContainer>
-      <PenSquare onClick={() => router.push("/employer/editMedia")} />
+      <PenSquare onClick={() => router.push("/employer/editMedia/" + id)} />
       <IconButton onClick={() => router.push("/employer/readMedia/" + id)}>
         <BookOpenText color="#22d422" />
       </IconButton>

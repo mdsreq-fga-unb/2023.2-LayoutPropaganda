@@ -110,7 +110,7 @@ export default function CreateMedia() {
     try {
       await api.post("/medias", formData);
     } catch (error) {
-      console.log("Oieee", error);
+      console.log(error);
     }
   };
 

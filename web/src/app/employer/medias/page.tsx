@@ -24,7 +24,10 @@ import {
 } from "@/app/medias/styles";
 import LayoutMap from "@/components/LayoutMap";
 import MediaEmployerButtons from "@/components/mediaEmployerButtons";
+import MediasSearchBar from "@/components/mediasSearchBar";
 import { api } from "@/services/api";
+import { IMedia } from "@/types/media";
+import { regions } from "@/utils/regions";
 import { motion } from "framer-motion";
 import {
   ChevronDown,
@@ -33,6 +36,7 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fromLatLng, setKey } from "react-geocode";
 import "swiper/css";
@@ -47,10 +51,6 @@ import {
   MediaImage,
   SearchBarContainer,
 } from "./styles";
-import { useRouter } from "next/navigation";
-import MediasSearchBar from "@/components/mediasSearchBar";
-import { IMedia } from "@/types/media";
-import { regions } from "@/utils/regions";
 
 interface MediaAddresses {
   [mediaId: string]: string;
@@ -227,21 +227,21 @@ export default function Medias() {
     };
   } = {
     tipo: {
-      painel: true,
-      outdoor: true,
-      frontlight: true,
+      painel: false,
+      outdoor: false,
+      frontlight: false,
     },
     região: {},
     Disponibilidade: {
-      available: true,
-      unavailable: true,
+      available: false,
+      unavailable: false,
     },
   };
 
   // generate the region object based on a list of regions
 
   regions.forEach((region: string) => {
-    filters["região"][region] = true;
+    filters["região"][region] = false;
   });
 
   const [listFilters, setListFilters] = useState<IListFilters>(filters);
