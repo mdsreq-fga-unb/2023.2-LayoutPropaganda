@@ -37,8 +37,8 @@ Utilizamos sprints apenas para o desenvolvimento de produto de software funciona
 | Sprint Planning  | Foi realizada uma reunião com o cliente e apresentado as histórias: 1.2.1.2, 1.2.1.4, 2.1.1.1, 2.1.1.2, 2.1.1.3, 2.1.1.4, 2.1.2.1, 2.1.2.2, 2.1.2.3, 2.2.1.1, 2.2.1.2, 2.2.2.1 e 2.2.2.2 os quais correspondem às histórias do MVP 2. Ficou então acordado que todas elas estão prontas para entrar nessa sprint. | 30/11/2023 |
 | Sprint | 	Desenvolvimento das histórias acordadas com o Product Owner durante a Sprint Planning. | 01/12/2023 até 13/12/2023 |
 | Dailies |As dailies são realizadas presencialmente de segunda a sexta na faculdade. Caso nem todos os membros consigam participar, atualizações diárias são enviadas via whatsapp do grupo| -------- |
-| Sprint Review | ------- | 13/12/2023 |
-| Sprint Retrospective| -------- | ------ |
+| Sprint Review | A Sprint Review estava marcada com o cliente para o dia 13/12, porém não foi possível para o cliente na data estipulada. A nova data foi então passada para o dia 14/12 | 14/12/2023 |
+| Sprint Retrospective| -------- | 14/12/2023 |
 
 ## DoR e DoD do MVP2
 |História | Atende ao DoR ? | Atende ao DoD ? |

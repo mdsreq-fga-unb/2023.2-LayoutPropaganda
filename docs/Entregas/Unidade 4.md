@@ -15,6 +15,10 @@ Nesta etapa do curso, consolidamos valiosas lições sobre a dinâmica de trabal
 ![ECS](../img/Destinos2.png)
 ![ECS](../img/Destinos3.png)
 
+# Especificação de Caso de Uso 3
+![ECS](../img/Reco1.png)
+![ECS](../img/Reco2.png)
+![ECS](../img/Reco3.png)
 
 
 
