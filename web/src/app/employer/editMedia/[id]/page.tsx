@@ -67,7 +67,7 @@ export default function UpdateMedia({params}: {params: {id: string}}) {
         setLongitude(mediaData.longitude);
         setMaintenance(mediaData.maintenance);
         setIsAvailable(mediaData.is_available.toString()); 
-        setLargura(mediaData.high);
+        setLargura(mediaData.height);
         setAltura(mediaData.width);
       } catch (error) {
         console.log(error);
