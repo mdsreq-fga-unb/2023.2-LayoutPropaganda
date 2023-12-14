@@ -6,13 +6,14 @@ export async function CreateMediaCashFlowController(
   request: FastifyRequest,
   response: FastifyReply,
 ) {
+  console.log("FODA");
   const createMediaCashFlowBodySchema = z.object({
     description: z.string(),
-    reference_date: z.date(),
+    reference_date: z.coerce.date(),
     quantity: z.number(),
   });
 
-  const data = createMediaCashFlowBodySchema.parse(request.params);
+  const data = createMediaCashFlowBodySchema.parse(request.body);
 
   const createMediaCashFlowParamsSchema = z.object({
     id_media: z.string().uuid(),
@@ -20,7 +21,10 @@ export async function CreateMediaCashFlowController(
   const { id_media } = createMediaCashFlowParamsSchema.parse(request.params);
 
   const createMediaCashFlowUseCase = MakeCreateMediaCashFlow();
-  await createMediaCashFlowUseCase.execute({ ...data, id_media });
+  const cashFlow = await createMediaCashFlowUseCase.execute({
+    ...data,
+    id_media,
+  });
 
-  return response.status(200).send();
+  return response.status(200).send(cashFlow);
 }

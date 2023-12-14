@@ -96,8 +96,8 @@ export default function CreateMedia() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("description", description);
-    formData.append("altura", String(altura));
-    formData.append("largura", String(largura));
+    formData.append("height", String(altura));
+    formData.append("width", String(largura));
     formData.append("region", region);
     formData.append("type", type);
     formData.append("latitude", String(latitude));

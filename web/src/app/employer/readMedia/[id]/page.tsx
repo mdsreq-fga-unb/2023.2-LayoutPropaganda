@@ -129,7 +129,7 @@ export default function ReadMedia({ params }: { params: { id: string } }) {
               return (
                 <ImageContainer key={index}>
                   <MediaImage
-                    src={image.url}
+                    src={process.env.NEXT_PUBLIC_BACKEND_URL + "/files/" + image.url}
                     alt={"mediaImage"}
                     width={100}
                     height={100}
