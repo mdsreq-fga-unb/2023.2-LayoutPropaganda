@@ -95,7 +95,7 @@ export default function ReadMedia({ params }: { params: { id: string } }) {
   return (
     <Container>
       <MapContainer>
-        <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
+        <LayoutMap center={{ lat: media.latitude, lng: media.longitude }} />
       </MapContainer>
       <DataContainer>
         <InfoContainer>
