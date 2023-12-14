@@ -14,6 +14,7 @@ export class PrismaTaskRepository implements ITaskRepository {
   }
 
   async findById(id_task: string): Promise<Task | null> {
+    console.log(id_task);
     return this.prisma.task.findUnique({
       where: {
         id_task,
