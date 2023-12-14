@@ -20,7 +20,7 @@ import {
   MediaInfoTexts,
   MediaList,
   MediaListContainer,
-  RemoveFilterButton
+  RemoveFilterButton,
 } from "@/app/medias/styles";
 import LayoutMap from "@/components/LayoutMap";
 import MediaEmployerButtons from "@/components/mediaEmployerButtons";
@@ -40,29 +40,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { MediaEditorMenu, MediaImage } from "./styles";
-
-interface IMediaImage {
-  id_media_image: string;
-  id_media: string;
-  url: string;
-  is_deleted: boolean;
-  updated_at: Date;
-  created_at: Date;
-}
-export interface IMedia {
-  id_media: string;
-  type: string;
-  region: string;
-  description: string;
-  latitude: number;
-  longitude: number;
-  is_deleted: boolean;
-  is_available: boolean;
-  updated_at: Date;
-  created_at: Date;
-  MediaImages: IMediaImage[];
-}
+import {
+  ButtonContainer,
+  CreateMediaButton,
+  MediaEditorMenu,
+  MediaImage,
+  SearchBarContainer,
+} from "./styles";
+import { useRouter } from "next/navigation";
+import MediasSearchBar from "@/components/mediasSearchBar";
+import { IMedia } from "@/types/media";
 
 interface MediaAddresses {
   [mediaId: string]: string;
@@ -79,6 +66,8 @@ export default function Medias() {
 
   const googleMapsApiKey = process.env.NEXT_PUBLIC_MAP_API_KEY || "";
 
+  const router = useRouter();
+
   const getMedias = async (): Promise<IMedia[]> => {
     const response = await api.get("/medias");
     return response.data;
@@ -87,6 +76,9 @@ export default function Medias() {
   const [data, setData] = useState<IMedia[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const [hasSearch, setHasSearch] = useState(false);
+  const [searchResult, setSearchResult] = useState<IMedia[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -128,10 +120,15 @@ export default function Medias() {
     if (isLoading) return <p>Loading...</p>;
 
     if (error) return <p>Error</p>;
+    const info = hasSearch ? searchResult : data;
+
+    console.log(searchResult);
+
+    if (info.length === 0) return <p>Nenhuma mídia encontrada</p>;
 
     return (
       <>
-        {data.map((media) => {
+        {info.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaEditorMenu>
@@ -156,7 +153,7 @@ export default function Medias() {
                     })}
                   </Swiper>
                 </MediaImage>
-                <MediaEmployerButtons id={media.id_media} setMedias={setData}/>
+                <MediaEmployerButtons id={media.id_media} setMedias={setData} />
               </MediaEditorMenu>
               <MediaInfo>
                 <MediaInfoMap>
@@ -324,6 +321,21 @@ export default function Medias() {
         <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
       </MapContainer>
 
+      <ButtonContainer>
+        <SearchBarContainer>
+          <MediasSearchBar
+            medias={data}
+            setMediasFiltered={setSearchResult}
+            setHasSearch={setHasSearch}
+          />
+        </SearchBarContainer>
+
+        <CreateMediaButton
+          onClick={() => router.push("/employer/createMedia/")}
+        >
+          + Nova mídia
+        </CreateMediaButton>
+      </ButtonContainer>
       <DivisoryBar />
 
       <MediaListContainer>
