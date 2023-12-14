@@ -10,6 +10,7 @@ import { env } from "./config/env";
 import { contactsRoutes } from "./modules/contacts/infra/http/controllers/routes";
 import { employeeRoutes } from "./modules/employee/infra/http/controllers/routes";
 import { mediaRoutes } from "./modules/media/infra/http/controllers/routes";
+import { tasksRoutes } from "./modules/tasks/infra/http/controllers/routes";
 import { AppError } from "./shared/errors/interface/AppError";
 
 export const app = fastify();
@@ -42,6 +43,7 @@ app.register(multer.contentParser);
 app.register(employeeRoutes, { prefix: "/employees" });
 app.register(contactsRoutes, { prefix: "/contacts" });
 app.register(mediaRoutes, { prefix: "/medias" });
+app.register(tasksRoutes, { prefix: "/tasks" });
 app.register(fastifyStatic, {
   root: path.join(__dirname, "files"),
   prefix: "/files/",
