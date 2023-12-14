@@ -12,6 +12,7 @@ export const ModalContainer = styled.div`
   border-radius: 24px;
   padding-bottom: 20px;
   overflow: hidden;
+  z-index: 1000;
 `;
 
 export const ModalHeader = styled.div`

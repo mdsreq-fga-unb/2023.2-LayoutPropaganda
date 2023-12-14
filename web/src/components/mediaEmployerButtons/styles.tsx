@@ -122,3 +122,26 @@ export const CancelButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const CashFlowInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #666666;
+  outline: none;
+  border: none;
+  padding: 20px;
+  color: #ffffff;
+  font-size: 20px;
+  &::placeholder {
+    color: #ffffff;
+    font-size: 20px;
+  }
+`;
