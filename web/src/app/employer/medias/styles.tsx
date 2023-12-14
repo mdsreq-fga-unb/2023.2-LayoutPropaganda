@@ -48,3 +48,37 @@ export const MediaImage = styled.div`
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 `;
+
+export const ButtonContainer = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+`;
+
+export const CreateMediaButton = styled.button`
+  font-size: 18px;
+  background-color: #151515;
+  padding: 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 1px 0px 30.3px -1px #2d2d2d;
+  &:hover {
+    background-color: #000000;
+    box-shadow: 1px 0px 30.3px -1px #474747;
+  }
+  align-self: center;
+  border: none;
+  outline: none;
+`;
+
+export const SearchBarContainer = styled.div`
+  width: 40%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
