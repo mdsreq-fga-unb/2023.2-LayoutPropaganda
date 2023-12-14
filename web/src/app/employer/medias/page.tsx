@@ -24,7 +24,10 @@ import {
 } from "@/app/medias/styles";
 import LayoutMap from "@/components/LayoutMap";
 import MediaEmployerButtons from "@/components/mediaEmployerButtons";
+import MediasSearchBar from "@/components/mediasSearchBar";
 import { api } from "@/services/api";
+import { IMedia } from "@/types/media";
+import { regions } from "@/utils/regions";
 import { motion } from "framer-motion";
 import {
   ChevronDown,
@@ -33,6 +36,7 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fromLatLng, setKey } from "react-geocode";
 import "swiper/css";
@@ -47,9 +51,6 @@ import {
   MediaImage,
   SearchBarContainer,
 } from "./styles";
-import { useRouter } from "next/navigation";
-import MediasSearchBar from "@/components/mediasSearchBar";
-import { IMedia } from "@/types/media";
 
 interface MediaAddresses {
   [mediaId: string]: string;
@@ -61,6 +62,12 @@ interface IListFilters {
   };
 }
 
+type getMediasDTO = {
+  regions: string[];
+  types: string[];
+  onlyAvailable: boolean;
+};
+
 export default function Medias() {
   const [mapFilters, setMapFilters] = useState(["exemplo"]);
 
@@ -68,8 +75,21 @@ export default function Medias() {
 
   const router = useRouter();
 
-  const getMedias = async (): Promise<IMedia[]> => {
-    const response = await api.get("/medias");
+  const getMedias = async ({
+    regions,
+    types,
+    onlyAvailable,
+  }: getMediasDTO): Promise<IMedia[]> => {
+    const queryParams = new URLSearchParams();
+    if (regions.length > 0) {
+      queryParams.set("regions", regions.join(","));
+    }
+    if (types.length > 0) {
+      queryParams.set("types", types.join(","));
+    }
+    queryParams.set("onlyAvailable", onlyAvailable ? "true" : "false");
+
+    const response = await api.get(`/medias?${queryParams}`);
     return response.data;
   };
 
@@ -80,20 +100,6 @@ export default function Medias() {
   const [hasSearch, setHasSearch] = useState(false);
   const [searchResult, setSearchResult] = useState<IMedia[]>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getMedias();
-        setData(response);
-      } catch (error) {
-        setError(error as string);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
   // melhorar o nome e por em outro arquivo
   setKey(googleMapsApiKey);
   const [addresses, setAddresses] = useState<MediaAddresses>({});
@@ -128,7 +134,7 @@ export default function Medias() {
 
     return (
       <>
-        {info.map((media) => {
+        {data.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaEditorMenu>
@@ -215,27 +221,59 @@ export default function Medias() {
     );
   };
 
-  const filters: IListFilters = {
+  const filters: {
+    [filterName: string]: {
+      [filterOption: string]: boolean;
+    };
+  } = {
     tipo: {
-      painel: true,
-      outdoor: true,
-      frontlight: true,
-      backlight: true,
+      painel: false,
+      outdoor: false,
+      frontlight: false,
     },
-    região: {
-      brasilia: true,
-      goiania: true,
-      saopaulo: true,
-      riodejaneiro: true,
-    },
+    região: {},
     Disponibilidade: {
-      available: true,
-      unavailable: true,
+      available: false,
+      unavailable: false,
     },
   };
 
+  // generate the region object based on a list of regions
+
+  regions.forEach((region: string) => {
+    filters["região"][region] = false;
+  });
+
+  const [listFilters, setListFilters] = useState<IListFilters>(filters);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const selectedRegions = Object.keys(listFilters["região"]).filter(
+          (k) => listFilters["região"][k]
+        );
+        const selectedTypes = Object.keys(listFilters["tipo"]).filter(
+          (k) => listFilters["tipo"][k]
+        );
+        const onlyAvailable = !listFilters["Disponibilidade"].unavailable;
+
+        const response = await getMedias({
+          regions: selectedRegions,
+          onlyAvailable,
+          types: selectedTypes,
+        });
+        setData(response);
+      } catch (error) {
+        setError(error as string);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [listFilters]);
+
   const RenderListFilters = () => {
-    const [listFilters, setListFilters] = useState<IListFilters>(filters);
     const [expandedGroups, setExpandedGroups] = useState<{
       [key: string]: boolean;
     }>({});

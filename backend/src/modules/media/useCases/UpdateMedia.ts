@@ -6,6 +6,8 @@ interface IRequest {
   type?: string;
   region?: string;
   description?: string;
+  height?: number;
+  width?: number;
   latitude?: number;
   longitude?: number;
   is_available?: boolean;

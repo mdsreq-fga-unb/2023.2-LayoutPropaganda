@@ -2,29 +2,22 @@
 import { api } from "@/services/api";
 import { useEffect, useRef, useState } from "react";
 import {
-  Checkbox,
-  EmployerAtribute,
-  EmployerAtributeBox,
-  EmployerAtributeEmail,
-  EmployerAtributeName,
-  EmployerAtributeTel,
-  EmployerInfoBox,
-  EmployerInfoLine,
-  EmployerListBox,
-  Container,
-  SearchEmployeeInput,
-  SearchEmployeeContainer,
-  CreateEmployeeButton,
   ActionsContainer,
+  Container,
+  CreateEmployeeButton,
+  EmployerListBox,
+  SearchEmployeeContainer,
+  SearchEmployeeInput
 } from "./styles";
 
-import { AgGridReact } from "ag-grid-react"; // React Grid Logic
-import "ag-grid-community/styles/ag-grid.css"; // Core CSS
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
-import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
-import { Pencil, Trash2 } from "lucide-react";
-import NewEmployeeModal from "@/components/newEmployeeModal";
+import AddTaskModal from "@/components/addTaskModal";
 import EditEmployeeModal from "@/components/editEmployeeModal";
+import NewEmployeeModal from "@/components/newEmployeeModal";
+import "ag-grid-community/styles/ag-grid.css"; // Core CSS
+import "ag-grid-community/styles/ag-theme-alpine.css"; // Theme
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
+import { AgGridReact } from "ag-grid-react"; // React Grid Logic
+import { LayoutList, Pencil, Trash2 } from "lucide-react";
 
 interface Employee {
   id_employee: string;
@@ -47,6 +40,7 @@ export default function Employers() {
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [openTaskModal, setOpenTaskModal] = useState(false);
 
   const [employeeSearch, setEmployeeSearch] = useState<Employee[]>([]);
   const [search, setSearch] = useState("");
@@ -73,7 +67,6 @@ export default function Employers() {
 
   const DeleteEmployee = async (id: string) => {
     try {
-      console.log("fefsefsef");
       await api.delete(`/employees/${id}`);
     } catch (error) {
       console.log(error);
@@ -93,6 +86,15 @@ export default function Employers() {
         >
           <Pencil />
         </button>
+
+        <button
+          onClick={() => {
+            setSelectedEmployee(employee);
+            setOpenTaskModal(true);
+          }}
+        >
+          <LayoutList />
+        </button> 
 
         <button
           onClick={() => {
@@ -205,6 +207,10 @@ export default function Employers() {
         employee={selectedEmployee}
         isOpen={openEditModal}
         setModalOpen={setOpenEditModal}
+      />
+      <AddTaskModal
+        isOpen={openTaskModal}
+        setModalOpen={setOpenTaskModal}
       />
     </Container>
   );

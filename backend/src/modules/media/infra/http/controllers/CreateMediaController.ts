@@ -14,6 +14,8 @@ export async function CreateMediaController(
     description: z.string().max(255),
     latitude: z.coerce.number(),
     longitude: z.coerce.number(),
+    height: z.coerce.number(),
+    width: z.coerce.number(),
     is_available: z
       .enum(["true", "false"])
       .optional()

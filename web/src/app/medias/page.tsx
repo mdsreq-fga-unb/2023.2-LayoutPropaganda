@@ -39,8 +39,17 @@ import {
   MediaInfoTexts,
   MediaList,
   MediaListContainer,
-  RemoveFilterButton
+  RemoveFilterButton,
+  SearchContainer,
 } from "./styles";
+import {
+  ButtonContainer,
+  CreateMediaButton,
+  SearchBarContainer,
+} from "../employer/medias/styles";
+import MediasSearchBar from "@/components/mediasSearchBar";
+import { IMedia } from "@/types/media";
+import { regions } from "@/utils/regions";
 
 interface IMediaImage {
   id_media_image: string;
@@ -50,20 +59,6 @@ interface IMediaImage {
   updated_at: Date;
   created_at: Date;
 }
-interface IMedia {
-  id_media: string;
-  type: string;
-  region: string;
-  description: string;
-  latitude: number;
-  longitude: number;
-  is_deleted: boolean;
-  is_available: boolean;
-  updated_at: Date;
-  created_at: Date;
-  MediaImages: IMediaImage[];
-}
-
 interface MediaAddresses {
   [mediaId: string]: string;
 }
@@ -78,14 +73,18 @@ type getMediasDTO = {
   regions: string[];
   types: string[];
   onlyAvailable: boolean;
-}
+};
 
 export default function Medias() {
   const [mapFilters, setMapFilters] = useState(["exemplo"]);
 
   const googleMapsApiKey = process.env.NEXT_PUBLIC_MAP_API_KEY || "";
 
-  const getMedias = async ({ regions, types, onlyAvailable }: getMediasDTO): Promise<IMedia[]> => {
+  const getMedias = async ({
+    regions,
+    types,
+    onlyAvailable,
+  }: getMediasDTO): Promise<IMedia[]> => {
     const queryParams = new URLSearchParams();
     if (regions.length > 0) {
       queryParams.set("regions", regions.join(","));
@@ -103,6 +102,8 @@ export default function Medias() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const [hasSearch, setHasSearch] = useState(false);
+  const [searchResult, setSearchResult] = useState<IMedia[]>([]);
 
   // melhorar o nome e por em outro arquivo
   setKey(googleMapsApiKey);
@@ -131,9 +132,15 @@ export default function Medias() {
 
     if (error) return <p>Error</p>;
 
+    const info = hasSearch ? searchResult : data;
+
+    console.log(searchResult);
+
+    if (info.length === 0) return <p>Nenhuma mídia encontrada</p>;
+
     return (
       <>
-        {data.map((media) => {
+        {info.map((media) => {
           return (
             <Media key={media.id_media}>
               <MediaImage>
@@ -219,35 +226,47 @@ export default function Medias() {
     );
   };
 
-  const filters = {
+  const filters: {
+    [filterName: string]: {
+      [filterOption: string]: boolean;
+    };
+  } = {
     tipo: {
       painel: true,
       outdoor: true,
       frontlight: true,
     },
-    região: {
-      "Ceilândia": true,
-      "Taguatinga": true,
-      "Águas Claras": true,
-      "Plano Piloto": true,
-      "Riacho Fundo": true,
-    },
+    região: {},
     Disponibilidade: {
       available: true,
       unavailable: true,
     },
   };
 
+  // generate the region object based on a list of regions
+
+  regions.forEach((region: string) => {
+    filters["região"][region] = true;
+  });
+
   const [listFilters, setListFilters] = useState<IListFilters>(filters);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const selectedRegions = Object.keys(listFilters["região"]).filter((k) => listFilters["região"][k]);
-        const selectedTypes = Object.keys(listFilters["tipo"]).filter((k) => listFilters["tipo"][k]);
+        const selectedRegions = Object.keys(listFilters["região"]).filter(
+          (k) => listFilters["região"][k]
+        );
+        const selectedTypes = Object.keys(listFilters["tipo"]).filter(
+          (k) => listFilters["tipo"][k]
+        );
         const onlyAvailable = !listFilters["Disponibilidade"].unavailable;
 
-        const response = await getMedias({ regions: selectedRegions, onlyAvailable, types: selectedTypes });
+        const response = await getMedias({
+          regions: selectedRegions,
+          onlyAvailable,
+          types: selectedTypes,
+        });
         setData(response);
       } catch (error) {
         setError(error as string);
@@ -345,6 +364,15 @@ export default function Medias() {
         <LayoutMap center={{ lat: -15.832952, lng: -48.083647 }} />
       </MapContainer>
 
+      <SearchContainer>
+        <SearchBarContainer>
+          <MediasSearchBar
+            medias={data}
+            setMediasFiltered={setSearchResult}
+            setHasSearch={setHasSearch}
+          />
+        </SearchBarContainer>
+      </SearchContainer>
       <DivisoryBar />
 
       <MediaListContainer>

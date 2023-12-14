@@ -10,8 +10,10 @@ export async function UpdateMediaController(
 ) {
   const updateMediaBodySchema = z.object({
     type: z.enum(["triedo", "outdoor", "frontlight"]).optional(),
-    region: z.enum(regions),
+    region: z.enum(regions).optional(),
     description: z.string().max(255).optional(),
+    height: z.coerce.number().optional(),
+    width: z.coerce.number().optional(),
     latitude: z.coerce.number().optional(),
     longitude: z.coerce.number().optional(),
     is_available: z.boolean().optional(),
