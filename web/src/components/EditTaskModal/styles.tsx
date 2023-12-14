@@ -86,7 +86,6 @@ export const SubmitButton = styled.button`
     cursor: pointer;
   }
 `;
-
 export const Select = styled.select`
   border: none;
   border-radius: 20px;

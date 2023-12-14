@@ -12,8 +12,8 @@ export async function tasksRoutes(app: FastifyInstance) {
 const authenticatedRoutes: FastifyPluginCallback = (app, _, done) => {
   app.addHook("onRequest", verifyJWT);
 
-  app.post("/", CreateTaskController);
-  app.get("/:id_employee", ListTaskController);
+  app.post("/:id_employee", CreateTaskController);
+  app.get("/", ListTaskController);
   app.delete("/:id_task", DeleteTaskController);
   app.put("/:id_task", UpdateTaskController);
 

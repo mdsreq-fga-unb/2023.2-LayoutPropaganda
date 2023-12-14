@@ -9,7 +9,7 @@ export async function UpdateTaskController(
   const updateTaskBodySchema = z.object({
     title: z.string().max(255).optional(),
     description: z.string().max(255).optional(),
-    deadline: z.date().optional(),
+    deadline: z.coerce.date(),
     status: z.enum(["TODO", "DOING", "DONE"]).optional(),
   });
   const data = updateTaskBodySchema.parse(request.body);

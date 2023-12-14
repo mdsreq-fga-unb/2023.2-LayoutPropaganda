@@ -58,6 +58,12 @@ export const ButtonContainer = styled.div`
   margin-top: 16px;
 `;
 
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+`;
+
 export const CreateMediaButton = styled.button`
   font-size: 18px;
   background-color: #151515;

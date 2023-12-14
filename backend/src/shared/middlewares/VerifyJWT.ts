@@ -15,6 +15,7 @@ export async function verifyJWT(
     if (!user) {
       throw new Error();
     }
+    request.user = user.id_employee;
   } catch {
     return response.status(401).send({ message: "Unauthorized" });
   }

@@ -232,21 +232,21 @@ export default function Medias() {
     };
   } = {
     tipo: {
-      painel: true,
-      outdoor: true,
-      frontlight: true,
+      painel: false,
+      outdoor: false,
+      frontlight: false,
     },
     região: {},
     Disponibilidade: {
-      available: true,
-      unavailable: true,
+      available: false,
+      unavailable: false,
     },
   };
 
   // generate the region object based on a list of regions
 
   regions.forEach((region: string) => {
-    filters["região"][region] = true;
+    filters["região"][region] = false;
   });
 
   const [listFilters, setListFilters] = useState<IListFilters>(filters);

@@ -11,6 +11,7 @@
   "dependencies": {
     "@nivo/core": "^0.84.0",
     "@nivo/line": "^0.84.0",
+    "@nivo/pie": "^0.84.0",
     "@react-google-maps/api": "^2.19.2",
     "@types/google.maps": "^3.45.1",
     "ag-grid-react": "^31.0.0",

@@ -46,6 +46,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   ButtonContainer,
+  ButtonsContainer,
   CreateMediaButton,
   MediaEditorMenu,
   MediaImage,
@@ -367,12 +368,18 @@ export default function Medias() {
             setHasSearch={setHasSearch}
           />
         </SearchBarContainer>
-
-        <CreateMediaButton
-          onClick={() => router.push("/employer/createMedia/")}
-        >
-          + Nova mídia
-        </CreateMediaButton>
+        <ButtonsContainer>
+          <CreateMediaButton
+            onClick={() => router.push("/employer/statistics/")}
+          >
+            Estatísticas
+          </CreateMediaButton>
+          <CreateMediaButton
+            onClick={() => router.push("/employer/createMedia/")}
+          >
+            + Nova mídia
+          </CreateMediaButton>
+        </ButtonsContainer>
       </ButtonContainer>
       <DivisoryBar />
 

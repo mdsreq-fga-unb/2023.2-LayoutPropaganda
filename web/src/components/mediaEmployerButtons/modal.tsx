@@ -13,11 +13,11 @@ import {
 
 import { api } from "@/services/api";
 
-export default function Modal({
+export default function DeleteModal({
   isOpen,
   setModalOpen,
   id,
-  setMedias
+  setMedias,
 }: {
   isOpen: boolean;
   setModalOpen: (value: boolean) => void;
