@@ -9,7 +9,7 @@ export async function CreateMediaController(
   response: FastifyReply,
 ) {
   const createMediaBodySchema = z.object({
-    type: z.enum(["painel", "outdoor", "frontlight"]),
+    type: z.enum(["triedo", "outdoor", "frontlight"]),
     region: z.enum(regions),
     description: z.string().max(255),
     latitude: z.coerce.number(),
