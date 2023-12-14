@@ -22,10 +22,12 @@ export default function EditTaskModal({
   task,
   isOpen,
   setModalOpen,
+  setTasks
 }: {
   isOpen: boolean;
   setModalOpen: (value: boolean) => void;
   task?: Task;
+  setTasks: (value: (tasks: Task[]) => Task[]) => void;
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -68,9 +70,20 @@ export default function EditTaskModal({
     };
     try {
       if (task) {
-        const response = await api.put(
+        await api.put(
           `/tasks/${task.id_task ?? ""}`,
           data
+        );
+        setTasks((tasks) =>
+          tasks.map((t) => {
+            if (t.id_task === task.id_task) {
+              return {
+                ...t,
+                ...data,
+              };
+            }
+            return t;
+          })
         );
         alert("Task atualizada com sucesso!");
       } else {

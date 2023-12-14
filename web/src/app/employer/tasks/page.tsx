@@ -22,12 +22,14 @@ export default function Tasks({ params }: { params: { id: string } }) {
     Task | undefined
   >(undefined);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const DeleteTask = async (id: string) => {
     try {
       await api.delete(`/tasks/${id}`);
+      setTasks(tasks.filter((t) => t.id_task !== id));
     } catch (error) {
-      console.log(error);
+      alert("Não foi possível deletar a tarefa, tente novamente mais tarde");
     }
   };
 
@@ -46,8 +48,8 @@ export default function Tasks({ params }: { params: { id: string } }) {
         </button>
 
         <button
-          onClick={() => {
-            DeleteTask(task.id_task);
+          onClick={async () => {
+            await DeleteTask(task.id_task);
           }}
         >
           <Trash2 />
@@ -56,7 +58,6 @@ export default function Tasks({ params }: { params: { id: string } }) {
     );
   };
 
-  const [tasks, setTasks] = useState<Task[]>([]);
 
   const [columnDefs, setColumnDefs] = useState([
     {
@@ -127,6 +128,7 @@ export default function Tasks({ params }: { params: { id: string } }) {
         task={selectedTask}
         isOpen={openEditModal}
         setModalOpen={setOpenEditModal}
+        setTasks={setTasks}
       />
     </Container>
   );

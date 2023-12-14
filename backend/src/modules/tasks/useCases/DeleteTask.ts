@@ -6,7 +6,7 @@ export class DeleteTask {
 
   public async execute(id_task: string): Promise<void> {
     const task = await this.taskRepository.findById(id_task);
-    if (task) {
+    if (!task) {
       throw new NotFoundError("Task does not exists");
     }
 
