@@ -1,3 +1,4 @@
+import { PrismaClient } from ".prisma/client";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function verifyJWT(
@@ -5,7 +6,15 @@ export async function verifyJWT(
   response: FastifyReply,
 ) {
   try {
-    await request.jwtVerify();
+    const token = await request.jwtVerify();
+    const user = await new PrismaClient().employee.findUnique({
+      where: {
+        id_employee: token.sign.sub,
+      },
+    });
+    if (!user) {
+      throw new Error();
+    }
   } catch {
     return response.status(401).send({ message: "Unauthorized" });
   }
