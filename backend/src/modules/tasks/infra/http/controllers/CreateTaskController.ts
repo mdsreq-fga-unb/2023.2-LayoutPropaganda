@@ -9,7 +9,7 @@ export async function CreateTaskController(
   const createTaskBodySchema = z.object({
     title: z.string().max(255),
     description: z.string().max(255),
-    deadline: z.date(),
+    deadline: z.coerce.date(),
     status: z.enum(["TODO", "DOING", "DONE"]),
   });
   const data = createTaskBodySchema.parse(request.body);

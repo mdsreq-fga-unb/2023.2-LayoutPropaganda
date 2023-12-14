@@ -211,6 +211,7 @@ export default function Employers() {
       <AddTaskModal
         isOpen={openTaskModal}
         setModalOpen={setOpenTaskModal}
+        employee={selectedEmployee}
       />
     </Container>
   );

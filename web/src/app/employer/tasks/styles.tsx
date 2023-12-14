@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const ActionsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 8px;
+  padding-top: 4px;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

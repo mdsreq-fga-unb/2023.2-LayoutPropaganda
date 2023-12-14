@@ -69,12 +69,6 @@ export default function Clients() {
                         autoSizeStrategy={{
                             type: "fitGridWidth",
                             defaultMinWidth: 100,
-                            columnLimits: [
-                                {
-                                    colId: "message",
-                                    minWidth: 1500,
-                                },
-                            ],
                         }}
                         overlayNoRowsTemplate={
                             "Não foi possível encontrar nenhum dado, tente novamente mais tarde"
