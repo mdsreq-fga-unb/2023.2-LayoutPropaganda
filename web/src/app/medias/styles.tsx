@@ -242,3 +242,12 @@ export const DivisoryBar = styled.div`
   border-bottom: 2px solid #ffffff;
   margin: 1rem 0;
 `;
+
+export const SearchContainer = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 16px;
+`;
