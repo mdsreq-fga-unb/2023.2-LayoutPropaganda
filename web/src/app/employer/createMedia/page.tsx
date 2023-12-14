@@ -123,24 +123,28 @@ export default function CreateMedia() {
               name="largura"
               onChange={handleChange}
               type="number"
+              step="0.0000000000000001"
             />
             <Input 
               placeholder="Altura"
               name="altura"
               onChange={handleChange}
               type="number"
+              step="0.0000000000000001"
             />
             <Input
               placeholder="Latitude"
               name="latitude"
               onChange={handleChange}
               type="number"
+              step="0.0000000000000001"
             />
             <Input
               placeholder="Longitude"
               name="longitude"
               onChange={handleChange}
               type="number"
+              step="0.0000000000000001"
             />
             <Input placeholder="Manutenção" name="" onChange={handleChange} />
 
